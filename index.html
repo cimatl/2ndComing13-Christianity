@@ -3,1305 +3,1251 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Prison Epistles Interactive App | 옥중서신 인터랙티브 앱</title>
+  <title>13. The Coming of the Lord (Second Coming) — Interactive Bilingual Learning App</title>
   <style>
-    :root { --bg:#0b0c10; --card:#111318; --muted:#aab2c0; --text:#e9eef7; --line:#242a36; --accent:#7aa2ff; }
-    * { box-sizing: border-box; }
-    body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; background: var(--bg); color: var(--text); line-height: 1.55; }
-    a { color: var(--accent); text-decoration: none; }
-    .wrap { max-width: 1100px; margin: 0 auto; padding: 22px; }
-    .topbar { display:flex; gap:12px; align-items:flex-start; justify-content: space-between; flex-wrap: wrap; }
-    .title { display:flex; flex-direction: column; gap:6px; }
-    h1 { font-size: 20px; margin: 0; }
-    .subtitle { color: var(--muted); font-size: 13px; max-width: 850px; }
-    .controls { display:flex; gap:10px; align-items:center; flex-wrap: wrap; }
-    .pill { border: 1px solid var(--line); background: rgba(255,255,255,0.03); padding: 8px 10px; border-radius: 999px; font-size: 13px; color: var(--text); cursor: pointer; }
-    .pill[aria-pressed="true"] { border-color: rgba(122,162,255,0.65); box-shadow: 0 0 0 3px rgba(122,162,255,0.15); }
-    .grid { display:grid; grid-template-columns: 260px 1fr; gap: 14px; margin-top: 14px; }
-    @media (max-width: 980px){ .grid { grid-template-columns: 1fr; } }
-    .nav, .panel { border:1px solid var(--line); background: var(--card); border-radius: 16px; overflow: hidden; }
-    .nav header, .panel header { padding: 14px 14px 12px; border-bottom: 1px solid var(--line); }
-    .nav header .small, .panel header .small { color: var(--muted); font-size: 12px; }
-    .navlist { display:flex; flex-direction: column; }
-    .tabbtn { width: 100%; text-align:left; padding: 12px 14px; border:0; background: transparent; color: var(--text); cursor:pointer; border-bottom: 1px solid var(--line); }
-    .tabbtn:hover { background: rgba(255,255,255,0.03); }
-    .tabbtn[aria-current="true"] { background: rgba(122,162,255,0.10); border-left: 3px solid var(--accent); padding-left: 11px; }
-    .content { padding: 14px; }
-    .card { border: 1px solid var(--line); border-radius: 14px; padding: 12px; background: rgba(255,255,255,0.02); margin-bottom: 12px; }
-    .card h2 { font-size: 15px; margin: 0 0 8px; }
-    .card h3 { font-size: 13px; margin: 12px 0 6px; color: #dbe6ff; }
-    .muted { color: var(--muted); }
-    .kicker { font-size: 12px; color: var(--muted); margin-top: 6px; }
-    details { border: 1px solid var(--line); border-radius: 12px; padding: 10px 10px; background: rgba(255,255,255,0.02); }
-    details + details { margin-top: 10px; }
-    summary { cursor: pointer; font-weight: 600; }
-    ul { margin: 8px 0 0 18px; }
-    li { margin: 4px 0; }
-    .row { display:flex; gap:10px; flex-wrap: wrap; align-items: center; }
-    .badge { font-size: 12px; color: var(--muted); border:1px solid var(--line); border-radius: 999px; padding: 4px 8px; }
-    .qblock { padding: 10px; border: 1px solid var(--line); border-radius: 12px; background: rgba(255,255,255,0.02); margin-top: 8px; }
-    .qtitle { font-weight: 650; margin: 0 0 6px; }
-    textarea { width: 100%; min-height: 90px; resize: vertical; border-radius: 12px; border:1px solid var(--line); background: rgba(0,0,0,0.20); color: var(--text); padding: 10px; }
-    .btn { border: 1px solid var(--line); background: rgba(255,255,255,0.03); color: var(--text); padding: 8px 10px; border-radius: 10px; cursor: pointer; font-size: 13px; }
-    .btn:hover { background: rgba(255,255,255,0.06); }
-    .quizQ { border:1px solid var(--line); border-radius: 12px; padding: 10px; background: rgba(255,255,255,0.02); margin-top: 10px; }
-    .opt { display:flex; gap:10px; align-items:flex-start; padding: 8px; border-radius: 10px; border:1px solid transparent; }
-    .opt:hover { background: rgba(255,255,255,0.03); border-color: rgba(255,255,255,0.06); }
-    .feedback { margin-top: 8px; padding: 8px; border-radius: 10px; border:1px solid var(--line); background: rgba(0,0,0,0.18); }
-    .ok { border-color: rgba(122,255,170,0.35); background: rgba(122,255,170,0.08); }
-    .no { border-color: rgba(255,122,122,0.35); background: rgba(255,122,122,0.08); }
-    .foot { color: var(--muted); font-size: 12px; margin-top: 10px; }
-    .warn { border-left: 3px solid rgba(255,200,90,0.8); padding-left: 10px; }
-    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+    :root{
+      --bg:#0b0f14; --panel:#111824; --panel2:#0f1622; --text:#e9eef6; --muted:#a9b4c4;
+      --line:#243044; --accent:#7aa7ff; --accent2:#7dffb2; --warn:#ffcf5a; --danger:#ff6b6b;
+      --chip:#1a2436;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; background:linear-gradient(180deg,#070a10, #0b0f14 35%, #070a10);
+      color:var(--text);
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+      line-height:1.55;
+    }
+    a{color:var(--accent); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:1100px; margin:0 auto; padding:22px 16px 40px;}
+    header{
+      display:flex; gap:14px; align-items:flex-start; justify-content:space-between; flex-wrap:wrap;
+      padding:16px; border:1px solid var(--line); border-radius:16px; background:rgba(17,24,36,.7);
+      backdrop-filter: blur(6px);
+    }
+    .title{min-width:260px}
+    h1{margin:0 0 6px; font-size:20px}
+    .subtitle{color:var(--muted); font-size:13px}
+    .controls{
+      display:flex; gap:10px; align-items:center; flex-wrap:wrap; justify-content:flex-end;
+    }
+    .btn{
+      background:var(--chip); border:1px solid var(--line); color:var(--text);
+      padding:8px 10px; border-radius:10px; cursor:pointer; font-size:13px;
+    }
+    .btn:hover{border-color:#35507a}
+    .btn.primary{background:rgba(122,167,255,.15); border-color:#33507c}
+    .btn.good{background:rgba(125,255,178,.12); border-color:#2a6a4c}
+    .btn.warn{background:rgba(255,207,90,.12); border-color:#6a5a2a}
+    .pill{
+      display:inline-flex; gap:8px; align-items:center;
+      padding:6px 10px; border-radius:999px; background:var(--chip); border:1px solid var(--line);
+      color:var(--muted); font-size:12px;
+    }
+    .grid{
+      margin-top:14px;
+      display:grid; grid-template-columns: 280px 1fr; gap:14px;
+    }
+    @media (max-width: 980px){ .grid{grid-template-columns:1fr} }
+    nav{
+      border:1px solid var(--line); border-radius:16px; background:rgba(15,22,34,.8);
+      overflow:hidden;
+    }
+    .navHead{
+      padding:12px 12px 10px;
+      border-bottom:1px solid var(--line);
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
+    }
+    .navHead b{font-size:13px}
+    .navSearch{
+      width:100%;
+      padding:8px 10px; font-size:13px; color:var(--text);
+      border:1px solid var(--line); border-radius:10px; background:#0b111b;
+      outline:none;
+    }
+    .navList{padding:6px}
+    .navItem{
+      width:100%;
+      text-align:left;
+      background:transparent;
+      border:1px solid transparent;
+      color:var(--text);
+      padding:10px 10px;
+      border-radius:12px;
+      cursor:pointer;
+      display:flex; flex-direction:column; gap:4px;
+    }
+    .navItem:hover{background:rgba(122,167,255,.08); border-color:#243a5a}
+    .navItem.active{background:rgba(122,167,255,.14); border-color:#2b4670}
+    .navItem small{color:var(--muted); font-size:12px}
+    main{
+      border:1px solid var(--line); border-radius:16px; background:rgba(17,24,36,.6);
+      padding:16px; min-height:560px;
+    }
+    .metaRow{display:flex; gap:10px; flex-wrap:wrap; margin:10px 0 14px}
+    .card{
+      border:1px solid var(--line); border-radius:16px; background:rgba(15,22,34,.75);
+      padding:14px; margin:12px 0;
+    }
+    .card h2{margin:0 0 8px; font-size:16px}
+    .card h3{margin:14px 0 6px; font-size:14px}
+    .muted{color:var(--muted)}
+    .kicker{color:var(--muted); font-size:12px}
+    .hr{height:1px; background:var(--line); margin:14px 0}
+    .twoCol{display:grid; grid-template-columns: 1fr 1fr; gap:12px}
+    @media (max-width: 900px){ .twoCol{grid-template-columns:1fr} }
+    details{
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:10px 12px;
+      background:rgba(11,17,27,.7);
+      margin:10px 0;
+    }
+    summary{cursor:pointer; font-weight:600}
+    .tag{display:inline-block; font-size:12px; padding:3px 8px; border-radius:999px; border:1px solid var(--line); background:rgba(26,36,54,.7); color:var(--muted); margin-right:6px}
+    .callout{
+      border-left:3px solid var(--accent);
+      padding:10px 12px;
+      background:rgba(122,167,255,.08);
+      border-radius:12px;
+      margin:10px 0;
+    }
+    .callout.good{border-left-color:var(--accent2); background:rgba(125,255,178,.08)}
+    .callout.warn{border-left-color:var(--warn); background:rgba(255,207,90,.08)}
+    .callout.danger{border-left-color:var(--danger); background:rgba(255,107,107,.08)}
+    .kbd{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size:12px; color:var(--muted)}
+    .table{
+      width:100%; border-collapse:separate; border-spacing:0;
+      border:1px solid var(--line); border-radius:14px; overflow:hidden; background:rgba(11,17,27,.7);
+      margin:10px 0;
+    }
+    .table th,.table td{padding:10px; border-bottom:1px solid var(--line); vertical-align:top; font-size:13px}
+    .table th{color:var(--muted); text-align:left; background:rgba(26,36,54,.55)}
+    .table tr:last-child td{border-bottom:none}
+    .quizQ{
+      border:1px solid var(--line); border-radius:14px; background:rgba(11,17,27,.7);
+      padding:12px; margin:10px 0;
+    }
+    .quizQ .q{font-weight:700; margin-bottom:8px}
+    .choices{display:grid; gap:8px}
+    label.choice{
+      display:flex; gap:10px; align-items:flex-start;
+      padding:8px 10px; border:1px solid var(--line); border-radius:12px; cursor:pointer;
+      background:rgba(26,36,54,.45);
+    }
+    label.choice:hover{border-color:#33507c}
+    .result{
+      padding:10px 12px; border-radius:12px; margin-top:10px;
+      border:1px solid var(--line); background:rgba(26,36,54,.55);
+    }
+    .result.good{border-color:#2a6a4c; background:rgba(125,255,178,.08)}
+    .result.bad{border-color:#6a2a2a; background:rgba(255,107,107,.08)}
+    footer{
+      margin-top:14px; color:var(--muted); font-size:12px;
+      padding:10px 2px 0;
+    }
+    .mini{font-size:12px; color:var(--muted)}
   </style>
 </head>
+
 <body>
   <div class="wrap">
-    <div class="topbar">
+    <header>
       <div class="title">
-        <h1 id="appTitle">Prison Epistles: Interactive Learning App</h1>
-        <div class="subtitle" id="appSubtitle">
-          Explore Ephesians, Philippians, Colossians, and Philemon with pre-exegetical contexts, core texts & themes, 3 exegetical + 3 hermeneutical questions, and 5 MC quiz items per letter (EN/KR).
-        </div>
-        <div class="kicker muted" id="appKicker">
-          Note: Scripture is shown as references + short key phrases (not full passages). Use your Bible (NRSV preferred; ESV comparison optional).
+        <h1 id="appTitle">13. The Coming of the Lord (Second Coming)</h1>
+        <div class="subtitle" id="appSubtitle">Interactive bilingual learning app (EN/KR) — pre-exegetical contexts + Sizemore/Migliore synthesis + questions + quiz</div>
+        <div class="metaRow">
+          <span class="pill" id="pillFramework">2×2 · 7×3 · MDHC</span>
+          <span class="pill" id="pillAim">Concrete-Symbolic Realism · Hope-for-Justice</span>
+          <span class="pill" id="pillTexts">Heb 9 · 1 Thess 4 · 2 Pet 3 · Rom 8 · Rev 21 · Matt 25</span>
         </div>
       </div>
-
-      <div class="controls" role="group" aria-label="Controls">
-        <button class="pill" id="langEN" aria-pressed="true">English</button>
-        <button class="pill" id="langKO" aria-pressed="false">한국어</button>
-        <button class="pill" id="resetBtn" aria-pressed="false">Reset Saved Answers</button>
+      <div class="controls">
+        <span class="pill" id="langPill">Language: EN</span>
+        <button class="btn primary" id="toggleLang">한국어</button>
+        <button class="btn" id="resetQuiz">Reset Quiz</button>
+        <button class="btn good" id="expandAll">Expand all</button>
+        <button class="btn warn" id="collapseAll">Collapse all</button>
       </div>
-    </div>
+    </header>
 
     <div class="grid">
-      <section class="nav" aria-label="Letter Navigation">
-        <header>
-          <div class="row">
-            <div class="badge" id="navBadge">Letters</div>
-            <div class="badge" id="navHint">Click a letter</div>
-          </div>
-          <div class="small" id="navSmall">
-            Aim: move from modern “reader-world” questions to responsible text-world engagement.
-          </div>
-        </header>
-        <div class="navlist" id="tabs"></div>
-      </section>
+      <nav>
+        <div class="navHead">
+          <b id="navTitle">Sections</b>
+        </div>
+        <div style="padding:0 12px 10px;">
+          <input class="navSearch" id="navSearch" type="search" placeholder="Search sections…" />
+          <div class="mini" id="navHint" style="margin-top:8px;">Tip: search “Hebrews”, “apantēsis”, “uniformitarianism”, “questions”.</div>
+        </div>
+        <div class="navList" id="navList"></div>
+      </nav>
 
-      <section class="panel" aria-label="Main Panel">
-        <header>
-          <div class="row">
-            <div class="badge" id="panelBadge">Selected</div>
-            <div class="badge mono" id="panelMeta">—</div>
-          </div>
-          <div class="small" id="panelSmall">
-            Use the questions for discussion, reflection, and assessment.
-          </div>
-        </header>
-        <div class="content" id="panel"></div>
-      </section>
+      <main>
+        <div id="content"></div>
+      </main>
     </div>
 
-    <p class="foot" id="footnote">
-      Local storage is used to save student answers on this device only. For LMS submission: copy/paste responses.
-    </p>
+    <footer id="footerNote">
+      Built as a single offline HTML file. Save as <span class="kbd">coming-of-the-lord.html</span> and open in any browser.
+    </footer>
   </div>
 
-  <noscript>
-    <div class="wrap">
-      <div class="card warn">
-        <h2>JavaScript required / 자바스크립트 필요</h2>
-        <p>This app requires JavaScript to render content and quizzes.</p>
-      </div>
-    </div>
-  </noscript>
+<script>
+/* =========================
+   DATA (BILINGUAL CONTENT)
+   ========================= */
 
-  <script>
-    // =========================
-    // Data (EN + KO)
-    // =========================
-    const DATA = {
-      meta: {
-        title: {
-          en: "Prison Epistles: Interactive Learning App",
-          ko: "옥중서신: 인터랙티브 학습 앱"
-        },
-        subtitle: {
-          en: "Explore Ephesians, Philippians, Colossians, and Philemon with pre-exegetical contexts, core texts & themes, 3 exegetical + 3 hermeneutical questions, and 5 MC quiz items per letter (EN/KR).",
-          ko: "에베소서·빌립보서·골로새서·빌레몬서를 사전 맥락(역사·문학·문화), 핵심 본문/주제, 주해 질문 3개+해석학 질문 3개, 각 서신별 5문항 객관식 퀴즈(영/한)로 학습합니다."
-        },
-        kicker: {
-          en: "Note: Scripture is shown as references + short key phrases (not full passages). Use your Bible (NRSV preferred; ESV comparison optional).",
-          ko: "안내: 성경은 ‘참조(구절표기)+짧은 핵심 구문’만 제공합니다(전체 본문 미제공). 성경책/앱으로 NRSV(권장)와 ESV(비교)를 함께 확인하세요."
-        },
-        navBadge: { en: "Letters", ko: "서신" },
-        navHint: { en: "Click a letter", ko: "서신을 선택" },
-        navSmall: {
-          en: "Aim: move from modern “reader-world” questions to responsible text-world engagement.",
-          ko: "목표: 현대 ‘독자-세계’의 질문에서 본문 ‘텍스트-세계’의 책임 있는 만남으로 이동하기."
-        },
-        panelBadge: { en: "Selected", ko: "선택됨" },
-        panelSmall: {
-          en: "Use the questions for discussion, reflection, and assessment.",
-          ko: "질문은 토론·성찰·평가(과제/시험)에 활용하세요."
-        },
-        footnote: {
-          en: "Local storage is used to save student answers on this device only. For LMS submission: copy/paste responses.",
-          ko: "답변은 이 기기(브라우저)에만 저장됩니다(LocalStorage). LMS 제출이 필요하면 복사/붙여넣기 하세요."
-        },
-        resetConfirm: {
-          en: "Reset all saved answers for this app on this device?",
-          ko: "이 기기에 저장된 이 앱의 모든 답변을 초기화할까요?"
-        },
-        resetDone: {
-          en: "Saved answers cleared.",
-          ko: "저장된 답변이 삭제되었습니다."
-        }
-      },
-
-      letters: [
-        {
-          id: "ephesians",
-          short: { en: "Ephesians", ko: "에베소서" },
-          meta: { en: "Unity / One New Humanity", ko: "연합 / 한 새 사람" },
-
-          contexts: {
-            historical: {
-              en: [
-                "Likely linked to Paul’s imprisonment tradition (commonly dated ~60–62 CE; Rome as a frequent proposal).",
-                "Authorship debated in scholarship: many see deutero-Pauline composition; others defend Pauline authorship.",
-                "Audience framed broadly (less local detail than undisputed letters), emphasizing Jew–Gentile reconciliation."
-              ],
-              ko: [
-                "바울의 옥중 전승과 연결됨(통상 60–62년경; 로마 가설이 흔함).",
-                "저자 문제는 학계 논쟁: ‘후대 바울학파(대필/전승)’로 보는 견해와 바울 저작을 옹호하는 견해가 공존.",
-                "수신자/상황이 비교적 보편적 틀로 제시되어 유대인–이방인 화해가 핵심으로 부각."
-              ]
-            },
-            literary: {
-              en: [
-                "Macro-structure: (1) Theological foundation (chs 1–3) → (2) Ethical formation (chs 4–6).",
-                "Genre feels like a circular/theological letter: fewer situational specifics, more ‘big-picture’ ecclesiology.",
-                "Key hinge: identity in Christ (new humanity) generates a new communal way of life."
-              ],
-              ko: [
-                "거시 구조: (1) 신학적 기초(1–3장) → (2) 윤리적 형성(4–6장).",
-                "장르 특징: ‘회람/신학적 서신’에 가까워 구체 상황이 적고 교회론·우주적 전망이 큼.",
-                "핵심 연결: ‘그리스도 안의 정체성(한 새 사람)’이 공동체의 새 삶을 낳음."
-              ]
-            },
-            cultural: {
-              en: [
-                "Imperial world: honor/shame, hierarchy, and household order were assumed social realities.",
-                "Jew–Gentile boundary markers shaped identity and conflict; ‘peace’ is political and communal, not only private.",
-                "Household instructions (5:21–6:9) require trauma-aware reading; note the framing call to mutuality (5:21)."
-              ],
-              ko: [
-                "제국 사회: 명예/수치, 위계, 가정 질서가 ‘당연한’ 사회 전제였음.",
-                "유대인–이방인 경계(정체성 표지)가 갈등을 형성; ‘평화’는 개인 내면만이 아니라 공적/공동체적 차원.",
-                "가정규범 본문(5:21–6:9)은 트라우마 인지 읽기가 필요; 5:21의 상호성 틀을 주의 깊게 확인."
-              ]
-            }
-          },
-
-          coreTexts: [
-            {
-              ref: "Eph 2:14–16",
-              phrase: {
-                en: "“He is our peace … creating one new humanity.”",
-                ko: "“그는 우리의 화평 … 한 새 사람을 지으셨다.”"
-              },
-              note: {
-                en: "Center of reconciliation: hostility dismantled in Christ.",
-                ko: "화해의 중심: 그리스도 안에서 ‘원수 됨’이 해체됨."
-              }
-            },
-            {
-              ref: "Eph 3:10–11",
-              phrase: {
-                en: "“Through the church … God’s wisdom made known to the powers.”",
-                ko: "“교회를 통하여 … 하나님의 지혜가 권세들에게 알려짐.”"
-              },
-              note: {
-                en: "Ecclesiology with cosmic scope: the church as a public sign to ‘powers’.",
-                ko: "우주적 교회론: 교회가 ‘권세들’ 앞에서 드러나는 공적 표지."
-              }
-            },
-            {
-              ref: "Eph 5:21",
-              phrase: {
-                en: "“Submit to one another … in reverence for Christ.”",
-                ko: "“그리스도를 경외함으로 피차 복종하라.”"
-              },
-              note: {
-                en: "Key framing line for interpreting household instructions responsibly.",
-                ko: "가정규범을 책임 있게 읽는 데 중요한 ‘틀’(프레임) 구절."
-              }
-            }
-          ],
-
-          themes: {
-            en: [
-              "Christ-centered reconciliation (Jew/Gentile → one new humanity).",
-              "Church as God’s ‘demonstration project’ against divisive powers.",
-              "Ethics as identity-lived: unity, holiness, truth-telling, embodied love.",
-              "Careful hermeneutics for household texts: mutuality, dignity, non-harm."
-            ],
-            ko: [
-              "그리스도 중심 화해(유대/이방 → 한 새 사람).",
-              "교회는 분열의 권세에 맞서는 하나님의 ‘시연 공동체’.",
-              "정체성의 윤리: 연합, 거룩, 진실 말하기, 몸으로 사는 사랑.",
-              "가정규범 해석의 주의: 상호성, 존엄, 비폭력/비가해."
-            ]
-          },
-
-          questions: {
-            exegetical: [
-              {
-                en: "In Eph 2:11–22, what is the function of the “dividing wall” image? What social boundary is being reconfigured?",
-                ko: "엡 2:11–22에서 ‘막힌 담(가르는 담)’ 비유는 어떤 기능을 하는가? 어떤 사회적 경계가 재구성되는가?"
-              },
-              {
-                en: "How does Eph 3 use μυστήριον (mystērion, “mystery”)—what exactly is revealed, and to whom?",
-                ko: "엡 3장에서 μυστήριον(‘비밀’)은 어떻게 사용되는가? 무엇이, 누구에게 ‘드러나’는가?"
-              },
-              {
-                en: "Read Eph 5:21–6:9 with 5:21 as the frame. What grammatical/rhetorical signals suggest mutuality, and where does tension remain?",
-                ko: "엡 5:21을 틀로 삼아 5:21–6:9를 읽어보라. 상호성을 시사하는 문법/수사적 단서는 무엇이며, 긴장은 어디에 남는가?"
-              }
-            ],
-            hermeneutical: [
-              {
-                en: "How would you teach Eph 5–6 in a classroom with survivors of domestic/spiritual abuse? What safeguards are necessary?",
-                ko: "가정폭력/영적 학대 경험자가 있는 교실에서 엡 5–6장을 어떻게 가르칠 것인가? 어떤 안전장치가 필요한가?"
-              },
-              {
-                en: "What would “one new humanity” look like on a divided campus (ethnicity, class, ideology)? Name one concrete practice.",
-                ko: "분열된 캠퍼스(인종/계층/이념)에서 ‘한 새 사람’은 어떤 모습인가? 구체적 실천 1가지를 제안하라."
-              },
-              {
-                en: "Eph speaks of “powers.” In your context, what are the most realistic ‘powers’ that sustain division, and how can the church resist without harm?",
-                ko: "엡은 ‘권세들’을 말한다. 오늘 당신의 맥락에서 분열을 유지하는 ‘권세’는 무엇이며, 교회는 해를 끼치지 않으면서 어떻게 저항할 수 있는가?"
-              }
-            ]
-          },
-
-          quiz: [
-            {
-              q: {
-                en: "Ephesians’ major theological pivot for Jew–Gentile unity is most clearly expressed in:",
-                ko: "에베소서에서 유대인–이방인 연합의 신학적 전환점이 가장 분명한 본문은?"
-              },
-              options: [
-                { en: "Eph 2:14–16", ko: "엡 2:14–16" },
-                { en: "Eph 6:17", ko: "엡 6:17" },
-                { en: "Eph 4:26", ko: "엡 4:26" },
-                { en: "Eph 1:1", ko: "엡 1:1" }
-              ],
-              answer: 0,
-              explanation: {
-                en: "Eph 2:14–16 centers reconciliation—Christ as peace, dismantling hostility, forming “one new humanity.”",
-                ko: "엡 2:14–16은 화해의 핵심으로, 그리스도께서 원수 됨을 허물고 ‘한 새 사람’을 형성하심을 강조한다."
-              }
-            },
-            {
-              q: {
-                en: "A common scholarly observation about Ephesians is that it is:",
-                ko: "에베소서에 대한 흔한 학계 관찰은?"
-              },
-              options: [
-                { en: "Highly situational with many local names", ko: "지역 인명/상황이 매우 구체적이다" },
-                { en: "A circular/theological letter with broad scope", ko: "보편적 범위의 회람/신학적 서신 성격이 강하다" },
-                { en: "A legal code manual", ko: "법전(규정집)이다" },
-                { en: "A narrative Gospel", ko: "복음서(서사)이다" }
-              ],
-              answer: 1,
-              explanation: {
-                en: "Compared with undisputed letters, Ephesians often reads more universal and less locally specific.",
-                ko: "논쟁이 있지만, 에베소서는 다른 바울서신보다 보편적·신학적 전개가 강하고 지역적 디테일이 상대적으로 적다."
-              }
-            },
-            {
-              q: {
-                en: "In responsible interpretation, Eph 5:21 is important because it:",
-                ko: "책임 있는 해석에서 엡 5:21이 중요한 이유는?"
-              },
-              options: [
-                { en: "Cancels all ethical instruction", ko: "윤리 지시를 모두 무효화하기 때문" },
-                { en: "Frames household instructions with mutuality", ko: "가정규범을 상호성의 틀로 감싸기 때문" },
-                { en: "Proves Roman law is Christian", ko: "로마법이 기독교적임을 증명하기 때문" },
-                { en: "Is a travel itinerary", ko: "여행 일정이기 때문" }
-              ],
-              answer: 1,
-              explanation: {
-                en: "“Submit to one another” functions as a framing line; it does not erase tensions but shapes how we read them.",
-                ko: "‘피차 복종’은 해석의 프레임을 제공한다. 긴장을 지우지는 않지만 읽기의 방향을 규정한다."
-              }
-            },
-            {
-              q: {
-                en: "Eph 3:10–11 portrays the church as:",
-                ko: "엡 3:10–11에서 교회는 무엇으로 제시되는가?"
-              },
-              options: [
-                { en: "A private hobby club", ko: "사적 취미 모임" },
-                { en: "A cosmic public sign to the powers", ko: "권세들에게 드러나는 우주적 공적 표지" },
-                { en: "A temple tax office", ko: "성전 세금 징수처" },
-                { en: "A military battalion", ko: "군대 부대" }
-              ],
-              answer: 1,
-              explanation: {
-                en: "The text imagines the church as revealing God’s wisdom to “rulers and authorities.”",
-                ko: "본문은 교회를 통해 하나님의 지혜가 ‘통치자들과 권세들’에게 알려진다고 말한다."
-              }
-            },
-            {
-              q: {
-                en: "A key risk in teaching Eph 5–6 without safeguards is:",
-                ko: "안전장치 없이 엡 5–6장을 가르칠 때의 핵심 위험은?"
-              },
-              options: [
-                { en: "Students will learn Greek too quickly", ko: "학생들이 헬라어를 너무 빨리 배운다" },
-                { en: "Texts can be weaponized to justify abuse", ko: "본문이 학대를 정당화하는 도구로 ‘무기화’될 수 있다" },
-                { en: "It eliminates all historical questions", ko: "역사 질문이 사라진다" },
-                { en: "It requires no context", ko: "맥락이 필요 없다" }
-              ],
-              answer: 1,
-              explanation: {
-                en: "Household texts have a long history of misuse; trauma-aware, non-harm pedagogy is essential.",
-                ko: "가정규범 본문은 오용의 역사가 길다. 트라우마 인지/비가해 교육이 필수다."
-              }
-            }
-          ]
-        },
-
-        // ------------------------------
-        // Philippians
-        // ------------------------------
-        {
-          id: "philippians",
-          short: { en: "Philippians", ko: "빌립보서" },
-          meta: { en: "Joy + Kenosis", ko: "기쁨 + 케노시스" },
-
-          contexts: {
-            historical: {
-              en: [
-                "Often treated as undisputed Pauline letter; written from imprisonment (Rome/Ephesus/Caesarea debated).",
-                "Strong relational bond with Philippi (financial partnership and mutual affection).",
-                "Imprisonment shapes tone: uncertainty, courage, and pastoral encouragement."
-              ],
-              ko: [
-                "대체로 바울의 확실한 서신으로 취급; 옥중(로마/에베소/가이사랴 논쟁)에서 기록.",
-                "빌립보 교회와의 강한 유대(재정적 동역, 상호 애정).",
-                "옥중 상황이 어조를 형성: 불확실성 속 용기, 목회적 격려."
-              ]
-            },
-            literary: {
-              en: [
-                "Occasional letter with warmth, exhortation, and travel plans; joy language saturates the rhetoric.",
-                "A central poetic/hymnic unit (2:6–11) grounds ethics in Christ’s pattern.",
-                "Key contrast: status-grabbing vs Christ-shaped humility; rivalry vs unity."
-              ],
-              ko: [
-                "따뜻한 ‘상황서신’: 권면과 여행 계획이 포함되며 ‘기쁨’ 언어가 강조됨.",
-                "중심부의 시/찬송(2:6–11)이 윤리를 그리스도의 ‘패턴’에 접속시킴.",
-                "핵심 대조: 지위/영광 추구 vs 십자가형 겸손; 경쟁/분열 vs 연합."
-              ]
-            },
-            cultural: {
-              en: [
-                "Philippi’s Roman identity makes “citizenship” (3:20) a politically loaded metaphor.",
-                "Honor/shame culture amplifies the shock of a crucified Lord and ‘downward mobility’.",
-                "Community tensions (Euodia/Syntyche, 4:2–3) show unity is practical, not abstract."
-              ],
-              ko: [
-                "빌립보의 로마적 정체성 때문에 ‘시민권’(3:20)은 정치적 함의를 지님.",
-                "명예/수치 문화 속에서 ‘십자가에 달린 주’와 ‘아래로의 이동’(겸손)은 강한 충격.",
-                "유오디아/순두게 갈등(4:2–3)은 연합이 추상 개념이 아니라 실제 과제임을 보여줌."
-              ]
-            }
-          },
-
-          coreTexts: [
-            {
-              ref: "Phil 2:5–11",
-              phrase: {
-                en: "“Let the same mind be in you … he emptied himself.”",
-                ko: "“이 마음을 품으라 … 자기를 비우사.”"
-              },
-              note: {
-                en: "Ethics rooted in Christ’s descent/exaltation pattern (kenosis).",
-                ko: "윤리는 그리스도의 하강/승귀 패턴(케노시스)에 뿌리박음."
-              }
-            },
-            {
-              ref: "Phil 1:12–14",
-              phrase: {
-                en: "“My imprisonment has advanced the gospel.”",
-                ko: "“나의 매임이 도리어 복음의 진전이 되었다.”"
-              },
-              note: {
-                en: "Suffering reframed as mission momentum—not triumphalism, but resilient hope.",
-                ko: "고난을 ‘선교적 진전’으로 재구성—승리주의가 아니라 탄력적 소망."
-              }
-            },
-            {
-              ref: "Phil 3:20",
-              phrase: {
-                en: "“Our citizenship is in heaven.”",
-                ko: "“우리의 시민권은 하늘에 있다.”"
-              },
-              note: {
-                en: "Political allegiance re-ordered under Christ’s lordship.",
-                ko: "정치적 충성의 질서가 그리스도의 주권 아래 재배열됨."
-              }
-            }
-          ],
-
-          themes: {
-            en: [
-              "Joy as a Christ-shaped posture amid suffering (not denial).",
-              "Kenosis (self-emptying) as the community ethic: humility, unity, mutual service.",
-              "Re-formed identity: heavenly citizenship critiques imperial status games.",
-              "Partnership (koinōnia) and generosity as embodied gospel."
-            ],
-            ko: [
-              "고난 속 기쁨: 부정이 아니라 그리스도 형상의 태도.",
-              "케노시스(자기 비움) 공동체 윤리: 겸손, 연합, 상호 섬김.",
-              "정체성의 재형성: ‘하늘 시민권’이 제국적 지위 경쟁을 비판.",
-              "동역(κοινωνία)과 나눔이 복음을 몸으로 드러냄."
-            ]
-          },
-
-          questions: {
-            exegetical: [
-              {
-                en: "In Phil 2:6–11, trace the descent/exaltation movement. How does that movement function as an ethical argument in 2:1–4 and 2:5?",
-                ko: "빌 2:6–11의 하강/승귀 흐름을 추적하라. 이 ‘움직임’이 2:1–4 및 2:5에서 윤리 논증으로 어떻게 작동하는가?"
-              },
-              {
-                en: "Phil 1:5 uses κοινωνία (koinōnia). In context, what does it mean (emotion, money, mission, all of the above)? Defend your reading.",
-                ko: "빌 1:5의 κοινωνία(동역/교제)는 문맥상 무엇을 의미하는가(정서/재정/선교/복합)? 근거를 제시하라."
-              },
-              {
-                en: "In Phil 3:20 (πολίτευμα), how does the “citizenship” metaphor leverage Philippi’s Roman identity?",
-                ko: "빌 3:20의 πολίτευμα(‘시민권’) 은유는 빌립보의 로마적 정체성을 어떻게 활용하는가?"
-              }
-            ],
-            hermeneutical: [
-              {
-                en: "How do you preach/teach “rejoice” without producing toxic positivity for those in grief or depression?",
-                ko: "슬픔/우울 가운데 있는 사람들에게 ‘기뻐하라’를 독성 긍정(토픽 긍정) 없이 어떻게 가르칠 것인가?"
-              },
-              {
-                en: "If kenosis is misused to demand the powerless endure harm, how would you correct that misuse using Philippians itself?",
-                ko: "케노시스가 약자에게 ‘참으라’는 강요로 오용될 때, 빌립보서 자체를 사용해 어떻게 교정할 것인가?"
-              },
-              {
-                en: "What does “citizenship in heaven” imply for Christian political identity today (loyalty, critique, participation)?",
-                ko: "‘하늘 시민권’은 오늘 그리스도인의 정치적 정체성(충성/비판/참여)에 어떤 함의를 갖는가?"
-              }
-            ]
-          },
-
-          quiz: [
-            {
-              q: { en: "Philippians is widely recognized as:", ko: "빌립보서는 대체로 무엇으로 인정되는가?" },
-              options: [
-                { en: "A narrative Gospel", ko: "복음서(서사)" },
-                { en: "An undisputed Pauline letter", ko: "바울의 확실한 서신" },
-                { en: "A legal constitution", ko: "법적 헌장" },
-                { en: "A wisdom proverb collection", ko: "잠언 모음" }
-              ],
-              answer: 1,
-              explanation: {
-                en: "Most scholarship treats Philippians as authentically Pauline (though prison location is debated).",
-                ko: "빌립보서는 대체로 바울의 친서로 보며, 다만 옥중 장소는 논쟁이 있다."
-              }
-            },
-            {
-              q: { en: "The ethical engine of Philippians is most tightly linked to:", ko: "빌립보서 윤리의 동력은 무엇과 가장 긴밀히 연결되는가?" },
-              options: [
-                { en: "A temple tax regulation", ko: "성전세 규정" },
-                { en: "The Christ hymn (2:6–11) as a pattern", ko: "그리스도 찬가(2:6–11)의 패턴" },
-                { en: "A genealogical list", ko: "족보" },
-                { en: "A prophecy timeline", ko: "예언 연대표" }
-              ],
-              answer: 1,
-              explanation: {
-                en: "Phil 2:6–11 grounds communal humility and unity in Christ’s descent/exaltation.",
-                ko: "빌 2:6–11은 공동체의 겸손/연합을 그리스도의 하강/승귀 패턴에 근거시킨다."
-              }
-            },
-            {
-              q: { en: "A key social/political metaphor in Philippians is:", ko: "빌립보서의 중요한 사회/정치 은유는?" },
-              options: [
-                { en: "Citizenship (3:20)", ko: "시민권(3:20)" },
-                { en: "Farming seasons", ko: "농사 절기" },
-                { en: "Temple incense", ko: "성전 향" },
-                { en: "Kingship genealogy", ko: "왕권 족보" }
-              ],
-              answer: 0,
-              explanation: {
-                en: "In a Roman colony, “citizenship” carries sharp identity and allegiance implications.",
-                ko: "로마 식민지 맥락에서 ‘시민권’은 정체성과 충성의 함의를 강하게 지닌다."
-              }
-            },
-            {
-              q: { en: "Phil 1:12–14 primarily reframes imprisonment as:", ko: "빌 1:12–14는 옥중 상황을 주로 무엇으로 재구성하는가?" },
-              options: [
-                { en: "A total ministry failure", ko: "사역의 완전한 실패" },
-                { en: "A hidden opportunity for gospel advance", ko: "복음 진전을 위한 숨은 기회" },
-                { en: "A reason to abandon the church", ko: "교회를 떠날 이유" },
-                { en: "A proof that faith is useless", ko: "믿음이 무의미하다는 증거" }
-              ],
-              answer: 1,
-              explanation: {
-                en: "Paul interprets constraints as mission momentum, strengthening believers’ courage.",
-                ko: "바울은 제약을 선교적 진전으로 해석하며 공동체의 담대함을 북돋운다."
-              }
-            },
-            {
-              q: { en: "A common classroom hazard with “rejoice” is:", ko: "‘기뻐하라’ 본문을 가르칠 때 흔한 위험은?" },
-              options: [
-                { en: "Students will stop reading", ko: "학생들이 독서를 중단한다" },
-                { en: "Toxic positivity that silences grief", ko: "슬픔을 침묵시키는 독성 긍정" },
-                { en: "Greek becomes too easy", ko: "헬라어가 너무 쉬워진다" },
-                { en: "No historical context exists", ko: "역사 맥락이 없다" }
-              ],
-              answer: 1,
-              explanation: {
-                en: "Philippians invites resilient joy, not denial; pedagogy must protect the vulnerable.",
-                ko: "빌립보서는 부정이 아닌 ‘탄력적 기쁨’을 말한다. 교육은 약자를 보호해야 한다."
-              }
-            }
-          ]
-        },
-
-        // ------------------------------
-        // Colossians
-        // ------------------------------
-        {
-          id: "colossians",
-          short: { en: "Colossians", ko: "골로새서" },
-          meta: { en: "Cosmic Christ / Powers", ko: "우주적 그리스도 / 권세" },
-
-          contexts: {
-            historical: {
-              en: [
-                "Authorship debated: some argue Pauline; many critical scholars propose a Pauline disciple in Paul’s name.",
-                "Often linked to imprisonment tradition; connected network with Philemon and Onesimus is frequently noted.",
-                "Addresses a local crisis involving ‘philosophy’ and practices beyond Christ."
-              ],
-              ko: [
-                "저자 논쟁: 바울 저작으로 보기도 하나, 후대 바울 전승(제자/학파)으로 보는 견해가 다수.",
-                "옥중 전승과 연결; 빌레몬서·오네시모와의 네트워크가 함께 거론됨.",
-                "‘철학’(2:8)과 그리스도 외의 추가 요구/실천을 둘러싼 위기를 다룸."
-              ]
-            },
-            literary: {
-              en: [
-                "Structure: thanksgiving → Christological centerpiece (1:15–20) → polemic (2) → new-life ethics (3–4).",
-                "The Christ hymn functions as a theological ‘gravity center’ for the whole letter.",
-                "Household instructions appear (3:18–4:1) and require careful, contextual reading."
-              ],
-              ko: [
-                "구조: 감사/기도 → 그리스도론 중심(1:15–20) → 논박(2장) → 새 삶 윤리(3–4장).",
-                "그리스도 찬가가 서신 전체의 ‘중력 중심’ 역할을 함.",
-                "가정규범(3:18–4:1)도 포함되어 맥락적·비가해 읽기가 필요."
-              ]
-            },
-            cultural: {
-              en: [
-                "Syncretistic religious environment: angel veneration, asceticism, calendar observances may be in view.",
-                "“Elemental spirits” language signals contested spiritual/cosmic imaginaries in the ancient world.",
-                "Empire-era household hierarchy pressures Christian communities toward ‘respectable’ conformity."
-              ],
-              ko: [
-                "혼합 종교 환경: 천사 숭배, 금욕, 절기/달력 준수 등이 배경일 가능성.",
-                "‘세상의 초등 학문/영(στοιχεῖα)’ 언어는 고대의 우주론/영적 상상력이 충돌하는 지점을 보여줌.",
-                "제국 시대 가정 위계가 공동체를 ‘존중받는 동화’로 압박함."
-              ]
-            }
-          },
-
-          coreTexts: [
-            {
-              ref: "Col 1:15–20",
-              phrase: {
-                en: "“Image of the invisible God … in him all things hold together.”",
-                ko: "“보이지 아니하시는 하나님의 형상 … 만물이 그 안에 함께 섰느니라.”"
-              },
-              note: {
-                en: "Cosmic Christology: creation and reconciliation centered in Christ.",
-                ko: "우주적 그리스도론: 창조와 화해가 그리스도 안에 중심을 둠."
-              }
-            },
-            {
-              ref: "Col 2:8–10",
-              phrase: {
-                en: "“See that no one takes you captive … you have come to fullness in him.”",
-                ko: "“아무도 너희를 사로잡지 못하게 하라 … 너희도 그 안에서 충만해졌다.”"
-              },
-              note: {
-                en: "Christ’s sufficiency against competing spiritual/ideological systems.",
-                ko: "경쟁하는 영적/이념 체계에 맞서 그리스도의 충분성 강조."
-              }
-            },
-            {
-              ref: "Col 3:11",
-              phrase: {
-                en: "“Christ is all and in all.”",
-                ko: "“그리스도는 만유시요 만유 안에 계시니라.”"
-              },
-              note: {
-                en: "Identity boundary reconfiguration—holds tension with household codes.",
-                ko: "정체성 경계 재구성—가정규범과 긴장 관계를 형성."
-              }
-            }
-          ],
-
-          themes: {
-            en: [
-              "Christ’s supremacy over all powers, rulers, and rival ‘systems’.",
-              "Fullness in Christ: no extra mediators, no captive ideologies.",
-              "New self / new community: compassion, forgiveness, peace, gratitude.",
-              "Tension: radical identity claims alongside socially ‘accommodating’ household practices."
-            ],
-            ko: [
-              "모든 권세/지배/경쟁 체계 위에 있는 그리스도의 우월성.",
-              "그리스도 안의 충만: 추가 중재자나 사로잡는 이념을 거부.",
-              "새 사람/새 공동체: 긍휼, 용서, 평강, 감사.",
-              "긴장: 급진적 정체성 선언과 사회적 ‘순응’처럼 보이는 가정규범의 공존."
-            ]
-          },
-
-          questions: {
-            exegetical: [
-              {
-                en: "In Col 1:15–20, how do εἰκών (eikōn, “image”) and πρωτότοκος (prōtotokos, “firstborn”) function—status, agency, or chronology?",
-                ko: "골 1:15–20에서 εἰκών(형상)과 πρωτότοκος(맏아들/첫째)의 기능은 무엇인가—지위/대리(주체성)/시간순서 중 무엇이 핵심인가?"
-              },
-              {
-                en: "In Col 2:8, what might “philosophy” and στοιχεῖα (stoicheia) refer to in that world? Identify at least two plausible reconstructions.",
-                ko: "골 2:8의 ‘철학’과 στοιχεῖα는 그 세계에서 무엇을 가리킬 수 있는가? 최소 두 가지 가능한 재구성을 제시하라."
-              },
-              {
-                en: "How does Col 3:11 (“Christ is all and in all”) relate to the ethics of 3:12–17? What is the logic of the ‘new self’?",
-                ko: "골 3:11(‘그리스도는 만유시요…’)은 3:12–17의 윤리와 어떻게 연결되는가? ‘새 사람’ 논리는 무엇인가?"
-              }
-            ],
-            hermeneutical: [
-              {
-                en: "What modern “captivity systems” (ideologies, consumerism, nationalism, algorithmic identity) function like Col 2:8 warns against?",
-                ko: "오늘날 골 2:8이 경고하는 ‘사로잡음’과 유사한 현대 체계(이념, 소비주의, 민족주의, 알고리즘 정체성)는 무엇인가?"
-              },
-              {
-                en: "How do you read household instructions (3:18–4:1) without endorsing harm, while still learning from the text’s formation intent?",
-                ko: "가정규범(3:18–4:1)을 해를 정당화하지 않으면서도, 본문의 형성 의도를 배우기 위해 어떻게 읽을 것인가?"
-              },
-              {
-                en: "If Christ is supreme over all powers, what concrete practice could your community adopt to resist an idol (money/status/tribe)?",
-                ko: "그리스도가 모든 권세 위에 계시다면, 공동체가 어떤 우상(돈/지위/진영)을 거부하기 위해 채택할 수 있는 구체 실천은 무엇인가?"
-              }
-            ]
-          },
-
-          quiz: [
-            {
-              q: { en: "Colossians’ christological centerpiece is most associated with:", ko: "골로새서의 그리스도론 중심 본문은?" },
-              options: [
-                { en: "Col 1:15–20", ko: "골 1:15–20" },
-                { en: "Col 4:18", ko: "골 4:18" },
-                { en: "Col 2:1", ko: "골 2:1" },
-                { en: "Col 3:25", ko: "골 3:25" }
-              ],
-              answer: 0,
-              explanation: {
-                en: "Col 1:15–20 presents a cosmic Christology: creation and reconciliation centered in Christ.",
-                ko: "골 1:15–20은 창조와 화해를 그리스도 중심으로 제시하는 우주적 그리스도론을 담는다."
-              }
-            },
-            {
-              q: { en: "Col 2 warns against being taken captive by:", ko: "골 2장은 무엇에 의해 ‘사로잡힘’을 경고하는가?" },
-              options: [
-                { en: "Pure mathematics", ko: "순수 수학" },
-                { en: "Human tradition and elemental/spiritual systems beyond Christ", ko: "그리스도 밖의 인간 전통과 초등 학문/영적 체계" },
-                { en: "Reading too much Scripture", ko: "성경을 너무 많이 읽는 것" },
-                { en: "All forms of learning", ko: "모든 형태의 학습" }
-              ],
-              answer: 1,
-              explanation: {
-                en: "The letter stresses Christ’s sufficiency; rival systems can ‘capture’ identity and practice.",
-                ko: "서신은 그리스도의 충분성을 강조하며, 경쟁 체계가 정체성과 실천을 ‘사로잡을’ 수 있음을 경고한다."
-              }
-            },
-            {
-              q: { en: "A plausible background issue in Colossians includes:", ko: "골로새서의 배경 문제로 그럴듯한 것은?" },
-              options: [
-                { en: "Angel veneration and ascetic rules", ko: "천사 숭배와 금욕 규칙" },
-                { en: "Debate over Greek theater tickets", ko: "그리스 극장 표 논쟁" },
-                { en: "A Roman census list", ko: "로마 인구조사 명단" },
-                { en: "A shipwreck narrative", ko: "난파선 이야기" }
-              ],
-              answer: 0,
-              explanation: {
-                en: "Many reconstructions include syncretistic pressures: angels, visions, asceticism, calendars.",
-                ko: "학계 재구성은 혼합주의 압력(천사, 환상, 금욕, 절기 등)을 종종 포함한다."
-              }
-            },
-            {
-              q: { en: "Col 3:11 functions primarily as:", ko: "골 3:11의 주된 기능은?" },
-              options: [
-                { en: "A boundary-reconfiguring identity claim", ko: "경계를 재구성하는 정체성 선언" },
-                { en: "A travel itinerary", ko: "여행 일정" },
-                { en: "A legal penalty clause", ko: "법적 처벌 조항" },
-                { en: "A genealogical record", ko: "족보 기록" }
-              ],
-              answer: 0,
-              explanation: {
-                en: "It names an identity in Christ that relativizes prior social/ethnic categories.",
-                ko: "그리스도 안의 정체성이 이전의 사회/민족 범주를 상대화함을 선언한다."
-              }
-            },
-            {
-              q: { en: "A key interpretive tension in Colossians is:", ko: "골로새서의 핵심 해석 긴장은?" },
-              options: [
-                { en: "No ethics at all", ko: "윤리가 전혀 없음" },
-                { en: "Radical identity claims alongside household instructions", ko: "급진적 정체성 선언과 가정규범의 병치" },
-                { en: "Only narrative storytelling", ko: "서사만 존재" },
-                { en: "It denies Christ entirely", ko: "그리스도를 부정함" }
-              ],
-              answer: 1,
-              explanation: {
-                en: "The letter proclaims boundary-breaking identity (3:11) yet includes social instructions needing careful reading.",
-                ko: "3:11의 경계 허무는 선언과 가정규범이 함께 존재해 긴장이 생기며, 신중한 읽기가 필요하다."
-              }
-            }
-          ]
-        },
-
-        // ------------------------------
-        // Philemon
-        // ------------------------------
-        {
-          id: "philemon",
-          short: { en: "Philemon", ko: "빌레몬서" },
-          meta: { en: "Brotherhood + Advocacy", ko: "형제됨 + 옹호" },
-
-          contexts: {
-            historical: {
-              en: [
-                "Usually treated as undisputed Pauline letter; closely connected with Onesimus and a house church setting.",
-                "Written from imprisonment; the concrete situation is interpersonal and legally risky (runaway enslaved person).",
-                "The letter’s social stakes are high: punishment for runaways was severe in the Roman world."
-              ],
-              ko: [
-                "대체로 바울의 확실한 서신; 오네시모·가정교회 맥락과 긴밀히 연결됨.",
-                "옥중에서 작성; 상황은 매우 구체적이며 법적 위험이 큼(도망 노예 문제).",
-                "사회적 이해관계가 큼: 로마 세계에서 도망 노예 처벌은 가혹했음."
-              ]
-            },
-            literary: {
-              en: [
-                "A short, rhetorically sophisticated appeal letter: persuasion through affection, honor, and shared identity.",
-                "Paul foregrounds love over command: he could ‘order’ (v.8) but chooses appeal (v.9).",
-                "Key pivot: re-naming Onesimus as ‘beloved brother’ (vv.15–16)."
-              ],
-              ko: [
-                "짧지만 정교한 설득 서신: 애정, 명예, 공유 정체성을 통해 설득.",
-                "바울은 명령보다 사랑을 전면화: ‘명할 수 있으나’(8절) ‘권면’(9절)을 선택.",
-                "핵심 전환: 오네시모를 ‘사랑받는 형제’로 재명명(15–16절)."
-              ]
-            },
-            cultural: {
-              en: [
-                "Slavery was embedded in Greco-Roman economics and household order; runaways were treated as property crimes.",
-                "Honor/shame dynamics affect how Paul persuades Philemon in front of the house church.",
-                "Modern misuse risk: the letter has been weaponized to justify returning exploited people to exploiters."
-              ],
-              ko: [
-                "노예제는 경제/가정 질서에 깊이 박혀 있었고, 도망은 ‘재산 범죄’로 취급되기 쉬움.",
-                "명예/수치 역학이 가정교회 앞에서의 설득 방식에 영향을 줌.",
-                "현대 오용 위험: ‘억압받는 자를 억압자에게 되돌려 보내는 정당화’로 무기화될 수 있음."
-              ]
-            }
-          },
-
-          coreTexts: [
-            {
-              ref: "Phlm 8–9",
-              phrase: {
-                en: "“Though I am bold … I appeal to you on the basis of love.”",
-                ko: "“담대히 명할 수 있으나 … 사랑으로 권하노라.”"
-              },
-              note: {
-                en: "Authority is reconfigured through love-based persuasion.",
-                ko: "권위가 ‘사랑에 근거한 설득’으로 재구성됨."
-              }
-            },
-            {
-              ref: "Phlm 15–16",
-              phrase: {
-                en: "“No longer as a slave, but … a beloved brother.”",
-                ko: "“종과 같이 아니하고 … 사랑받는 형제로.”"
-              },
-              note: {
-                en: "Identity shift with explosive social implications.",
-                ko: "정체성 전환이 사회적으로 폭발력 있는 함의를 지님."
-              }
-            },
-            {
-              ref: "Phlm 17–18",
-              phrase: {
-                en: "“Welcome him as you would me … charge it to me.”",
-                ko: "“나를 영접하듯 그를 영접하라 … 내게로 계산하라.”"
-              },
-              note: {
-                en: "Intercession and reparative posture: Paul absorbs cost.",
-                ko: "중재/회복적 태도: 바울이 비용을 떠안는 자세."
-              }
-            }
-          ],
-
-          themes: {
-            en: [
-              "Gospel re-names social identity: property → siblinghood.",
-              "Advocacy and mediation: Paul leverages relational capital to protect the vulnerable.",
-              "Voluntary transformation vs coercion: appeal rather than command.",
-              "Unresolved tension: brotherhood language inside an enslaving system."
-            ],
-            ko: [
-              "복음은 사회적 정체성을 재명명: ‘소유물’ → ‘형제/자매’.",
-              "옹호와 중재: 바울이 관계적 자본을 사용해 취약자를 보호.",
-              "강요가 아닌 자발적 변화: 명령보다 권면.",
-              "해결되지 않는 긴장: 노예제 구조 안에서 ‘형제됨’ 언어."
-            ]
-          },
-
-          questions: {
-            exegetical: [
-              {
-                en: "Analyze Paul’s rhetoric in Phlm 8–14: how does he balance authority, affection, and public honor before the house church?",
-                ko: "빌 8–14절에서 바울의 수사를 분석하라. 그는 권위, 애정, 가정교회 앞 명예를 어떻게 균형 있게 다루는가?"
-              },
-              {
-                en: "In Phlm 15–16, what does “both in the flesh and in the Lord” intensify? Social status, relational obligation, or theological identity?",
-                ko: "빌 15–16절의 ‘육신으로나 주 안에서나’는 무엇을 강화하는가? 사회적 지위/관계적 의무/신학적 정체성 중 무엇인가?"
-              },
-              {
-                en: "In Phlm 17–18, what is Paul doing by offering to pay the debt? Identify the letter’s logic of intercession.",
-                ko: "빌 17–18절에서 바울이 ‘빚을 갚겠다’고 하는 행위는 무엇인가? 중재의 논리를 규정하라."
-              }
-            ],
-            hermeneutical: [
-              {
-                en: "How do we prevent Philemon from being used to send exploited people back to exploiters (e.g., abusive homes, unjust workplaces)?",
-                ko: "빌레몬서가 착취당하는 이들을 착취자에게 ‘돌려보내는’ 정당화로 쓰이지 않도록 어떻게 방지할 것인가?"
-              },
-              {
-                en: "What would “receive as a beloved brother/sister” mean in modern labor injustice (migrants, gig workers, trafficking survivors)?",
-                ko: "현대 노동 불의(이주노동, 플랫폼 노동, 인신매매 생존자)에서 ‘사랑받는 형제/자매로 영접하라’는 무엇을 의미하는가?"
-              },
-              {
-                en: "Where does reconciliation require boundaries? Propose a reconciliation model that includes safety and accountability.",
-                ko: "화해는 어디서 ‘경계’를 요구하는가? 안전과 책임을 포함하는 화해 모델을 제안하라."
-              }
-            ]
-          },
-
-          quiz: [
-            {
-              q: { en: "Philemon is best described as:", ko: "빌레몬서는 무엇으로 가장 잘 설명되는가?" },
-              options: [
-                { en: "A long systematic theology treatise", ko: "긴 조직신학 논문" },
-                { en: "A short appeal letter about Onesimus", ko: "오네시모에 관한 짧은 권면/청원 서신" },
-                { en: "A Gospel narrative", ko: "복음서 서사" },
-                { en: "A prophecy timeline", ko: "예언 연대표" }
-              ],
-              answer: 1,
-              explanation: {
-                en: "It is a concise, rhetorically rich appeal urging a transformed relationship with Onesimus.",
-                ko: "빌레몬서는 오네시모를 둘러싼 관계 변화를 촉구하는 짧고 정교한 설득 서신이다."
-              }
-            },
-            {
-              q: { en: "A major rhetorical strategy in Philemon is that Paul:", ko: "빌레몬서의 주요 수사 전략은 바울이:" },
-              options: [
-                { en: "Commands harshly with threats", ko: "위협으로 강압적으로 명령한다" },
-                { en: "Appeals on the basis of love rather than command", ko: "명령보다 사랑에 근거해 권면한다" },
-                { en: "Avoids naming Onesimus entirely", ko: "오네시모를 전혀 언급하지 않는다" },
-                { en: "Denies the house church context", ko: "가정교회 맥락을 부정한다" }
-              ],
-              answer: 1,
-              explanation: {
-                en: "Phlm 8–9 highlights that Paul could command but chooses loving appeal.",
-                ko: "빌 8–9절은 바울이 명할 수 있으나 사랑으로 권면함을 강조한다."
-              }
-            },
-            {
-              q: { en: "The social ‘flashpoint’ line is most associated with:", ko: "사회적 ‘폭발점’ 구절로 가장 유명한 것은?" },
-              options: [
-                { en: "Phlm 15–16", ko: "빌 15–16절" },
-                { en: "Phlm 1", ko: "빌 1절" },
-                { en: "Phlm 25", ko: "빌 25절" },
-                { en: "Phlm 3", ko: "빌 3절" }
-              ],
-              answer: 0,
-              explanation: {
-                en: "“No longer as a slave … beloved brother” re-names identity with major implications.",
-                ko: "‘종과 같이 아니하고 … 사랑받는 형제’는 정체성을 재명명하며 큰 함의를 갖는다."
-              }
-            },
-            {
-              q: { en: "A major modern misuse risk is:", ko: "현대적 오용 위험으로 가장 큰 것은?" },
-              options: [
-                { en: "Using it to justify exploitation/returning victims to abusers", ko: "착취/피해자 강제 복귀(가해자에게)를 정당화" },
-                { en: "Using it to encourage literacy", ko: "문해력을 장려" },
-                { en: "Using it to teach Greek grammar", ko: "헬라어 문법을 가르침" },
-                { en: "Using it to promote generosity", ko: "나눔을 장려" }
-              ],
-              answer: 0,
-              explanation: {
-                en: "Teaching must include safeguards so the text is not weaponized against the vulnerable.",
-                ko: "교육은 약자를 해치는 무기화가 일어나지 않도록 안전장치가 필요하다."
-              }
-            },
-            {
-              q: { en: "In Phlm 17–18, Paul models:", ko: "빌 17–18절에서 바울이 보여주는 모델은?" },
-              options: [
-                { en: "Avoidance of responsibility", ko: "책임 회피" },
-                { en: "Intercession and cost-bearing advocacy", ko: "중재와 비용을 지는 옹호" },
-                { en: "Political propaganda", ko: "정치 선전" },
-                { en: "Legal prosecution", ko: "법적 기소" }
-              ],
-              answer: 1,
-              explanation: {
-                en: "Paul offers to absorb the cost, exemplifying advocacy for relational repair.",
-                ko: "바울은 비용을 떠안겠다고 하며 관계 회복을 위한 옹호를 보여준다."
-              }
-            }
-          ]
-        }
-      ]
-    };
-
-    // =========================
-    // App state
-    // =========================
-    let LANG = "en";
-    let ACTIVE = DATA.letters[0].id;
-
-    // =========================
-    // Helpers
-    // =========================
-    const $ = (sel) => document.querySelector(sel);
-    const el = (tag, attrs={}, children=[]) => {
-      const node = document.createElement(tag);
-      for (const [k,v] of Object.entries(attrs)) {
-        if (k === "class") node.className = v;
-        else if (k === "html") node.innerHTML = v;
-        else if (k.startsWith("on") && typeof v === "function") node.addEventListener(k.slice(2), v);
-        else node.setAttribute(k, v);
-      }
-      for (const ch of children) node.appendChild(typeof ch === "string" ? document.createTextNode(ch) : ch);
-      return node;
-    };
-
-    const t = (obj) => obj?.[LANG] ?? "";
-
-    const lsKey = (letterId, kind, idx) => `pe:${letterId}:${kind}:${idx}`;
-
-    function saveText(letterId, kind, idx, value){
-      localStorage.setItem(lsKey(letterId, kind, idx), value);
+const I18N = {
+  en: {
+    appTitle: "13. The Coming of the Lord (Second Coming)",
+    appSubtitle: "Interactive bilingual learning app (EN/KR) — pre-exegetical contexts + Sizemore/Migliore synthesis + questions + quiz",
+    navTitle: "Sections",
+    navSearchPh: "Search sections…",
+    navHint: "Tip: search “Hebrews”, “apantēsis”, “uniformitarianism”, “questions”.",
+    langPill: "Language: EN",
+    toggleLangBtn: "한국어",
+    resetQuiz: "Reset Quiz",
+    expandAll: "Expand all",
+    collapseAll: "Collapse all",
+    footer: 'Built as a single offline HTML file. Save as <span class="kbd">coming-of-the-lord.html</span> and open in any browser.',
+    pills: {
+      framework: "2×2 · 7×3 · MDHC",
+      aim: "Concrete-Symbolic Realism · Hope-for-Justice",
+      texts: "Heb 9 · 1 Thess 4 · 2 Pet 3 · Rom 8 · Rev 21 · Matt 25"
     }
-    function loadText(letterId, kind, idx){
-      return localStorage.getItem(lsKey(letterId, kind, idx)) ?? "";
+  },
+  ko: {
+    appTitle: "13. 주님의 오심(재림) — 인터랙티브 학습 앱",
+    appSubtitle: "이중언어(EN/KR) — 사전 주해 맥락 + Sizemore/Migliore 종합 + 질문 + 퀴즈",
+    navTitle: "목차",
+    navSearchPh: "섹션 검색…",
+    navHint: "팁: “히브리서”, “ἀπάντησις”, “동일과정설”, “질문” 등으로 검색해보세요.",
+    langPill: "언어: KO",
+    toggleLangBtn: "English",
+    resetQuiz: "퀴즈 초기화",
+    expandAll: "전체 펼치기",
+    collapseAll: "전체 접기",
+    footer: '단일 오프라인 HTML 파일입니다. <span class="kbd">coming-of-the-lord.html</span>로 저장 후 브라우저에서 여세요.',
+    pills: {
+      framework: "2×2 · 7×3 · MDHC",
+      aim: "구체-상징 현실주의 · 정의를 향한 소망",
+      texts: "히 9 · 살전 4 · 벧후 3 · 롬 8 · 계 21 · 마 25"
     }
+  }
+};
 
-    function resetAll(){
-      if (!confirm(t(DATA.meta.resetConfirm))) return;
-      const prefix = "pe:";
-      const keys = [];
-      for (let i = 0; i < localStorage.length; i++){
-        const k = localStorage.key(i);
-        if (k && k.startsWith(prefix)) keys.push(k);
-      }
-      keys.forEach(k => localStorage.removeItem(k));
-      alert(t(DATA.meta.resetDone));
-      renderPanel(ACTIVE);
+/* Core texts (NRSV primary; short excerpts; keep under copyright limits) */
+const TEXTS = {
+  heb9: {
+    ref: "Hebrews 9:24–28",
+    en: {
+      nrsv: `Christ did not enter a sanctuary made by human hands… but into heaven itself… so Christ… will appear a second time… to save those who are eagerly waiting for him.`,
+      esv: `Christ has entered… into heaven itself… so Christ… will appear a second time… to save those who are eagerly waiting for him.`
+    },
+    ko: {
+      nrsv: `그리스도께서는 사람의 손으로 만든 성소에 들어가신 것이 아니라… 하늘 그 자체에 들어가셔서… 그리스도께서… 두 번째로 나타나실 것인데… 그를 간절히 기다리는 사람들을 구원하시려는 것입니다.`,
+      esv: `그리스도께서… 하늘 그 자체에 들어가셨고… 그리스도께서… 두 번째로 나타나실 것인데… 그를 간절히 기다리는 자들을 구원하시려는 것입니다.`
     }
-
-    // =========================
-    // Rendering
-    // =========================
-    function renderHeader(){
-      $("#appTitle").textContent = t(DATA.meta.title);
-      $("#appSubtitle").textContent = t(DATA.meta.subtitle);
-      $("#appKicker").textContent = t(DATA.meta.kicker);
-      $("#navBadge").textContent = t(DATA.meta.navBadge);
-      $("#navHint").textContent = t(DATA.meta.navHint);
-      $("#navSmall").textContent = t(DATA.meta.navSmall);
-      $("#panelBadge").textContent = t(DATA.meta.panelBadge);
-      $("#panelSmall").textContent = t(DATA.meta.panelSmall);
-      $("#footnote").textContent = t(DATA.meta.footnote);
+  },
+  thess4: {
+    ref: "1 Thessalonians 4:13–18 (focus 4:16–17)",
+    en: {
+      nrsv: `The Lord himself… will descend… and the dead in Christ will rise… then we… will be caught up… to meet the Lord in the air; and so we will be with the Lord forever.`,
+      esv: `The Lord himself… will descend… the dead in Christ will rise… then we… will be caught up… to meet the Lord in the air, and so we will always be with the Lord.`
+    },
+    ko: {
+      nrsv: `주님께서 친히… 내려오실 것이며… 그리스도 안에서 죽은 사람들이… 일어나고… 그 뒤에… 공중에서 주님을 맞이하게 될 것입니다. 그리하여 우리는 언제나 주님과 함께 있을 것입니다.`,
+      esv: `주님께서 친히… 내려오실 것이며… 그리스도 안에서 죽은 자들이… 일어나고… 그 뒤에… 공중에서 주님을 맞이하게 될 것입니다. 그리하여 우리는 언제나 주님과 함께 있을 것입니다.`
     }
+  },
+  pet3: {
+    ref: "2 Peter 3:3–4",
+    en: {
+      nrsv: `Scoffers will come… saying, “Where is the promise of his coming?… everything has continued as it was…”`,
+      esv: `Scoffers will come… saying, “Where is the promise of his coming?… all things are continuing as they were…”`
+    },
+    ko: {
+      nrsv: `조롱하는 자들이… “그가 오신다는 약속이 어디 있느냐?… 만물이 처음부터 그대로다”라고 말할 것이다.`,
+      esv: `조롱하는 자들이… “그의 오심에 대한 약속이 어디 있느냐?… 만물이 그대로 계속된다”라고 말할 것이다.`
+    }
+  },
+  rom8: {
+    ref: "Romans 8:19–23 (selected)",
+    en: {
+      nrsv: `The creation waits with eager longing… the whole creation has been groaning… we… groan inwardly while we wait…`,
+      esv: `The creation waits with eager longing… the whole creation has been groaning… we… groan inwardly as we wait…`
+    },
+    ko: {
+      nrsv: `피조물은… 간절히 기다리고… 온 피조물이 함께 신음하며… 우리도… 속으로 탄식하며 기다립니다.`,
+      esv: `피조물은… 간절히 기다리고… 온 피조물이 함께 신음하며… 우리도… 속으로 탄식하며 기다립니다.`
+    }
+  },
+  rev21: {
+    ref: "Revelation 21:1–5 (selected)",
+    en: {
+      nrsv: `See, the home of God is among mortals… he will wipe every tear… I am making all things new.`,
+      esv: `Behold, the dwelling place of God is with man… he will wipe away every tear… I am making all things new.`
+    },
+    ko: {
+      nrsv: `보라, 하나님의 장막이 사람들 가운데 있다… 그들의 눈에서 모든 눈물을 씻기시며… 보라, 내가 만물을 새롭게 한다.`,
+      esv: `보라, 하나님의 거처가 사람과 함께 있다… 모든 눈물을 씻기시며… 보라, 내가 만물을 새롭게 한다.`
+    }
+  },
+  matt25: {
+    ref: "Matthew 25:31–46 (focus 35–40)",
+    en: {
+      nrsv: `I was hungry and you gave me food… just as you did it to one of the least… you did it to me.`,
+      esv: `I was hungry and you gave me food… as you did it to one of the least… you did it to me.`
+    },
+    ko: {
+      nrsv: `내가 주릴 때에 너희가 먹을 것을 주었고… 지극히 작은 자 하나에게 한 것이 곧 내게 한 것이다.`,
+      esv: `내가 주릴 때에 너희가 먹을 것을 주었고… 지극히 작은 자 하나에게 한 것이 곧 내게 한 것이다.`
+    }
+  }
+};
 
-    function renderTabs(){
-      const tabs = $("#tabs");
-      tabs.innerHTML = "";
-      DATA.letters.forEach(L => {
-        const btn = el("button", {
-          class: "tabbtn",
-          "aria-current": L.id === ACTIVE ? "true" : "false",
-          onclick: () => {
-            ACTIVE = L.id;
-            renderTabs();
-            renderPanel(ACTIVE);
+/* REQUIRED: 3 exegetical + 3 hermeneutical (EN+KO) */
+const EXEGETICAL = {
+  en: [
+    "In 2 Peter 3:3–4, what is the logic of the “scoffers,” and how does it function as an intellectual barrier to Christian eschatological hope?",
+    "In Hebrews 9:24–28, how does the High Priest pattern (appearance → hidden intercession → reappearance) shape the meaning of “a second time” (9:28)?",
+    "In 1 Thessalonians 4:13–18, what pastoral problem is Paul addressing (grief, fear, confusion), and how should that govern our tone and claims?"
+  ],
+  ko: [
+    "베드로후서 3:3–4에서 ‘조롱하는 자들’의 논리는 무엇이며, 그것이 기독교 종말론적 소망을 가로막는 지적 장벽으로 어떻게 작동하는가?",
+    "히브리서 9:24–28에서 대제사장 패턴(나타남 → 감춰진 중보 → 재등장)은 9:28의 ‘두 번째 나타나심’의 의미를 어떻게 형성하는가?",
+    "데살로니가전서 4:13–18에서 바울이 다루는 목회적 문제(슬픔/두려움/혼란)는 무엇이며, 그 문제가 우리의 해석 톤과 주장 범위를 어떻게 제한/인도해야 하는가?"
+  ]
+};
+
+const HERMENEUTICAL = {
+  en: [
+    "Which posture do you tend toward (escapist anxiety, progressive dismissal, climate doom), and what experiences or communities formed that posture?",
+    "What do we gain/lose in a strictly literal reading of apocalyptic imagery? What do we gain/lose in a purely symbolic reading? Where does “Concrete-Symbolic Realism” help?",
+    "If 1 Thess 4 is a “royal welcome” (ἀπάντησις) rather than an “escape,” what changes in your ethics toward creation, the vulnerable, and public life?"
+  ],
+  ko: [
+    "당신은 어떤 자세로 기울어지는가(도피적 불안, 진보적 기각, 기후-종말 불안)? 그 자세를 형성한 경험/공동체는 무엇인가?",
+    "묵시 이미지를 ‘엄격 문자주의’로 읽을 때 얻는 것/잃는 것은? ‘순수 상징’으로만 읽을 때 얻는 것/잃는 것은? ‘구체-상징 현실주의’는 무엇을 돕는가?",
+    "살전 4가 ‘탈출’이 아니라 ‘왕을 영접(ἀπάντησις)’이라면, 창조·취약자·공적 삶을 향한 당신의 윤리는 무엇이 바뀌는가?"
+  ]
+};
+
+/* QUIZ (bilingual) */
+const QUIZ = [
+  {
+    id: "q1",
+    en: { q: "Uniformitarianism (2 Pet 3:4) most basically claims…", choices: ["God will return tomorrow", "history is a closed system with no divine disruption", "apocalyptic texts are always literal blueprints", "the earth is already renewed"], answer: 1, explain: "Sizemore frames scoffing as a closed-universe assumption that rules out divine intervention." },
+    ko: { q: "동일과정설/자연주의(벧후 3:4)의 핵심 주장은…", choices: ["하나님은 내일 바로 오신다", "역사는 외부 개입 없는 닫힌 인과 체계다", "묵시는 항상 문자적 설계도다", "지구는 이미 새창조 되었다"], answer: 1, explain: "Sizemore는 ‘조롱’의 뿌리를 ‘닫힌 우주’ 가정으로 진단한다." }
+  },
+  {
+    id: "q2",
+    en: { q: "In Hebrews 9’s High Priest pattern, the “second appearance” most naturally corresponds to…", choices: ["only the crucifixion", "only the ascension", "the completion of the ritual by reemergence/benediction", "a metaphor for personal death only"], answer: 2, explain: "Sizemore’s typology reads return as ritual completion: sacrifice → intercession → reappearance." },
+    ko: { q: "히브리서 9의 대제사장 패턴에서 ‘두 번째 나타나심’은 가장 자연스럽게…", choices: ["오직 십자가", "오직 승천", "재등장/축복으로 의식 완성", "개인 죽음의 은유"], answer: 2, explain: "Sizemore는 ‘제사-중보-재등장’의 완결을 재림에 연결한다." }
+  },
+  {
+    id: "q3",
+    en: { q: "Migliore critiques secular “replacement hopes” mainly because…", choices: ["they are too religious", "the 20th century exposed their inability to redeem history from violence", "they make people too focused on church", "they deny the existence of creation"], answer: 1, explain: "He argues progress/utopianism collapsed under war/genocide; hope needs transcendent redemption." },
+    ko: { q: "Migliore가 세속적 ‘대체 소망’을 비판하는 핵심 이유는…", choices: ["너무 종교적이어서", "20세기가 역사 자력구원의 실패를 폭로했기 때문에", "교회에만 집중하게 해서", "창조의 존재를 부정해서"], answer: 1, explain: "전쟁·홀로코스트 등은 ‘내재적 진보’의 한계를 드러냈고, 초월적 구원이 필요하다고 본다." }
+  },
+  {
+    id: "q4",
+    en: { q: "The Greek term ἀπάντησις (apantēsis) in 1 Thess 4 is best used to picture…", choices: ["escaping earth permanently", "meeting a visiting king and escorting him back", "a secret vision only believers see", "a purely inward spiritual feeling"], answer: 1, explain: "Many scholars note civic welcome-procession imagery: going out to meet and returning with the dignitary." },
+    ko: { q: "살전 4의 ἀπάντησις(아판테시스)는 가장 적절하게…", choices: ["영구히 지구를 탈출", "오시는 왕을 맞이하고 다시 함께 들어옴", "신자만 보는 비밀 환상", "내면적 감정만 의미"], answer: 1, explain: "도시 밖으로 나가 ‘영접’한 뒤, 왕과 함께 귀환하는 환영 행렬 이미지를 사용한다." }
+  },
+  {
+    id: "q5",
+    en: { q: "Concrete-Symbolic Realism most strongly affirms that…", choices: ["the event is only symbolic", "the event is real, but the imagery is genre-shaped and the priority is theological/ethical", "all images must be literal to be true", "eschatology is irrelevant to ethics"], answer: 1, explain: "Both-and: real return + symbolic language + ethical formation now." },
+    ko: { q: "‘구체-상징 현실주의’가 가장 강하게 확언하는 것은…", choices: ["사건은 상징일 뿐이다", "재림은 실제이나 언어는 장르적 상징이며 핵심은 신학/윤리다", "모든 이미지는 문자 그대로여야 진짜다", "종말론은 윤리와 무관하다"], answer: 1, explain: "‘실재 사건 + 상징 언어 + 현재 윤리적 형성’의 both-and." }
+  }
+];
+
+/* SECTION CONTENT (combines: original lecture + added pre-lecture wood/forest + questions) */
+const SECTIONS = [
+  {
+    id: "overview",
+    title: { en: "Overview & Learning Objective", ko: "개요 & 학습목표" },
+    subtitle: { en: "Where we start, where we’re going, why it matters", ko: "출발점–도착점–형성의 이유" },
+    render: (lang) => `
+      <div class="card">
+        <h2>${lang==="ko" ? "학습목표(마스터리)" : "Learning Objective (Mastery)"}</h2>
+        <div class="callout">
+          <b>${lang==="ko" ? "목표:" : "Goal:"}</b>
+          ${lang==="ko"
+            ? "기독교 종말론을 ‘두 극단’(문자주의적 확실성 vs 상징-신학적 해석) 사이의 긴장으로 엄밀히 분석하고, 최종적으로 ‘소망-윤리(정의 지향)’로 통합하는 수준(S4)에 도달한다."
+            : "Achieve mastery-level understanding of Christian eschatology by rigorously analyzing the tension between biblical literalism (Sizemore) and systematic-theological hope (Migliore), culminating in a synthesized ethic of hope-for-justice."
           }
-        }, [ `${t(L.short)} ` ]);
-        tabs.appendChild(btn);
-      });
-    }
+        </div>
 
-    function renderPanel(letterId){
-      const letter = DATA.letters.find(x => x.id === letterId);
-      $("#panelMeta").textContent = `${t(letter.short)} • ${t(letter.meta)}`;
+        <h3>${lang==="ko" ? "좌표(2×2 / 7×3 / MDHC)" : "Coordinate Header (2×2 / 7×3 / MDHC)"}</h3>
+        <div class="twoCol">
+          <div class="card">
+            <div class="kicker">2×2</div>
+            <div>
+              ${lang==="ko"
+                ? "<b>독자-세계(Etic)의 혼란</b>에서 출발 → <b>본문-세계(Emic)의 예전적 기대</b>로 진입 → 다시 <b>능동적 기다림</b>으로 귀환"
+                : "<b>Etic-person in Reader-World (confusion/anxiety)</b> → learning <b>Emic-space (liturgical anticipation)</b> → returning to Reader-World with <b>active waiting</b>"
+              }
+            </div>
+          </div>
+          <div class="card">
+            <div class="kicker">MDHC</div>
+            <div>
+              ${lang==="ko"
+                ? "<b>T:</b> 계산이 아닌 ‘카이로스적 현재’(어떻게 살 것인가) · <b>S:</b> 고대 묵시/예전 세계와 오늘의 위기(기후·정치·불의)를 잇는 ‘전이-다리’ · <b>M:</b> 공포/냉소에서 <b>정의-소망의 실천</b>으로 이동"
+                : "<b>T:</b> kairotic urgency (how shall we live?) not calendar obsession · <b>S:</b> bridge-building between ancient apocalyptic/liturgy and modern crises · <b>M:</b> moving from fear/cynicism toward hope-fueled justice and faithfulness"
+              }
+            </div>
+          </div>
+        </div>
 
-      const panel = $("#panel");
-      panel.innerHTML = "";
+        <h3>${lang==="ko" ? "핵심 통합(한 문장)" : "One-sentence Synthesis"}</h3>
+        <div class="callout good">
+          ${lang==="ko"
+            ? "재림은 ‘공포 영화’가 아니라 ‘예전의 완결’이며, 우리는 ‘탈출’이 아니라 ‘왕을 영접하여 함께 귀환’하는 공동체로서, 죄에서 분리되되 고통 받는 이들과 창조를 위해 연대하며 살아간다."
+            : "The Second Coming is not a horror script but a liturgical completion; the church is not escaping but welcoming the King, living separated from sin yet in solidarity with the suffering and the groaning creation."
+          }
+        </div>
+      </div>
+    `
+  },
 
-      // Overview card
-      panel.appendChild(el("div", { class: "card" }, [
-        el("h2", {}, [ t(letter.short) ]),
-        el("div", { class: "muted" }, [ t(letter.meta) ]),
-        el("div", { class: "kicker muted warn" }, [
-          LANG === "en"
-            ? "Instructor note: For quotes, use your Bible app/print edition (NRSV preferred). This app uses short key phrases + references."
-            : "교수자 안내: 본문 인용은 성경책/앱(NRSV 권장)으로 확인하세요. 이 앱은 ‘참조+짧은 핵심 구문’만 제공합니다."
-        ])
-      ]));
+  {
+    id: "precontexts",
+    title: { en: "Pre-Exegetical Contexts", ko: "사전 주해 맥락(Pre-Exegetical)" },
+    subtitle: { en: "Historical · Literary · Cultural (with guiding questions)", ko: "역사 · 문학 · 문화 (질문 포함)" },
+    render: (lang) => `
+      <div class="card">
+        <h2>${lang==="ko" ? "사전 주해 맥락 — 전체 유닛" : "Pre-Exegetical Contexts — Unit-wide"}</h2>
 
-      // Contexts
-      const ctxCard = el("div", { class: "card" }, [
-        el("h2", {}, [ LANG === "en" ? "1) Pre-Exegetical Contexts" : "1) 사전 주해 맥락(Pre-Exegetical)" ]),
-        el("div", { class: "muted" }, [ LANG === "en"
-          ? "Historical, literary, and cultural scaffolding before close reading."
-          : "본문 정밀 주해 전에 역사·문학·문화 맥락을 먼저 세웁니다."
-        ])
-      ]);
+        <details open>
+          <summary>${lang==="ko" ? "1) 역사적 맥락 (Historical)" : "1) Historical Context"}</summary>
+          <ul>
+            <li>${lang==="ko"
+              ? "초기 교회는 죽음·박해·지연(‘왜 아직 안 오나?’)의 압력 속에서 ‘소망의 문법’을 배웠다(살전, 벧후)."
+              : "Early Christians faced death, persecution, and perceived delay (“why not yet?”), which shaped eschatology as pastoral endurance (1 Thess, 2 Pet)."
+            }</li>
+            <li>${lang==="ko"
+              ? "히브리서는 성전/제사-언어(특히 대속죄일, 레 16)를 통해 예수의 사역을 ‘제의적-우주적’ 틀로 재해석한다."
+              : "Hebrews re-reads Jesus through Temple/cultic logic (esp. Day of Atonement, Lev 16) as a priestly-cosmic drama."
+            }</li>
+            <li>${lang==="ko"
+              ? "로마 제국의 ‘황제 복음’(권력/평화)과 대조하여, ‘주(κύριος) 예수’의 귀환은 정치-윤리적 의미를 갖는다."
+              : "Against imperial claims, confessing Jesus as Lord makes his return a political-ethical hope (truth/vindication over Caesar)."
+            }</li>
+          </ul>
+          <div class="callout">
+            <b>${lang==="ko" ? "역사 질문:" : "Historical Questions:"}</b>
+            <ul>
+              <li>${lang==="ko"
+                ? "이 본문은 어떤 위기(박해, 죽음, 지연, 불의) 속에서 ‘소망’을 말하는가?"
+                : "What crisis (persecution, death, delay, injustice) makes this text speak of hope?"
+              }</li>
+              <li>${lang==="ko"
+                ? "초기 신자들에게 ‘재림’은 어떤 생존 전략/형성 엔진이었는가?"
+                : "How did the expectation of Christ’s return function as a formation engine for survival?"
+              }</li>
+            </ul>
+          </div>
+        </details>
 
-      const makeCtx = (title, items) => el("details", {}, [
-        el("summary", {}, [ title ]),
-        el("ul", {}, items.map(s => el("li", {}, [ s ])))
-      ]);
+        <details>
+          <summary>${lang==="ko" ? "2) 문학적 맥락 (Literary/Genre)" : "2) Literary Context (Genre)"}</summary>
+          <ul>
+            <li>${lang==="ko"
+              ? "묵시(아포칼립틱)는 ‘미래 시간표’보다 ‘하나님의 주권/정의의 확증’을 상징으로 전달하는 장르다."
+              : "Apocalyptic is genre-shaped symbolic disclosure of God’s sovereignty/justice, not a mere future timetable."
+            }</li>
+            <li>${lang==="ko"
+              ? "서신의 종말론은 대개 ‘추상 교리’가 아니라 ‘목회적 위로·권면’의 문맥에서 작동한다(살전 4: “그러므로 위로하라”)."
+              : "Epistolary eschatology is often pastoral consolation/exhortation (1 Thess 4: “encourage one another”)."
+            }</li>
+            <li>${lang==="ko"
+              ? "히브리서는 논증(교리)과 권면(윤리)을 ‘예전-상징’으로 결합하는 수사적 작품이다."
+              : "Hebrews fuses doctrine and paraenesis through liturgical-symbolic rhetoric."
+            }</li>
+          </ul>
+          <div class="callout">
+            <b>${lang==="ko" ? "문학 질문:" : "Literary Questions:"}</b>
+            <ul>
+              <li>${lang==="ko"
+                ? "이 텍스트의 ‘이미지’는 사실(사건)을 부정하는가, 아니면 의미(신학)를 확대하는가?"
+                : "Do the images deny reality—or intensify meaning?"
+              }</li>
+              <li>${lang==="ko"
+                ? "이 본문은 ‘계산’이 아니라 ‘형성’을 위해 무엇을 하고 있는가?"
+                : "How is this text forming a people, not feeding speculation?"
+              }</li>
+            </ul>
+          </div>
+        </details>
 
-      ctxCard.appendChild(makeCtx(
-        LANG === "en" ? "Historical Context" : "역사적 맥락",
-        letter.contexts.historical[LANG]
-      ));
-      ctxCard.appendChild(makeCtx(
-        LANG === "en" ? "Literary Context" : "문학적 맥락",
-        letter.contexts.literary[LANG]
-      ));
-      ctxCard.appendChild(makeCtx(
-        LANG === "en" ? "Cultural-Social Context" : "문화-사회적 맥락",
-        letter.contexts.cultural[LANG]
-      ));
-      panel.appendChild(ctxCard);
+        <details>
+          <summary>${lang==="ko" ? "3) 문화적 맥락 (Cultural/Social)" : "3) Cultural Context"}</summary>
+          <ul>
+            <li>${lang==="ko"
+              ? "대속죄일(레 16)의 ‘보이는 제사–보이지 않는 중보–재등장/축복’은 재림을 ‘침공’이 아닌 ‘의식의 완결’로 상상하게 한다."
+              : "Yom Kippur pattern (visible sacrifice → hidden intercession → reemergence/benediction) reframes return as completion, not invasion."
+            }</li>
+            <li>${lang==="ko"
+              ? "ἀπάντησις(apantēsis)는 ‘왕/총독을 맞이하러 도시 밖으로 나갔다가 함께 귀환하는’ 환영 행렬의 사회적 관습과 연결될 수 있다."
+              : "ἀπάντησις (apantēsis) can evoke civic welcome: going out to meet a visiting dignitary and escorting them back."
+            }</li>
+            <li>${lang==="ko"
+              ? "오늘의 독자-세계는 ‘Left Behind 문화’, 합리주의적 조롱, 기후-종말 불안으로 종말 상상력이 이미 문화적으로 형성되어 있다."
+              : "Modern reader-world is already formed by Left Behind culture, modernist skepticism, and climate doom narratives."
+            }</li>
+          </ul>
+          <div class="callout">
+            <b>${lang==="ko" ? "문화 질문:" : "Cultural Questions:"}</b>
+            <ul>
+              <li>${lang==="ko"
+                ? "이 본문이 전제하는 상징/의례/정치 언어는 무엇이며, 오늘 우리는 어떤 ‘번역’이 필요한가?"
+                : "What symbolic/ritual/political language is assumed—and what translation does our context require?"
+              }</li>
+              <li>${lang==="ko"
+                ? "이 가르침이 누구에게 유익/해악이 되는가(정의 점검)?"
+                : "Who is helped or harmed by this teaching (justice audit)?"
+              }</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+    `
+  },
 
-      // Core Texts & Themes
-      const ctCard = el("div", { class: "card" }, [
-        el("h2", {}, [ LANG === "en" ? "2) Core Texts & Comprehensive Themes" : "2) 핵심 본문(참조) & 종합 주제" ]),
-        el("div", { class: "muted" }, [ LANG === "en"
-          ? "References + short key phrases + why they matter."
-          : "구절 표기 + 짧은 핵심 구문 + 해석적 의미."
-        ]),
-      ]);
+  {
+    id: "prelecture",
+    title: { en: "Pre-Lecture: Sizemore (Wood) & Migliore (Forest)", ko: "프리-강의: Sizemore(나무) & Migliore(숲)" },
+    subtitle: { en: "Part I–IV outline added (EN/KR)", ko: "추가된 Part I–IV 개요(EN/KR)" },
+    render: (lang) => `
+      <div class="card">
+        <h2>${lang==="ko" ? "13. 주님의 오심 — 프리-강의(나무/숲)" : "13. The Coming of the Lord — Pre-Lecture (Wood/Forest)"}</h2>
+        <div class="callout">
+          <span class="tag">${lang==="ko" ? "Sizemore=나무(텍스트의 확실성/구체성)" : "Sizemore = Wood (textual concreteness/certainty)"}</span>
+          <span class="tag">${lang==="ko" ? "Migliore=숲(체계적·우주적 소망/정의)" : "Migliore = Forest (systematic/cosmic hope/justice)"}</span>
+        </div>
 
-      ctCard.appendChild(el("h3", {}, [ LANG === "en" ? "Core Text References" : "핵심 본문 참조" ]));
-      letter.coreTexts.forEach(ct => {
-        ctCard.appendChild(el("div", { class: "qblock" }, [
-          el("div", { class: "row" }, [
-            el("span", { class: "badge mono" }, [ ct.ref ]),
-            el("span", { class: "badge" }, [ LANG === "en" ? "Key phrase" : "핵심 구문" ])
-          ]),
-          el("div", { class: "qtitle" }, [ t(ct.phrase) ]),
-          el("div", { class: "muted" }, [ t(ct.note) ])
-        ]));
-      });
+        <details open>
+          <summary>${lang==="ko" ? "Part I. 오심의 확실성 (50분)" : "Part I. The Certainty of His Coming (50 min)"}</summary>
 
-      ctCard.appendChild(el("h3", {}, [ LANG === "en" ? "Comprehensive Themes" : "종합 주제" ]));
-      ctCard.appendChild(el("ul", {}, letter.themes[LANG].map(x => el("li", {}, [ x ]))));
-      panel.appendChild(ctCard);
+          <h3>${lang==="ko" ? "A. 지적 갈등 (20분)" : "A. The Intellectual Conflict (20 min)"}</h3>
+          <ul>
+            <li><b>${lang==="ko" ? "동일과정설/자연주의(사이즈모어)" : "Uniformitarianism/Naturalism (Sizemore)"}</b> — ${lang==="ko"
+              ? "벧후 3:3–4의 ‘조롱’은 역사를 ‘닫힌 시스템’으로 보는 세계관이다. 이 가정이 유지되는 한 재림은 ‘물리적으로 불가능’해진다."
+              : "Scoffing in 2 Pet 3:3–4 assumes a closed universe where history cannot be interrupted. If history is closed, the Second Coming becomes “impossible.”"
+            }</li>
+            <li><b>${lang==="ko" ? "세속 종말론의 실패(미글리오레)" : "Failure of Secular Eschatologies (Migliore)"}</b> — ${lang==="ko"
+              ? "계몽주의 진보/마르크스주의 유토피아는 20세기(세계대전/홀로코스트) 앞에서 붕괴했다. 역사 내부의 진보만으로는 구원이 오지 않는다."
+              : "Liberal progress and Marxist utopianism collapsed under the 20th century’s violence. Internal progress cannot redeem history; hope needs external redemption."
+            }</li>
+          </ul>
 
-      // Questions (3 exegetical + 3 hermeneutical)
-      const qCard = el("div", { class: "card" }, [
-        el("h2", {}, [ LANG === "en" ? "3) Exegetical & Hermeneutical Questions" : "3) 주해 질문 + 해석학 질문" ]),
-        el("div", { class: "muted" }, [ LANG === "en"
-          ? "Write brief answers; saved automatically on this device."
-          : "짧게 작성하세요. 답변은 이 기기에 자동 저장됩니다."
-        ])
-      ]);
+          <h3>${lang==="ko" ? "B. 증거의 다섯 기둥 (30분)" : "B. The Five Pillars of Evidence (30 min)"}</h3>
+          <ol>
+            <li><b>${lang==="ko" ? "예수의 신실성(사이즈모어)" : "Veracity of Jesus (Sizemore)"}</b> — ${lang==="ko"
+              ? "요 14:3, 마 24:30 등에서 예수는 자신의 귀환을 약속한다. 재림 부정은 그리스도의 진실성 문제로 이어진다."
+              : "Texts like John 14:3 and Matt 24:30 put Jesus’ integrity at stake."
+            }</li>
+            <li><b>${lang==="ko" ? "천사의 우주적 증언(사이즈모어)" : "Cosmic Witness of Angels (Sizemore)"}</b> — ${lang==="ko"
+              ? "행 1:11: ‘올리우심을 본 그대로 오시리라.’ 천사는 경계표지로서 초자연적 사건성을 표지한다."
+              : "Acts 1:11 frames the return as heaven-initiated and bodily (as he went)."
+            }</li>
+            <li><b>${lang==="ko" ? "사도적 합의(사이즈모어)" : "Apostolic Consensus (Sizemore)"}</b> — ${lang==="ko"
+              ? "딛 2:13 ‘복스러운 소망’, 벧후 3:9 ‘오래 참으심’ 등: 종말 소망은 초기 교회의 생존 엔진이었다."
+              : "Across Paul/Peter/John, eschatological hope is central, not fringe."
+            }</li>
+            <li><b>${lang==="ko" ? "유형론(대제사장) 논증(사이즈모어)" : "Typological Argument (High Priest) (Sizemore)"}</b> — ${lang==="ko"
+              ? "레 16의 패턴(A 제사, B 지성소, C 재등장/축복)이 히 9:24–28에서 그리스도에게 적용된다. C가 없으면 의식이 미완성이다."
+              : "Lev 16 pattern applied in Heb 9:24–28 implies the ritual is incomplete without reappearance."
+            }</li>
+            <li><b>${lang==="ko" ? "예전(성찬) 논증(공동)" : "Liturgical Argument (Sizemore & Migliore)"}</b> — ${lang==="ko"
+              ? "고전 11:26 ‘그가 오실 때까지’: 성찬은 ‘기한이 있는’ 예식이며, 매번 ‘아직 끝이 아니다’를 몸으로 고백한다."
+              : "1 Cor 11:26 makes Eucharist a time-bound rehearsal: “not the end; the feast is coming.”"
+            }</li>
+          </ol>
+        </details>
 
-      const renderOpenQs = (label, kind, qs) => {
-        qCard.appendChild(el("h3", {}, [ label ]));
-        qs.forEach((Q, i) => {
-          const idx = i + 1;
-          const box = el("div", { class: "qblock" }, [
-            el("div", { class: "qtitle" }, [ `${idx}. ${Q}` ]),
-            el("textarea", {
-              placeholder: LANG === "en" ? "Type your response here…" : "여기에 답을 작성하세요…",
-              "data-kind": kind,
-              "data-idx": String(i),
-              oninput: (e) => saveText(letter.id, kind, i, e.target.value)
-            })
-          ]);
-          const ta = box.querySelector("textarea");
-          ta.value = loadText(letter.id, kind, i);
-          qCard.appendChild(box);
-        });
+        <details>
+          <summary>${lang==="ko" ? "Part II. 오심의 방식 (50분)" : "Part II. The Manner of His Coming (50 min)"}</summary>
+          <h3>${lang==="ko" ? "A. 사건의 가시성 (15분)" : "A. Visibility (15 min)"}</h3>
+          <ul>
+            <li><b>${lang==="ko" ? "공개 vs 비밀(사이즈모어)" : "Public vs Secret (Sizemore)"}</b> — ${lang==="ko"
+              ? "계 1:7, 마 24:27: ‘모든 눈’의 공개성. ‘비밀 휴거’/사적 체험으로 축소하지 않는다."
+              : "Rev 1:7 and Matt 24:27 emphasize public, undeniable disclosure."
+            }</li>
+            <li><b>${lang==="ko" ? "진리의 신원(미글리오레)" : "Vindication of Truth (Migliore)"}</b> — ${lang==="ko"
+              ? "가시성은 ‘하늘 쇼’가 아니라 ‘참된 질서의 드러남(ἀποκάλυψις)’이다."
+              : "Visibility means unveiling the true grain of reality: Love, not Caesar, rules."
+            }</li>
+          </ul>
+
+          <h3>${lang==="ko" ? "B. 구름/나팔 이미지 (25분)" : "B. Imagery: Clouds & Trumpets (25 min)"}</h3>
+          <ul>
+            <li><b>${lang==="ko" ? "문자적 구름(사이즈모어)" : "Literal Cloud (Sizemore)"}</b> — ${lang==="ko"
+              ? "출애굽의 구름기둥–변모–승천–단 7:13의 연속선에서, 구름은 사건의 ‘물리적 고정점’이 된다."
+              : "Cloud motif anchors the event in physical reality (Exodus–Transfiguration–Ascension–Dan 7:13)."
+            }</li>
+            <li><b>${lang==="ko" ? "상징의 한계(미글리오레)" : "Symbolic Limit (Migliore)"}</b> — ${lang==="ko"
+              ? "묵시는 ‘언어가 한계까지 늘어난’ 시적-상징 언어다. ‘날씨보고’로 읽으면 의미를 놓친다(구름=쉐키나 영광, 나팔=왕의 선포)."
+              : "Apocalyptic is language stretched to its limits: clouds (shekinah glory), trumpets (royal decree)."
+            }</li>
+          </ul>
+
+          <h3>${lang==="ko" ? "C. 우주적 진동 (10분)" : "C. Cosmic Disturbance (10 min)"}</h3>
+          <ul>
+            <li><b>${lang==="ko" ? "신음하는 우주(사이즈모어)" : "Groaning Cosmos (Sizemore)"}</b> — ${lang==="ko"
+              ? "마 24:29 등 물리적 격변을 ‘현 질서 해체’로 본다."
+              : "Physical upheaval can signal dismantling of the present order."
+            }</li>
+            <li><b>${lang==="ko" ? "우주적 구속(미글리오레)" : "Cosmic Redemption (Migliore)"}</b> — ${lang==="ko"
+              ? "롬 8:19–22: 격변은 파괴만이 아니라 ‘새 창조의 산고’이다."
+              : "Rom 8 reframes shaking as birth pangs of new creation."
+            }</li>
+          </ul>
+        </details>
+
+        <details>
+          <summary>${lang==="ko" ? "Part III. 오심의 시간 (40분)" : "Part III. The Time of His Coming (40 min)"}</summary>
+          <h3>${lang==="ko" ? "A. ‘때’의 비공개 (15분)" : "A. Prohibition on Knowledge (15 min)"}</h3>
+          <ul>
+            <li><b>${lang==="ko" ? "절대적 비밀(사이즈모어)" : "The Absolute Secret (Sizemore)"}</b> — ${lang==="ko"
+              ? "막 13:32: 날짜는 숨겨져 의존과 깨어있음을 낳는다. 날짜-집착은 반복적으로 실패해왔다."
+              : "Mark 13:32: the date is hidden to cultivate dependence and readiness."
+            }</li>
+          </ul>
+
+          <h3>${lang==="ko" ? "B. ‘신(新)묵시주의’의 위험 (25분)" : "B. Danger of Neo-Apocalypticism (25 min)"}</h3>
+          <ul>
+            <li><b>${lang==="ko" ? "현대 왜곡(미글리오레)" : "Modern Distortion (Migliore)"}</b> — ${lang==="ko"
+              ? "성경을 중동 타임테이블 암호로 만드는 결정론은 ‘소망’이 아니라 ‘운명론’이 된다."
+              : "Treating Scripture as a coded timetable produces determinism, not hope."
+            }</li>
+            <li><b>${lang==="ko" ? "윤리적 비용(미글리오레)" : "Ethical Cost (Migliore)"}</b> — ${lang==="ko"
+              ? "‘곧 불탈 것’이라는 확신은 평화·환경·정의 실천을 마비시킬 수 있다."
+              : "Fatalism can breed apathy toward peace, environment, and justice."
+            }</li>
+            <li><b>${lang==="ko" ? "종합" : "Synthesis"}</b> — ${lang==="ko"
+              ? "시간은 달력의 날짜가 아니라 ‘삶의 모드’(깨어 있음, 충실함, 긴급한 사랑)이다."
+              : "Time is not a calendar date but a mode of living: readiness and faithfulness."
+            }</li>
+          </ul>
+        </details>
+
+        <details>
+          <summary>${lang==="ko" ? "Part IV. 그리스도인의 응답 (60분)" : "Part IV. The Christian’s Response (60 min)"}</summary>
+
+          <h3>${lang==="ko" ? "A. 분리 vs 연대 (25분)" : "A. Separation vs Solidarity (25 min)"}</h3>
+          <ul>
+            <li><b>${lang==="ko" ? "분리(사이즈모어)" : "Separation (Sizemore)"}</b> — ${lang==="ko"
+              ? "벧후 3:10–11: ‘도태될 문화/우상’에서 마음을 떼라(거룩, 절제, 회개)."
+              : "Detach from idolatry and doomed cultural intoxications (holiness, sobriety, urgency)."
+            }</li>
+            <li><b>${lang==="ko" ? "연대(미글리오레)" : "Solidarity (Migliore)"}</b> — ${lang==="ko"
+              ? "하나님이 세상을 버리지 않고 새롭게 하시기에, 우리는 고통 속으로 들어가 ‘표지판(signposts)’을 세운다."
+              : "Because God redeems the world, we remain embedded with the suffering, planting signposts of the Kingdom."
+            }</li>
+          </ul>
+          <div class="callout good">
+            <b>${lang==="ko" ? "통합 윤리:" : "Synthesized Ethic:"}</b>
+            ${lang==="ko"
+              ? "세상의 ‘죄/우상’에서는 분리되되, 세상의 ‘고통/취약자/신음하는 창조’와는 연대한다."
+              : "Separated from the world’s sin/idols, solidary with the world’s suffering and the groaning creation."
+            }
+          </div>
+
+          <h3>${lang==="ko" ? "B. 말세의 다섯 덕목 (20분)" : "B. Five Virtues (20 min)"}</h3>
+          <div class="table">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>${lang==="ko" ? "덕목" : "Virtue"}</th>
+                  <th>${lang==="ko" ? "핵심" : "Core"}</th>
+                  <th>${lang==="ko" ? "사회적 확장(미글리오레 렌즈)" : "Social lens (Migliore extension)"}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>${lang==="ko" ? "진실성" : "Sincerity"}</td>
+                  <td>${lang==="ko" ? "내적 정직(빌 1:10)" : "Integrity (Phil 1:10)"}</td>
+                  <td>${lang==="ko" ? "권력/이미지 조작을 거부하는 투명성" : "Refuse performative deception in public life"}</td>
+                </tr>
+                <tr>
+                  <td>${lang==="ko" ? "절제" : "Sobriety"}</td>
+                  <td>${lang==="ko" ? "깨어 있음(살전 5:6)" : "Wakefulness (1 Thess 5:6)"}</td>
+                  <td>${lang==="ko" ? "소비주의·폭력·증오의 ‘취함’에서 깨어남" : "Sobriety from consumerism, violence, hatred"}</td>
+                </tr>
+                <tr>
+                  <td>${lang==="ko" ? "비이기심" : "Unselfishness"}</td>
+                  <td>${lang==="ko" ? "권리 내려놓기(빌 4:5)" : "Forbearance (Phil 4:5)"}</td>
+                  <td>${lang==="ko" ? "약자의 공간을 확보하는 공동선" : "Make space for the vulnerable; common good"}</td>
+                </tr>
+                <tr>
+                  <td>${lang==="ko" ? "인내" : "Patience"}</td>
+                  <td>${lang==="ko" ? "복수 대신 견딤(약 5:7)" : "Endurance (Jas 5:7)"}</td>
+                  <td>${lang==="ko" ? "정의 추구를 포기하지 않는 ‘긴 호흡’" : "Long obedience in justice without despair"}</td>
+                </tr>
+                <tr>
+                  <td>${lang==="ko" ? "충성" : "Faithfulness"}</td>
+                  <td>${lang==="ko" ? "청지기직(벧전 5:4)" : "Stewardship (1 Pet 5:4)"}</td>
+                  <td>${lang==="ko" ? "창조·이웃·제도 속에서 신실한 돌봄" : "Faithful care within creation and society"}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>${lang==="ko" ? "C. 일과 소망 (15분)" : "C. Work & Hope (15 min)"}</h3>
+          <ul>
+            <li><b>${lang==="ko" ? "책임의 동기(사이즈모어)" : "Accountability (Sizemore)"}</b> — ${lang==="ko"
+              ? "마 25의 심판은 ‘청지기 감사’의 현실을 상기시킨다."
+              : "Judgment imagery stresses stewardship accountability (Matt 25)."
+            }</li>
+            <li><b>${lang==="ko" ? "사과나무의 소망(미글리오레)" : "Apple-tree Hope (Migliore)"}</b> — ${lang==="ko"
+              ? "우리는 세상을 ‘구원’하지 못하지만, 다가올 나라를 증언하는 표지판을 세운다."
+              : "We do not save the world, but we plant signposts testifying to the coming world."
+            }</li>
+          </ul>
+        </details>
+      </div>
+    `
+  },
+
+  {
+    id: "lecture",
+    title: { en: "Main Lecture: Diagnose → Interpret → Synthesize", ko: "메인 강의: 진단 → 해석 → 종합" },
+    subtitle: { en: "Contemporary postures + concrete-symbolic realism + justice audit", ko: "현대 자세 + 구체-상징 현실주의 + 정의 점검" },
+    render: (lang) => `
+      <div class="card">
+        <h2>${lang==="ko" ? "Movement 1: 위치 파악(현대 종말 상상력 진단)" : "Movement 1: LOCATE (Diagnose Eschatological Imagination)"}</h2>
+
+        <details open>
+          <summary>${lang==="ko" ? "세 가지 자세(3 Postures)" : "Three Dominant Postures"}</summary>
+          <div class="twoCol">
+            <div class="card">
+              <h3>${lang==="ko" ? "1) 도피적 불안(Left Behind)" : "1) Escapist Anxiety (Left Behind)"}</h3>
+              <ul>
+                <li>${lang==="ko" ? "주정서: 공포(‘남겨질까’)" : "Primary emotion: fear of being ‘left behind’"}</li>
+                <li>${lang==="ko" ? "결과: 날짜 집착, 음모론, 정치적 운명론" : "Outcomes: date-setting, conspiracies, fatalism"}</li>
+                <li>${lang==="ko" ? "정의 비용: ‘곧 불탈 텐데 왜 돌봄?’" : "Justice cost: apathy toward earth/poor"}</li>
+              </ul>
+              <div class="callout warn">
+                <b>${lang==="ko" ? "진단:" : "Diagnosis:"}</b>
+                ${lang==="ko"
+                  ? "두 저자 모두 ‘공포 기반 신앙’의 왜곡을 경계한다."
+                  : "Both authors warn that fear-based faith distorts Christian hope."
+                }
+              </div>
+            </div>
+
+            <div class="card">
+              <h3>${lang==="ko" ? "2) 진보적 기각(탈신화)" : "2) Progressive Dismissal (Demythologized)"}</h3>
+              <ul>
+                <li>${lang==="ko" ? "주정서: 당혹/부끄러움(‘원시 신화’)" : "Primary emotion: embarrassment ('primitive myth')"}</li>
+                <li>${lang==="ko" ? "강점: 사회·기후 정의 참여" : "Strength: engagement in justice/climate work"}</li>
+                <li>${lang==="ko" ? "대가: 우주적 소망 상실 → 소진/절망" : "Cost: loss of cosmic hope → despair/burnout"}</li>
+              </ul>
+              <div class="callout">
+                <b>${lang==="ko" ? "핵심 문제:" : "Core issue:"}</b>
+                ${lang==="ko"
+                  ? "‘닫힌 우주’ 가정은 하나님의 ‘새로움’을 차단한다."
+                  : "A closed-universe assumption blocks divine disruption and newness."
+                }
+              </div>
+            </div>
+
+            <div class="card">
+              <h3>${lang==="ko" ? "3) 기후-종말 불안(멸종 공포)" : "3) Millennial Climate Doom"}</h3>
+              <ul>
+                <li>${lang==="ko" ? "주정서: 슬픔/분노(세대 배신감)" : "Primary emotion: grief/rage"}</li>
+                <li>${lang==="ko" ? "강점: 긴급성, 과학 문해" : "Strength: urgency, scientific literacy"}</li>
+                <li>${lang==="ko" ? "격차: 인간 노력 밖의 구속 소망 부재" : "Gap: no transcendent redemption; despair when efforts fail"}</li>
+              </ul>
+              <div class="callout good">
+                <b>${lang==="ko" ? "재구성:" : "Reframe:"}</b>
+                ${lang==="ko"
+                  ? "롬 8의 ‘신음’은 폐허의 종말이 아니라 새 창조의 산고다."
+                  : "Rom 8’s groaning is labor pains toward new creation, not mere doom."
+                }
+              </div>
+            </div>
+          </div>
+        </details>
+
+        <div class="hr"></div>
+
+        <h2>${lang==="ko" ? "Movement 2: 해석(묵시 언어 읽기)" : "Movement 2: INTERROGATE (How to Read Apocalyptic)"}</h2>
+
+        <details open>
+          <summary>${lang==="ko" ? "두 접근과 통합: 구체-상징 현실주의" : "Two Approaches + Synthesis: Concrete-Symbolic Realism"}</summary>
+          <div class="twoCol">
+            <div class="card">
+              <h3>${lang==="ko" ? "Sizemore: 예언-기술(문자주의 경향)" : "Sizemore: Literal-prophetic reading"}</h3>
+              <ul>
+                <li>${lang==="ko" ? "장점: 본문의 ‘구체성/확실성’을 보존" : "Strength: preserves concreteness and certainty"}</li>
+                <li>${lang==="ko" ? "위험: ‘징조 추적’과 과잉추측" : "Risk: speculation and sign-chasing"}</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h3>${lang==="ko" ? "Migliore: 상징-신학(장르 존중)" : "Migliore: Symbolic-theological reading"}</h3>
+              <ul>
+                <li>${lang==="ko" ? "장점: 장르(묵시)와 신학적 의미를 우선" : "Strength: honors genre and theological meaning"}</li>
+                <li>${lang==="ko" ? "위험: 과도한 상징화로 ‘사건성’ 약화" : "Risk: event can become overly ‘spiritualized’"}</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="callout good">
+            <b>${lang==="ko" ? "통합 선언(4가지)" : "Synthesis (4 affirmations)"}</b>
+            <ol>
+              <li>${lang==="ko" ? "사건은 실제이며 미래다: 그리스도는 오신다." : "The event is real and future: Christ will return."}</li>
+              <li>${lang==="ko" ? "언어는 상징적이다: 구름/나팔은 장르적 표지다." : "The language is symbolic: clouds/trumpets are genre conventions."}</li>
+              <li>${lang==="ko" ? "우선은 신학이다: ‘누가 왜 오시는가?’" : "Priority is theological: who returns, and for what?"}</li>
+              <li>${lang==="ko" ? "적용은 윤리다: 종말론은 현재의 형성이다." : "Application is ethical: eschatology forms present life."}</li>
+            </ol>
+          </div>
+        </details>
+
+        <div class="hr"></div>
+
+        <h2>${lang==="ko" ? "Movement 3: 종합(구원·윤리·정의)" : "Movement 3: SYNTHESIZE (Soteriology, Ethics, Justice)"}</h2>
+
+        <details open>
+          <summary>${lang==="ko" ? "구원: 제사장의 완결 + 새 창조" : "Soteriology: Priestly Completion + New Creation"}</summary>
+          <ul>
+            <li>${lang==="ko"
+              ? "<b>개인적 차원:</b> 대제사장의 재등장은 ‘확증/축복’(히 9)이다."
+              : "<b>Personal:</b> reappearance is priestly vindication/benediction (Heb 9)."
+            }</li>
+            <li>${lang==="ko"
+              ? "<b>우주적 차원:</b> 재림은 창조를 버리기보다 새롭게 한다(롬 8; 계 21)."
+              : "<b>Cosmic:</b> return consummates redemption of creation (Rom 8; Rev 21)."
+            }</li>
+          </ul>
+        </details>
+
+        <details>
+          <summary>${lang==="ko" ? "윤리: 분리-연대(Resident Aliens)" : "Ethics: Separated-Solidarity (Resident Aliens)"}</summary>
+          <div class="callout">
+            ${lang==="ko"
+              ? "우상(맘몬/폭력/제국)에서는 분리하되, 고통 받는 이들과 신음하는 창조에는 연대한다."
+              : "Separate from idols (Mammon, violence, empire) while remaining in solidarity with the suffering and creation."
+            }
+          </div>
+          <ul>
+            <li>${lang==="ko" ? "분리의 실천: 단순함, 절제, 회개, 비폭력" : "Separation practices: simplicity, sobriety, repentance, nonviolence"}</li>
+            <li>${lang==="ko" ? "연대의 실천: 창조 돌봄, 난민/빈곤/차별 대응, 치유/교육" : "Solidarity practices: creation care, serving refugees/poor, healing/education"}</li>
+          </ul>
+        </details>
+
+        <details>
+          <summary>${lang==="ko" ? "정의 점검: 누가 ‘남겨지는가’?" : "Justice Audit: Who gets “left behind”?"}</summary>
+          <div class="callout danger">
+            <b>${lang==="ko" ? "경고:" : "Warning:"}</b>
+            ${lang==="ko"
+              ? "공포·포기·타자화(취약자를 버리는 체계)를 낳는 종말론은 복음의 형태를 훼손한다."
+              : "Eschatologies that produce fear, abandonment, and othering distort the gospel’s shape."
+            }
+          </div>
+          <div class="callout good">
+            <b>${lang==="ko" ? "대안:" : "Alternative:"}</b>
+            ${lang==="ko"
+              ? "살전 4의 ‘공중에서 맞이함’은 ‘탈출’이 아니라 ‘왕을 영접해 함께 귀환’하는 희망의 이미지가 될 수 있다."
+              : "1 Thess 4 can be read as “royal welcome” (meeting and escorting the King), not evacuation."
+            }
+          </div>
+        </details>
+      </div>
+    `
+  },
+
+  {
+    id: "coretexts",
+    title: { en: "Core Texts (NRSV + ESV)", ko: "핵심 본문(NRSV + ESV)" },
+    subtitle: { en: "Short excerpts for study + context notes", ko: "학습용 발췌 + 맥락 노트" },
+    render: (lang) => {
+      const block = (key, notesEn, notesKo) => {
+        const t = TEXTS[key];
+        const notes = (lang==="ko" ? notesKo : notesEn);
+        return `
+          <details open>
+            <summary>${t.ref}</summary>
+            <div class="twoCol">
+              <div class="card">
+                <div class="kicker">NRSV (selected)</div>
+                <div>${t[lang].nrsv}</div>
+              </div>
+              <div class="card">
+                <div class="kicker">ESV (selected)</div>
+                <div>${t[lang].esv}</div>
+              </div>
+            </div>
+            <div class="callout">
+              <b>${lang==="ko" ? "맥락 노트:" : "Context Notes:"}</b>
+              <ul>${notes.map(x=>`<li>${x}</li>`).join("")}</ul>
+            </div>
+          </details>
+        `;
       };
 
-      renderOpenQs(
-        LANG === "en" ? "A) Exegetical Questions (3)" : "A) 주해 질문 (3)",
-        "exegetical",
-        letter.questions.exegetical.map(x => x[LANG])
-      );
-      renderOpenQs(
-        LANG === "en" ? "B) Hermeneutical Questions (3)" : "B) 해석학 질문 (3)",
-        "hermeneutical",
-        letter.questions.hermeneutical.map(x => x[LANG])
-      );
-
-      panel.appendChild(qCard);
-
-      // Quiz
-      const quizCard = el("div", { class: "card" }, [
-        el("h2", {}, [ LANG === "en" ? "4) Quiz (5 MC Questions)" : "4) 퀴즈 (객관식 5문항)" ]),
-        el("div", { class: "muted" }, [ LANG === "en"
-          ? "Choose an answer for each question, then click “Grade Quiz”."
-          : "각 문항의 답을 고른 뒤 “채점하기”를 누르세요."
-        ])
-      ]);
-
-      const quizState = { chosen: Array(letter.quiz.length).fill(null) };
-
-      letter.quiz.forEach((item, qi) => {
-        const qDiv = el("div", { class: "quizQ" }, [
-          el("div", { class: "qtitle" }, [ `${qi + 1}. ${item.q[LANG]}` ]),
-        ]);
-
-        item.options.forEach((opt, oi) => {
-          const id = `${letter.id}-q${qi}-o${oi}`;
-          const radio = el("input", {
-            type: "radio",
-            name: `${letter.id}-q${qi}`,
-            id,
-            value: String(oi),
-            onchange: () => { quizState.chosen[qi] = oi; }
-          });
-
-          const label = el("label", { class: "opt", for: id }, [
-            radio,
-            el("div", {}, [ opt[LANG] ])
-          ]);
-          qDiv.appendChild(label);
-        });
-
-        qDiv.appendChild(el("div", { class: "feedback", id: `${letter.id}-fb-${qi}`, style: "display:none;" }, []));
-        quizCard.appendChild(qDiv);
-      });
-
-      const gradeBtn = el("button", { class: "btn", onclick: () => gradeQuiz(letter, quizState) }, [
-        LANG === "en" ? "Grade Quiz" : "채점하기"
-      ]);
-
-      const scoreBox = el("div", { class: "feedback", id: `${letter.id}-score`, style: "display:none; margin-top:10px;" }, []);
-      quizCard.appendChild(el("div", { class: "row" }, [ gradeBtn ]));
-      quizCard.appendChild(scoreBox);
-      quizCard.appendChild(el("div", { class: "foot muted" }, [
-        LANG === "en"
-          ? "Tip: Use quiz explanations to justify answers with evidence from contexts + core texts."
-          : "팁: 해설을 활용해 ‘맥락 + 핵심 본문’ 근거로 답을 정당화하세요."
-      ]));
-
-      panel.appendChild(quizCard);
-    }
-
-    function gradeQuiz(letter, quizState){
-      let correct = 0;
-      letter.quiz.forEach((item, qi) => {
-        const fb = document.getElementById(`${letter.id}-fb-${qi}`);
-        fb.style.display = "block";
-
-        const chosen = quizState.chosen[qi];
-        const ok = (chosen === item.answer);
-        if (ok) correct++;
-
-        fb.classList.remove("ok", "no");
-        fb.classList.add(ok ? "ok" : "no");
-
-        const chosenText = (chosen === null)
-          ? (LANG === "en" ? "No answer selected." : "선택한 답이 없습니다.")
-          : (LANG === "en" ? `You chose: ${item.options[chosen][LANG]}` : `선택: ${item.options[chosen][LANG]}`);
-
-        const correctText = LANG === "en"
-          ? `Correct: ${item.options[item.answer][LANG]}`
-          : `정답: ${item.options[item.answer][LANG]}`;
-
-        fb.innerHTML = `
-          <div><strong>${ok ? (LANG==="en"?"Correct ✅":"정답 ✅") : (LANG==="en"?"Not yet ❗":"오답 ❗")}</strong></div>
-          <div class="muted" style="margin-top:6px;">${chosenText}</div>
-          <div class="muted" style="margin-top:4px;">${correctText}</div>
-          <div style="margin-top:8px;">${item.explanation[LANG]}</div>
-        `;
-      });
-
-      const score = document.getElementById(`${letter.id}-score`);
-      score.style.display = "block";
-      const pct = Math.round((correct / letter.quiz.length) * 100);
-
-      score.classList.remove("ok", "no");
-      score.classList.add(pct >= 80 ? "ok" : (pct >= 60 ? "" : "no"));
-
-      score.innerHTML = `
-        <div><strong>${LANG==="en"?"Score":"점수"}:</strong> ${correct}/${letter.quiz.length} (${pct}%)</div>
-        <div class="muted" style="margin-top:6px;">
-          ${LANG==="en"
-            ? "If below 80%, revisit contexts + core texts, then regrade."
-            : "80% 미만이면 맥락+핵심 본문을 다시 확인한 뒤 재채점하세요."
-          }
+      return `
+        <div class="card">
+          <h2>${lang==="ko" ? "핵심 본문" : "Core Texts"}</h2>
+          ${block("heb9",
+            [
+              "Hebrews frames Jesus’ work in priestly/Temple imagery: appearance (sacrifice) → heavenly intercession → second appearance (salvation/vindication).",
+              "Use Lev 16 (Day of Atonement) as a cultural-liturgy key, but keep focus on Hebrews’ own argument."
+            ],
+            [
+              "히브리서는 예수의 사역을 제의/성전 언어로 구성한다: 나타남(제사) → 하늘 중보 → 두 번째 나타나심(구원/확증).",
+              "레 16(대속죄일)은 배경이지만, 히브리서 자체의 논증 흐름을 우선하라."
+            ]
+          )}
+          ${block("thess4",
+            [
+              "Pastoral aim: encourage grieving believers; avoid speculative timetables.",
+              "Key term: ἀπάντησις (meeting) can echo civic welcome imagery; test responsibly, don’t overclaim."
+            ],
+            [
+              "목회적 목적: 슬퍼하는 공동체를 위로. 시간표 추측으로 비틀지 말라.",
+              "핵심 용어: ἀπάντησις(맞이함)는 환영 행렬 관습을 연상시킬 수 있다. 과잉확신 없이 신중히 사용하라."
+            ]
+          )}
+          ${block("pet3",
+            [
+              "Scoffing logic: “no disruption” → closed universe; the text counters with God’s patience and judgment.",
+              "Treat this as worldview critique, not a license for date-setting."
+            ],
+            [
+              "조롱의 논리: ‘변화/개입 없음’ → 닫힌 우주. 본문은 하나님의 오래 참으심/심판으로 반박한다.",
+              "이 본문을 날짜 계산의 근거가 아니라 세계관 비판으로 읽어라."
+            ]
+          )}
+          ${block("rom8",
+            [
+              "Creation’s groaning is not disposable matter but a participant in redemption hope.",
+              "Useful bridge for climate anxiety: labor pains → active hope."
+            ],
+            [
+              "피조물의 신음은 ‘버릴 물질’이 아니라 구속 소망의 참여자다.",
+              "기후 불안과 연결할 다리: 파괴의 종말이 아니라 산고 → 능동적 소망."
+            ]
+          )}
+          ${block("rev21",
+            [
+              "Telos is God-with-us in renewed creation, not escape from creation.",
+              "Use carefully: Revelation is symbolic and pastoral resistance literature."
+            ],
+            [
+              "종말의 목적지는 ‘하나님-함께’의 새 창조이며, 창조로부터의 탈출이 아니다.",
+              "요한계시는 상징적/목회적 저항 문학임을 잊지 말라."
+            ]
+          )}
+          ${block("matt25",
+            [
+              "Eschatology grounds ethics: the King identifies with “the least.”",
+              "Guard against weaponizing judgment texts; aim for formation and mercy."
+            ],
+            [
+              "종말론은 윤리를 고정한다: 왕은 ‘지극히 작은 자’와 자신을 동일시한다.",
+              "심판 본문을 무기로 쓰지 말고, 형성과 자비로 읽어라."
+            ]
+          )}
         </div>
       `;
     }
+  },
 
-    // =========================
-    // Events
-    // =========================
-    $("#langEN").addEventListener("click", () => {
-      LANG = "en";
-      $("#langEN").setAttribute("aria-pressed","true");
-      $("#langKO").setAttribute("aria-pressed","false");
-      renderHeader(); renderTabs(); renderPanel(ACTIVE);
+  {
+    id: "questions",
+    title: { en: "3 Exegetical + 3 Hermeneutical Questions", ko: "주해 3 + 해석학 3 질문" },
+    subtitle: { en: "Copy-ready for small group discussion", ko: "소그룹 토론용(복사-붙여넣기)" },
+    render: (lang) => `
+      <div class="card">
+        <h2>${lang==="ko" ? "주해(Exegetical) 질문 3개" : "3 Exegetical Questions"}</h2>
+        <ol>
+          ${EXEGETICAL[lang].map(q=>`<li>${q}</li>`).join("")}
+        </ol>
+
+        <h2>${lang==="ko" ? "해석학(Hermeneutical) 질문 3개" : "3 Hermeneutical Questions"}</h2>
+        <ol>
+          ${HERMENEUTICAL[lang].map(q=>`<li>${q}</li>`).join("")}
+        </ol>
+
+        <div class="callout good">
+          <b>${lang==="ko" ? "짧은 규칙:" : "Quick Rule:"}</b>
+          ${lang==="ko"
+            ? "먼저 본문이 말하는 바(Emic)를 확인하고 → 그 다음 오늘의 적용(Etic)을 논의하되, 취약자를 해치는 적용은 ‘정의 점검’으로 걸러낸다."
+            : "First establish what the text does in its world (Emic), then discuss translation to today (Etic)—filter any harmful application through a justice audit."
+          }
+        </div>
+      </div>
+    `
+  },
+
+  {
+    id: "quiz",
+    title: { en: "Quiz (5 MC)", ko: "퀴즈(객관식 5문항)" },
+    subtitle: { en: "Instant feedback + scoring", ko: "즉시 피드백 + 점수" },
+    render: (lang) => `
+      <div class="card">
+        <h2>${lang==="ko" ? "퀴즈: 핵심 개념 점검" : "Quiz: Check Core Concepts"}</h2>
+        <div class="muted">${lang==="ko"
+          ? "정답을 고르고 아래에서 채점하세요."
+          : "Select answers, then score below."
+        }</div>
+
+        <div id="quizRoot"></div>
+
+        <button class="btn primary" id="scoreQuiz" style="margin-top:10px;">${lang==="ko" ? "채점하기" : "Score Quiz"}</button>
+        <div id="quizResult"></div>
+      </div>
+    `
+  },
+
+  {
+    id: "wrapup",
+    title: { en: "Study Guide Wrap-Up (Self-Assessment)", ko: "학습 정리(자가 점검)" },
+    subtitle: { en: "Certainty · Manner · Ethics", ko: "확실성 · 방식 · 윤리" },
+    render: (lang) => `
+      <div class="card">
+        <h2>${lang==="ko" ? "자가 점검" : "Self-Assessment"}</h2>
+        <div class="table">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>${lang==="ko" ? "축" : "Axis"}</th>
+                <th>${lang==="ko" ? "질문" : "Prompt"}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>${lang==="ko" ? "확실성" : "Certainty"}</td>
+                <td>${lang==="ko"
+                  ? "대제사장 유형론(레 16 → 히 9)을 사용하여 ‘왜 재림이 의식 완결에 필수인가’를 설명할 수 있는가?"
+                  : "Can you explain why return is necessary to complete the High Priest logic (Lev 16 → Heb 9)?"
+                }</td>
+              </tr>
+              <tr>
+                <td>${lang==="ko" ? "방식" : "Manner"}</td>
+                <td>${lang==="ko"
+                  ? "‘문자적 구름’(Sizemore)과 ‘상징적 영광’(Migliore)을 구분하면 사건을 어떻게 더 경외롭게 상상하게 되는가?"
+                  : "How does distinguishing literal cloud vs symbolic glory reshape your imagination without losing reality?"
+                }</td>
+              </tr>
+              <tr>
+                <td>${lang==="ko" ? "윤리" : "Ethics"}</td>
+                <td>${lang==="ko"
+                  ? "당신 삶에서 ‘우상에서 분리’와 ‘고통과 연대’는 각각 무엇을 의미하는가? 둘을 동시에 어떻게 실천할 것인가?"
+                  : "In your life, what does separation-from-idols look like, and what does solidarity-with-suffering look like—together?"
+                }</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout warn">
+          <b>${lang==="ko" ? "주의:" : "Note:"}</b>
+          ${lang==="ko"
+            ? "종말론은 ‘정보’가 아니라 ‘형성’이다. 당신의 결론이 공포·포기·타자화를 낳는다면 다시 점검하라."
+            : "Eschatology is formation, not trivia. If your conclusion breeds fear, abandonment, or othering, re-check your hermeneutic."
+          }
+        </div>
+      </div>
+    `
+  },
+
+  {
+    id: "resources",
+    title: { en: "Resources (Suggested Reading)", ko: "추가 읽기(추천 자료)" },
+    subtitle: { en: "Primary + additional voices", ko: "1차 자료 + 확장 자료" },
+    render: (lang) => `
+      <div class="card">
+        <h2>${lang==="ko" ? "추천 자료" : "Suggested Resources"}</h2>
+        <ul>
+          <li><b>Denver Sizemore</b>, <i>13 Lessons on the Last Things</i> — ${lang==="ko" ? "복음주의 종말론(텍스트 중심·명료)." : "evangelical eschatology; clear and text-driven."}</li>
+          <li><b>Daniel L. Migliore</b>, <i>Faith Seeking Understanding</i> (3rd ed.), ch. “Consummation” — ${lang==="ko" ? "우주적 소망·정의 지향·세속 종말론 비판." : "cosmic hope, justice orientation; critiques neo-apocalypticism."}</li>
+          <li><b>N. T. Wright</b>, <i>Surprised by Hope</i> — ${lang==="ko" ? "부활/새 창조 강조; 탈출 종말론 비판." : "new creation focus; critiques escapist frameworks."}</li>
+          <li><b>Anthony Hoekema</b>, <i>The Bible and the Future</i> — ${lang==="ko" ? "고전적 개혁파 종말론 정리." : "classic Reformed synthesis."}</li>
+          <li><b>Jürgen Moltmann</b>, <i>Theology of Hope</i> — ${lang==="ko" ? "정치적·미래지향적 신학의 기초." : "foundational political eschatology."}</li>
+          <li><b>Barbara R. Rossing</b>, <i>The Rapture Exposed</i> — ${lang==="ko" ? "공포-휴거 담론 비판; 계시록의 소망." : "critique of rapture-fear; Revelation as hope."}</li>
+          <li><b>Alexander Schmemann</b>, <i>For the Life of the World</i> — ${lang==="ko" ? "성찬적 종말론(‘왕의 잔치’의 맛보기)." : "sacramental eschatology."}</li>
+        </ul>
+        <div class="callout good">
+          <b>${lang==="ko" ? "주간 실천(요약):" : "Weekly Practice (brief):"}</b>
+          <ul>
+            <li>${lang==="ko" ? "마라나타 기도: “주 예수여 오시옵소서”(계 22:20)" : "Maranatha prayer: “Come, Lord Jesus” (Rev 22:20)"}</li>
+            <li>${lang==="ko" ? "성찬의 기억: “그가 오실 때까지”(고전 11:26)" : "Eucharistic memory: “until he comes” (1 Cor 11:26)"}</li>
+            <li>${lang==="ko" ? "정의의 표지판 하나 세우기(돌봄/연대/창조 보전)" : "Plant one signpost of the Kingdom (care/solidarity/creation care)"}</li>
+          </ul>
+        </div>
+      </div>
+    `
+  }
+];
+
+/* =========================
+   APP STATE + RENDERING
+   ========================= */
+
+let state = {
+  lang: "en",
+  active: "overview",
+  quizAnswers: {} // { qid: index }
+};
+
+function $(id){ return document.getElementById(id); }
+
+function setUIStrings(){
+  const t = I18N[state.lang];
+  $("appTitle").textContent = t.appTitle;
+  $("appSubtitle").textContent = t.appSubtitle;
+  $("navTitle").textContent = t.navTitle;
+  $("navSearch").placeholder = t.navSearchPh;
+  $("navHint").textContent = t.navHint;
+  $("langPill").textContent = t.langPill;
+  $("toggleLang").textContent = t.toggleLangBtn;
+  $("resetQuiz").textContent = t.resetQuiz;
+  $("expandAll").textContent = t.expandAll;
+  $("collapseAll").textContent = t.collapseAll;
+  $("footerNote").innerHTML = t.footer;
+
+  $("pillFramework").textContent = t.pills.framework;
+  $("pillAim").textContent = t.pills.aim;
+  $("pillTexts").textContent = t.pills.texts;
+}
+
+function renderNav(filter=""){
+  const q = filter.trim().toLowerCase();
+  const list = $("navList");
+  list.innerHTML = "";
+
+  SECTIONS
+    .filter(s => {
+      if(!q) return true;
+      const a = (s.title.en + " " + s.title.ko + " " + s.subtitle.en + " " + s.subtitle.ko).toLowerCase();
+      return a.includes(q);
+    })
+    .forEach(s => {
+      const btn = document.createElement("button");
+      btn.className = "navItem" + (s.id === state.active ? " active" : "");
+      btn.innerHTML = `
+        <div><b>${s.title[state.lang]}</b></div>
+        <small>${s.subtitle[state.lang]}</small>
+      `;
+      btn.onclick = () => { state.active = s.id; render(); };
+      list.appendChild(btn);
     });
+}
 
-    $("#langKO").addEventListener("click", () => {
-      LANG = "ko";
-      $("#langEN").setAttribute("aria-pressed","false");
-      $("#langKO").setAttribute("aria-pressed","true");
-      renderHeader(); renderTabs(); renderPanel(ACTIVE);
+function renderContent(){
+  const section = SECTIONS.find(s => s.id === state.active) || SECTIONS[0];
+  $("content").innerHTML = section.render(state.lang);
+
+  // After content render, if quiz tab, render quiz
+  if(state.active === "quiz"){
+    renderQuiz();
+    $("scoreQuiz").onclick = scoreQuiz;
+  }
+}
+
+function renderQuiz(){
+  const root = $("quizRoot");
+  root.innerHTML = "";
+
+  QUIZ.forEach((item, idx) => {
+    const q = item[state.lang];
+    const chosen = state.quizAnswers[item.id];
+    const div = document.createElement("div");
+    div.className = "quizQ";
+    div.innerHTML = `
+      <div class="q">${idx+1}. ${q.q}</div>
+      <div class="choices">
+        ${q.choices.map((c,i)=>`
+          <label class="choice">
+            <input type="radio" name="${item.id}" value="${i}" ${chosen===i ? "checked" : ""} />
+            <span>${c}</span>
+          </label>
+        `).join("")}
+      </div>
+    `;
+    div.querySelectorAll(`input[name="${item.id}"]`).forEach(r => {
+      r.addEventListener("change", (e) => {
+        state.quizAnswers[item.id] = Number(e.target.value);
+      });
     });
+    root.appendChild(div);
+  });
 
-    $("#resetBtn").addEventListener("click", resetAll);
+  $("quizResult").innerHTML = "";
+}
 
-    // =========================
-    // Init
-    // =========================
-    renderHeader();
-    renderTabs();
-    renderPanel(ACTIVE);
-  </script>
+function scoreQuiz(){
+  let correct = 0;
+  const parts = [];
+
+  QUIZ.forEach((item, idx) => {
+    const chosen = state.quizAnswers[item.id];
+    const data = item[state.lang];
+    const isCorrect = (chosen === item[state.lang].answer);
+    if(isCorrect) correct += 1;
+
+    const chosenText = (chosen === undefined) ? (state.lang==="ko" ? "미응답" : "No answer") : data.choices[chosen];
+    const answerText = data.choices[data.answer];
+
+    parts.push(`
+      <div class="result ${isCorrect ? "good" : "bad"}">
+        <b>${idx+1}. ${isCorrect ? (state.lang==="ko" ? "정답" : "Correct") : (state.lang==="ko" ? "오답" : "Incorrect")}</b><br/>
+        <span class="muted">${state.lang==="ko" ? "선택:" : "Your choice:"}</span> ${escapeHtml(chosenText)}<br/>
+        <span class="muted">${state.lang==="ko" ? "정답:" : "Answer:"}</span> ${escapeHtml(answerText)}<br/>
+        <span class="muted">${state.lang==="ko" ? "설명:" : "Explain:"}</span> ${escapeHtml(data.explain)}
+      </div>
+    `);
+  });
+
+  const total = QUIZ.length;
+  const header = `
+    <div class="callout good">
+      <b>${state.lang==="ko" ? "점수" : "Score"}:</b>
+      ${correct} / ${total}
+    </div>
+  `;
+  $("quizResult").innerHTML = header + parts.join("");
+}
+
+function escapeHtml(str){
+  return String(str).replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;");
+}
+
+function expandCollapseAll(open){
+  $("content").querySelectorAll("details").forEach(d => d.open = open);
+}
+
+function render(){
+  setUIStrings();
+  renderNav($("navSearch").value || "");
+  renderContent();
+}
+
+$("toggleLang").addEventListener("click", () => {
+  state.lang = (state.lang === "en") ? "ko" : "en";
+  render();
+});
+
+$("navSearch").addEventListener("input", (e) => {
+  renderNav(e.target.value || "");
+});
+
+$("resetQuiz").addEventListener("click", () => {
+  state.quizAnswers = {};
+  if(state.active === "quiz") renderQuiz();
+});
+
+$("expandAll").addEventListener("click", () => expandCollapseAll(true));
+$("collapseAll").addEventListener("click", () => expandCollapseAll(false));
+
+/* INIT */
+render();
+</script>
 </body>
 </html>
