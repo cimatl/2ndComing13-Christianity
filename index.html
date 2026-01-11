@@ -1,0 +1,1455 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>13 재림 | The Coming of the Lord — Interactive Lecture (EN/KO)</title>
+  <style>
+    :root{
+      --bg: #0b0f14;
+      --panel: #121923;
+      --panel2:#0f1520;
+      --text: #e9eef6;
+      --muted:#a9b7cc;
+      --border:#263246;
+      --accent:#7aa2ff;
+      --ok:#4fe3a6;
+      --warn:#ffd27a;
+      --bad:#ff7a7a;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 16px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    }
+    *{ box-sizing:border-box; }
+    body{
+      margin:0; font-family:var(--sans); background:linear-gradient(180deg, var(--bg), #070a0f 70%);
+      color:var(--text); line-height:1.55;
+    }
+    a{ color:var(--accent); text-decoration:none; }
+    a:hover{ text-decoration:underline; }
+    header{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(11,15,20,.75);
+      border-bottom:1px solid var(--border);
+    }
+    .topbar{
+      max-width:1200px; margin:0 auto; padding:14px 16px;
+      display:flex; gap:12px; align-items:center; justify-content:space-between;
+    }
+    .brand{
+      display:flex; flex-direction:column; gap:2px;
+    }
+    .brand h1{ margin:0; font-size:16px; letter-spacing:.2px; }
+    .brand .sub{ color:var(--muted); font-size:12px; }
+    .controls{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:flex-end; }
+    .btn, select{
+      border:1px solid var(--border); background:rgba(18,25,35,.7); color:var(--text);
+      padding:10px 12px; border-radius:12px; cursor:pointer; box-shadow:none;
+      font-size:13px;
+    }
+    .btn:hover{ border-color:#3b4a66; }
+    .btn:active{ transform: translateY(1px); }
+    .pill{
+      border:1px solid var(--border); padding:8px 10px; border-radius:999px;
+      color:var(--muted); font-size:12px; background:rgba(18,25,35,.5);
+    }
+
+    .wrap{
+      max-width:1200px; margin:0 auto; padding:18px 16px 60px;
+      display:grid; grid-template-columns: 280px 1fr; gap:16px;
+    }
+    nav{
+      position:sticky; top:76px; align-self:start;
+      border:1px solid var(--border); background:rgba(18,25,35,.55);
+      border-radius:var(--radius); box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+    .navhead{
+      padding:14px 14px 10px; border-bottom:1px solid var(--border);
+      background:rgba(15,21,32,.55);
+    }
+    .navhead .title{ font-size:13px; font-weight:700; margin:0 0 6px; }
+    .navhead .hint{ font-size:12px; color:var(--muted); margin:0; }
+    .navlist{ padding:10px; display:flex; flex-direction:column; gap:8px; }
+    .navlist a{
+      display:flex; gap:10px; align-items:center;
+      padding:10px 10px; border-radius:12px; border:1px solid transparent;
+      color:var(--text);
+    }
+    .navlist a:hover{ background:rgba(122,162,255,.08); border-color:rgba(122,162,255,.25); text-decoration:none;}
+    .dot{
+      width:9px; height:9px; border-radius:999px; background:rgba(122,162,255,.7);
+      box-shadow:0 0 0 4px rgba(122,162,255,.12);
+      flex:0 0 auto;
+    }
+
+    main{
+      display:flex; flex-direction:column; gap:14px;
+    }
+    .card{
+      border:1px solid var(--border);
+      background:rgba(18,25,35,.55);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+    .card .hd{
+      padding:14px 14px 10px;
+      display:flex; align-items:flex-start; justify-content:space-between; gap:12px;
+      border-bottom:1px solid var(--border);
+      background:rgba(15,21,32,.55);
+    }
+    .card .hd h2{ margin:0; font-size:15px; }
+    .card .bd{ padding:14px; }
+    .grid2{ display:grid; grid-template-columns: 1fr 1fr; gap:12px; }
+    .grid3{ display:grid; grid-template-columns: 1fr 1fr 1fr; gap:12px; }
+    .muted{ color:var(--muted); }
+    .kicker{
+      font-family:var(--mono); font-size:12px; color:#cfe0ff;
+      background:rgba(122,162,255,.10); border:1px solid rgba(122,162,255,.25);
+      padding:8px 10px; border-radius:12px;
+    }
+    .tagrow{ display:flex; gap:8px; flex-wrap:wrap; }
+    .tag{
+      font-size:12px; color:var(--muted);
+      border:1px solid var(--border); background:rgba(15,21,32,.55);
+      padding:6px 10px; border-radius:999px;
+    }
+    details{
+      border:1px solid var(--border); border-radius:14px; overflow:hidden;
+      background:rgba(15,21,32,.45);
+    }
+    details summary{
+      cursor:pointer; padding:12px 12px; list-style:none;
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
+      font-weight:700; font-size:13px;
+    }
+    details summary::-webkit-details-marker{ display:none; }
+    details .inside{ padding:0 12px 12px; color:var(--text); }
+    .callout{
+      border:1px solid rgba(79,227,166,.25);
+      background:rgba(79,227,166,.08);
+      border-radius:14px;
+      padding:12px;
+    }
+    .warn{
+      border:1px solid rgba(255,210,122,.25);
+      background:rgba(255,210,122,.08);
+      border-radius:14px;
+      padding:12px;
+    }
+    .danger{
+      border:1px solid rgba(255,122,122,.25);
+      background:rgba(255,122,122,.08);
+      border-radius:14px;
+      padding:12px;
+    }
+    .mini{
+      font-size:12px;
+      color:var(--muted);
+    }
+    .cols{
+      display:grid; grid-template-columns: 1fr 1fr; gap:12px;
+    }
+    .q{
+      border:1px solid var(--border);
+      background:rgba(11,15,20,.35);
+      border-radius:14px;
+      padding:12px;
+    }
+    .q h3{ margin:0 0 8px; font-size:13px; }
+    .opt{ display:flex; gap:10px; padding:8px 10px; border:1px solid var(--border);
+      border-radius:12px; margin-top:8px; cursor:pointer; background:rgba(18,25,35,.35);}
+    .opt:hover{ border-color:#3b4a66; }
+    .opt input{ margin-top:3px; }
+    .feedback{ margin-top:10px; font-size:12px; }
+    .ok{ color:var(--ok); }
+    .bad{ color:var(--bad); }
+    .row{
+      display:flex; gap:10px; flex-wrap:wrap; align-items:center;
+    }
+    textarea, input[type="text"]{
+      width:100%; padding:10px 10px; border-radius:12px; border:1px solid var(--border);
+      background:rgba(11,15,20,.35); color:var(--text); font-family:var(--sans);
+      outline:none;
+    }
+    textarea{ min-height:96px; resize:vertical; }
+    .split{
+      display:grid; grid-template-columns: 1fr 1fr; gap:12px;
+    }
+    .hr{ height:1px; background:var(--border); margin:12px 0; }
+    .smallbtn{
+      padding:8px 10px; border-radius:12px;
+      border:1px solid var(--border); background:rgba(18,25,35,.35); color:var(--text);
+      cursor:pointer; font-size:12px;
+    }
+    .smallbtn:hover{ border-color:#3b4a66; }
+    .mono{ font-family:var(--mono); }
+    .diagram{
+      border:1px solid var(--border);
+      border-radius:14px;
+      background:rgba(11,15,20,.35);
+      padding:12px;
+      overflow:auto;
+    }
+    .lang-en{ display:block; }
+    .lang-ko{ display:none; }
+
+    @media (max-width: 980px){
+      .wrap{ grid-template-columns: 1fr; }
+      nav{ position:relative; top:0; }
+      .grid2,.grid3,.cols,.split{ grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="topbar">
+    <div class="brand">
+      <h1><span class="lang-en">13 — The Coming of the Lord (Second Coming)</span><span class="lang-ko">13 — 재림(주님의 오심)</span></h1>
+      <div class="sub">
+        <span class="lang-en">Interactive lecture app · Pre-exegetical contexts (Historical/Literary/Cultural) · Formation lab (EN/KO)</span>
+        <span class="lang-ko">인터랙티브 강의 앱 · 사전주해 맥락(역사/문학/문화) · 형성 실험실 (EN/KO)</span>
+      </div>
+    </div>
+    <div class="controls">
+      <span class="pill"><span class="lang-en">Mode: System 2 (code)</span><span class="lang-ko">모드: System 2 (코드)</span></span>
+      <select id="langSel" aria-label="Language">
+        <option value="en">English</option>
+        <option value="ko">한국어</option>
+      </select>
+      <button class="btn" id="btnPrint"><span class="lang-en">Print / PDF</span><span class="lang-ko">인쇄 / PDF</span></button>
+      <button class="btn" id="btnReset"><span class="lang-en">Reset saved data</span><span class="lang-ko">저장 데이터 초기화</span></button>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <nav>
+    <div class="navhead">
+      <p class="title"><span class="lang-en">Navigate</span><span class="lang-ko">목차</span></p>
+      <p class="hint"><span class="lang-en">Jump to a section. Your inputs autosave.</span><span class="lang-ko">섹션으로 이동하세요. 입력은 자동 저장됩니다.</span></p>
+    </div>
+    <div class="navlist">
+      <a href="#start"><span class="dot"></span><span class="lang-en">Start here</span><span class="lang-ko">시작</span></a>
+      <a href="#pre"><span class="dot"></span><span class="lang-en">Pre-exegetical contexts</span><span class="lang-ko">사전주해 맥락</span></a>
+      <a href="#texts"><span class="dot"></span><span class="lang-en">Key texts (NRSV/ESV)</span><span class="lang-ko">핵심 본문 (NRSV/ESV)</span></a>
+      <a href="#lab"><span class="dot"></span><span class="lang-en">Formation lab (Nodes 1–5)</span><span class="lang-ko">형성 실험실 (노드 1–5)</span></a>
+      <a href="#shield"><span class="dot"></span><span class="lang-en">Justice Shield & care</span><span class="lang-ko">정의 방패 & 돌봄</span></a>
+      <a href="#quiz"><span class="dot"></span><span class="lang-en">Quiz</span><span class="lang-ko">퀴즈</span></a>
+      <a href="#export"><span class="dot"></span><span class="lang-en">Export (Anchor + Reflection)</span><span class="lang-ko">내보내기 (앵커 + 성찰)</span></a>
+      <a href="#resources"><span class="dot"></span><span class="lang-en">Resources</span><span class="lang-ko">참고문헌</span></a>
+    </div>
+  </nav>
+
+  <main>
+    <!-- START -->
+    <section class="card" id="start">
+      <div class="hd">
+        <h2><span class="lang-en">Executive frame</span><span class="lang-ko">강의 프레임</span></h2>
+        <div class="tagrow">
+          <span class="tag">2×2</span><span class="tag">7×3</span><span class="tag">MDHC</span><span class="tag">Justice-Oriented</span>
+        </div>
+      </div>
+      <div class="bd">
+        <div class="grid2">
+          <div class="kicker">
+            <div class="lang-en">
+              <b>Goal:</b> move students from fear/cynicism into biblical hope-for-justice—active waiting, not escapism.
+              <br/><b>Method:</b> concrete-symbolic realism + liturgical imagination + ethical formation.
+            </div>
+            <div class="lang-ko">
+              <b>목표:</b> 두려움/냉소에서 벗어나 성서적 “정의를 향한 소망”으로 이동—도피가 아닌 ‘능동적 기다림’.
+              <br/><b>방법:</b> ‘구체-상징적 현실주의’ + 예전적 상상력 + 윤리적 형성.
+            </div>
+          </div>
+          <div class="callout">
+            <div class="lang-en">
+              <b>How to use (in class):</b>
+              <ol>
+                <li>Run the “Coordinate Check” (2 minutes).</li>
+                <li>Teach contexts → read key texts (Heb 9; 1 Thess 4; Rom 8; Rev 21).</li>
+                <li>Do Nodes 2–3 (High Priest + Royal Welcome) with the diagrams.</li>
+                <li>Students build a “Storm Anchor,” then pray the Active Wait liturgy.</li>
+              </ol>
+            </div>
+            <div class="lang-ko">
+              <b>수업 사용법:</b>
+              <ol>
+                <li>“좌표 체크” 실행(2분).</li>
+                <li>맥락 강의 → 핵심 본문 읽기(히 9; 살전 4; 롬 8; 계 21).</li>
+                <li>노드 2–3(대제사장 + 왕의 영접) 다이어그램/드릴.</li>
+                <li>학생 “폭풍 앵커” 작성 → “능동적 기다림” 예전으로 마무리.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+
+        <div class="hr"></div>
+
+        <div class="grid3">
+          <div class="q">
+            <h3><span class="lang-en">2×2 coordinate (class posture)</span><span class="lang-ko">2×2 좌표(수업 태도)</span></h3>
+            <p class="mini">
+              <span class="lang-en">Etic-person (today) → learning Emic-space (NT symbolic world) → returning as active waiter.</span>
+              <span class="lang-ko">오늘의 독자(Etic) → 신약 상징 세계(Emic) 학습 → ‘능동적 기다림’으로 귀환.</span>
+            </p>
+          </div>
+          <div class="q">
+            <h3><span class="lang-en">7×3 route (worlds)</span><span class="lang-ko">7×3 경로(세계)</span></h3>
+            <p class="mini">
+              <span class="lang-en">Reader-World fear/dismissal → Symbolic-World (Temple/royal imagery) → Reader-World practice.</span>
+              <span class="lang-ko">독자 세계의 공포/회피 → 상징 세계(성전/왕권 이미지) → 독자 세계의 실천.</span>
+            </p>
+          </div>
+          <div class="q">
+            <h3><span class="lang-en">MDHC (time/space/motion)</span><span class="lang-ko">MDHC(시간/공간/운동)</span></h3>
+            <p class="mini">
+              <span class="lang-en">From anxious timelines → kairotic urgency; from closed-universe → toward-justice/toward-God motion.</span>
+              <span class="lang-ko">불안한 타임라인 → 카이로스적 긴급성; 닫힌 우주 → 정의/하나님을 향한 운동.</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRE-EXEGETICAL CONTEXTS -->
+    <section class="card" id="pre">
+      <div class="hd">
+        <h2><span class="lang-en">Comprehensive pre-exegetical contexts</span><span class="lang-ko">포괄적 사전주해 맥락</span></h2>
+        <div class="tagrow">
+          <span class="tag"><span class="lang-en">Historical</span><span class="lang-ko">역사</span></span>
+          <span class="tag"><span class="lang-en">Literary</span><span class="lang-ko">문학</span></span>
+          <span class="tag"><span class="lang-en">Cultural</span><span class="lang-ko">문화</span></span>
+        </div>
+      </div>
+      <div class="bd">
+        <div class="warn">
+          <div class="lang-en">
+            <b>Pre-exegesis rule of thumb:</b> before you ask “What does the verse mean?”, ask:
+            (1) “What world does this text assume?” (Temple/Empire/Persecution),
+            (2) “What genre-shapes its language?” (apocalyptic/paraenesis),
+            (3) “What social script is it invoking?” (priestly ritual / royal welcome).
+          </div>
+          <div class="lang-ko">
+            <b>사전주해 기본 원칙:</b> “이 구절의 의미”를 묻기 전에 먼저:
+            (1) “이 본문이 전제하는 세계는?”(성전/제국/박해),
+            (2) “장르가 언어를 어떻게 빚는가?”(묵시/권면),
+            (3) “어떤 사회적 스크립트를 호출하는가?”(제의/왕의 영접).
+          </div>
+        </div>
+
+        <div class="hr"></div>
+
+        <div class="grid2">
+          <details open>
+            <summary><span class="lang-en">A. Big-picture: Second Coming language in the NT</span><span class="lang-ko">A. 큰 그림: 신약의 재림 언어</span><span class="muted">▾</span></summary>
+            <div class="inside">
+              <div class="grid3">
+                <div class="q">
+                  <h3><span class="lang-en">Historical</span><span class="lang-ko">역사</span></h3>
+                  <ul class="mini lang-en">
+                    <li>Second Temple Jewish hopes: divine judgment + restoration (Daniel/Isaiah patterns).</li>
+                    <li>Early churches face persecution, death, and “delay” questions (esp. Thessalonica; 2 Peter).</li>
+                    <li>Roman imperial claims (“good news,” “lord,” “peace”) create counter-imaginaries.</li>
+                  </ul>
+                  <ul class="mini lang-ko">
+                    <li>제2성전기 유대 소망: 심판 + 회복(다니엘/이사야 패턴).</li>
+                    <li>초기 교회는 박해·죽음·지연 문제에 직면(살전; 벧후).</li>
+                    <li>로마 제국의 “복음/주/평화” 담론이 대항-상상력을 요구.</li>
+                  </ul>
+                </div>
+                <div class="q">
+                  <h3><span class="lang-en">Literary</span><span class="lang-ko">문학</span></h3>
+                  <ul class="mini lang-en">
+                    <li>Apocalyptic = symbolic vision + moral urgency, not a newspaper forecast.</li>
+                    <li>Paraenesis (exhortation) is the point: “How then shall we live?”</li>
+                    <li>Key images (clouds/trumpet/cosmic upheaval) are genre-conventions for divine action.</li>
+                  </ul>
+                  <ul class="mini lang-ko">
+                    <li>묵시는 “상징적 환상 + 윤리적 긴급성”—신문 예보가 아님.</li>
+                    <li>권면(paraenesis)이 핵심: “그러면 어떻게 살 것인가?”</li>
+                    <li>구름/나팔/우주 격변은 ‘하나님의 개입’을 말하는 장르 관습.</li>
+                  </ul>
+                </div>
+                <div class="q">
+                  <h3><span class="lang-en">Cultural</span><span class="lang-ko">문화</span></h3>
+                  <ul class="mini lang-en">
+                    <li>Temple/ritual worlds: Day of Atonement scripts (Lev 16) inform Hebrews’ imagery.</li>
+                    <li>Greco-Roman civic protocol: <span class="mono">ἀπάντησις</span> (apantēsis) = going out to welcome a visiting ruler.</li>
+                    <li>Honor/shame + communal identity: eschatology forms a people, not just individuals.</li>
+                  </ul>
+                  <ul class="mini lang-ko">
+                    <li>성전/제의 세계: 속죄일(레 16) 패턴이 히브리서 이미지를 형성.</li>
+                    <li>헬라-로마 도시 의전: <span class="mono">ἀπάντησις</span>(아판테시스)=통치자를 맞으러 ‘밖으로’ 나감.</li>
+                    <li>명예/수치 + 공동체 정체성: 종말론은 ‘사람들을’ 형성.</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="hr"></div>
+
+              <div class="callout">
+                <div class="lang-en">
+                  <b>Concrete–Symbolic Realism (class hermeneutic):</b>
+                  The return is real and future; the language is symbolic; the priority is theological; the outcome is ethical formation.
+                </div>
+                <div class="lang-ko">
+                  <b>구체-상징적 현실주의(수업 해석학):</b>
+                  재림은 실제이며 미래적이고, 언어는 상징적이며, 우선순위는 신학적 의미이고, 결론은 윤리적 형성이다.
+                </div>
+              </div>
+            </div>
+          </details>
+
+          <details>
+            <summary><span class="lang-en">B. Text-by-text context packs (Historical/Literary/Cultural)</span><span class="lang-ko">B. 본문별 맥락 팩(역사/문학/문화)</span><span class="muted">▾</span></summary>
+            <div class="inside">
+
+              <!-- Hebrews 9 -->
+              <details open>
+                <summary><span class="lang-en">1) Hebrews 9:24–28 — High Priest re-emergence (ritual completion)</span><span class="lang-ko">1) 히브리서 9:24–28 — 대제사장 ‘재등장’(제의 완결)</span><span class="muted">▾</span></summary>
+                <div class="inside">
+                  <div class="grid3">
+                    <div class="q">
+                      <h3><span class="lang-en">Historical</span><span class="lang-ko">역사</span></h3>
+                      <ul class="mini lang-en">
+                        <li>Assumes deep familiarity with priesthood/Temple logic (Lev 16; Day of Atonement).</li>
+                        <li>Addresses endurance: why Christ’s work is sufficient amid pressure and “not seeing.”</li>
+                        <li>Frames the present as “intercession time”—Christ “appears” in God’s presence for us.</li>
+                      </ul>
+                      <ul class="mini lang-ko">
+                        <li>레 16 속죄일·대제사장 논리를 전제로 함.</li>
+                        <li>‘보이지 않는 시간’ 속에서 인내를 요청(압박·회고의 유혹).</li>
+                        <li>현재를 ‘중보의 시간’으로 설정: 그리스도는 “우리를 위하여” 하나님 앞에 나타나심.</li>
+                      </ul>
+                    </div>
+                    <div class="q">
+                      <h3><span class="lang-en">Literary</span><span class="lang-ko">문학</span></h3>
+                      <ul class="mini lang-en">
+                        <li>Argumentative homily: typology → assurance → exhortation.</li>
+                        <li>“Appear/appear/appear” logic: past sacrifice, present intercession, future appearing.</li>
+                        <li>Key claim: second appearing is “not to deal with sin” but to save awaiting people.</li>
+                      </ul>
+                      <ul class="mini lang-ko">
+                        <li>설교적 논증: 표상(typology) → 확신 → 권면.</li>
+                        <li>“나타남”의 삼중 구조: 과거 희생, 현재 중보, 미래 재등장.</li>
+                        <li>핵심: 두 번째 나타남은 ‘죄 처리’가 아니라 ‘기다리는 자의 구원/완성’.</li>
+                      </ul>
+                    </div>
+                    <div class="q">
+                      <h3><span class="lang-en">Cultural</span><span class="lang-ko">문화</span></h3>
+                      <ul class="mini lang-en">
+                        <li>Ritual psychology: community waits outside; re-emergence signals acceptance.</li>
+                        <li>Embodied liturgy: “until he comes” logic aligns with Eucharistic anticipation.</li>
+                        <li>Shifts eschatology from horror script → liturgical completion script.</li>
+                      </ul>
+                      <ul class="mini lang-ko">
+                        <li>제의 심리: 공동체는 밖에서 기다리고, ‘재등장’은 수납(acceptance)의 표지.</li>
+                        <li>예전적 몸-기억: “그가 오실 때까지”의 논리가 성찬적 기다림과 연결.</li>
+                        <li>공포 서사 → 예전적 완결 서사로 전환.</li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div class="hr"></div>
+
+                  <div class="q">
+                    <h3><span class="lang-en">Pre-exegesis questions (Heb 9)</span><span class="lang-ko">사전주해 질문(히 9)</span></h3>
+                    <div class="cols">
+                      <div class="mini lang-en">
+                        <b>Historical:</b> What did “Day of Atonement” mean socially and emotionally for worshipers?<br/>
+                        <b>Literary:</b> What is the “three-appearing” logic doing in the argument?<br/>
+                        <b>Cultural:</b> How does ritual waiting shape a community’s imagination of time?
+                      </div>
+                      <div class="mini lang-ko">
+                        <b>역사:</b> 속죄일은 예배자들에게 사회적·정서적으로 무엇이었나?<br/>
+                        <b>문학:</b> “세 번의 나타남” 논리가 논증에서 수행하는 기능은?<br/>
+                        <b>문화:</b> 제의적 기다림이 공동체의 시간 상상력을 어떻게 형성하나?
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </details>
+
+              <!-- 1 Thess 4 -->
+              <details>
+                <summary><span class="lang-en">2) 1 Thessalonians 4:13–18 — Royal Welcome (ἀπάντησις) not escape</span><span class="lang-ko">2) 데살로니가전서 4:13–18 — 도피가 아닌 ‘왕의 영접’(ἀπάντησις)</span><span class="muted">▾</span></summary>
+                <div class="inside">
+                  <div class="grid3">
+                    <div class="q">
+                      <h3><span class="lang-en">Historical</span><span class="lang-ko">역사</span></h3>
+                      <ul class="mini lang-en">
+                        <li>Community anxiety about deceased believers and the Lord’s coming.</li>
+                        <li>Paul’s aim: comfort + communal stability (“encourage one another”).</li>
+                        <li>Early Christian hope is bodily resurrection, not disembodied escape.</li>
+                      </ul>
+                      <ul class="mini lang-ko">
+                        <li>죽은 성도들과 주의 오심에 대한 불안.</li>
+                        <li>바울의 목적: 위로 + 공동체 안정(“서로 위로하라”).</li>
+                        <li>초기 기독교 소망은 ‘몸의 부활’이며 비물질적 탈출이 아님.</li>
+                      </ul>
+                    </div>
+                    <div class="q">
+                      <h3><span class="lang-en">Literary</span><span class="lang-ko">문학</span></h3>
+                      <ul class="mini lang-en">
+                        <li>Pastoral-apocalyptic imagery serving consolation, not timetable mapping.</li>
+                        <li>Soundscape: command/archangel/trumpet = divine royal-public announcement.</li>
+                        <li>Climax: “so we will always be with the Lord” (relational telos).</li>
+                      </ul>
+                      <ul class="mini lang-ko">
+                        <li>목회적 묵시 이미지: 시간표가 아니라 ‘위로’를 위해 사용.</li>
+                        <li>소리의 풍경: 명령/천사장/나팔 = 왕의 공적 선포.</li>
+                        <li>결말: “항상 주와 함께” (관계적 목적).</li>
+                      </ul>
+                    </div>
+                    <div class="q">
+                      <h3><span class="lang-en">Cultural</span><span class="lang-ko">문화</span></h3>
+                      <ul class="mini lang-en">
+                        <li><span class="mono">ἀπάντησις</span> (apantēsis): citizens go out to meet a visiting ruler and escort him back.</li>
+                        <li>“Air/clouds” = liminal meeting space; emphasis is welcome + procession.</li>
+                        <li>Disrupts “Left Behind” evacuation script; supports new-creation hope.</li>
+                      </ul>
+                      <ul class="mini lang-ko">
+                        <li><span class="mono">ἀπάντησις</span>(아판테시스): 시민들이 밖으로 나가 통치자를 맞고 ‘도시로’ 모셔옴.</li>
+                        <li>“공중/구름” = 경계(림inal) 공간; 핵심은 영접 + 행렬.</li>
+                        <li>‘대탈출’ 서사를 해체하고 새 창조 소망을 지지.</li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div class="hr"></div>
+
+                  <div class="q">
+                    <h3><span class="lang-en">Pre-exegesis questions (1 Thess 4)</span><span class="lang-ko">사전주해 질문(살전 4)</span></h3>
+                    <div class="cols">
+                      <div class="mini lang-en">
+                        <b>Historical:</b> What fear is Paul calming (death, delay, abandonment)?<br/>
+                        <b>Literary:</b> Which phrases function as comfort rather than prediction?<br/>
+                        <b>Cultural:</b> What would a first-century hearer picture when hearing <span class="mono">ἀπάντησις</span>?
+                      </div>
+                      <div class="mini lang-ko">
+                        <b>역사:</b> 바울이 진정시키는 두려움은 무엇인가(죽음/지연/버려짐)?<br/>
+                        <b>문학:</b> 어떤 표현이 예언도표가 아니라 ‘위로’로 기능하는가?<br/>
+                        <b>문화:</b> 1세기 청중은 <span class="mono">ἀπάντησις</span>를 듣고 무엇을 떠올렸나?
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </details>
+
+              <!-- Rom 8 & Rev 21 -->
+              <details>
+                <summary><span class="lang-en">3) Romans 8:19–23 & Revelation 21:1–5 — Creation’s redemption</span><span class="lang-ko">3) 로마서 8:19–23 & 계시록 21:1–5 — 창조의 구속</span><span class="muted">▾</span></summary>
+                <div class="inside">
+                  <div class="grid3">
+                    <div class="q">
+                      <h3><span class="lang-en">Historical</span><span class="lang-ko">역사</span></h3>
+                      <ul class="mini lang-en">
+                        <li>Communities endure suffering; hope must be durable, not naïve progress.</li>
+                        <li>“Groaning” language fits oppressed peoples and fragile creation alike.</li>
+                        <li>Revelation’s horizon: God-with-us dwelling, not soul-escape.</li>
+                      </ul>
+                      <ul class="mini lang-ko">
+                        <li>고난 속 공동체에게 ‘지속 가능한 소망’이 필요.</li>
+                        <li>“탄식”은 억눌린 이들과 상처 입은 창조 모두에 걸맞은 언어.</li>
+                        <li>계시록의 지평: ‘하나님이 우리와 함께 거하심’—영혼 탈출이 아님.</li>
+                      </ul>
+                    </div>
+                    <div class="q">
+                      <h3><span class="lang-en">Literary</span><span class="lang-ko">문학</span></h3>
+                      <ul class="mini lang-en">
+                        <li>Rom 8 uses childbirth imagery: pain as labor toward new life.</li>
+                        <li>Rev 21 is a vision scene: symbols of healing, wiping tears, making new.</li>
+                        <li>Ethical pull: present action aligns with promised future.</li>
+                      </ul>
+                      <ul class="mini lang-ko">
+                        <li>롬 8은 해산 비유: 고통은 죽음이 아니라 탄생을 향한 노동.</li>
+                        <li>계 21은 환상 장면: 눈물 닦음, 새롭게 함, 치유의 상징.</li>
+                        <li>윤리적 견인: 약속된 미래에 현재의 행동을 정렬.</li>
+                      </ul>
+                    </div>
+                    <div class="q">
+                      <h3><span class="lang-en">Cultural</span><span class="lang-ko">문화</span></h3>
+                      <ul class="mini lang-en">
+                        <li>Anti-Gnostic posture: matter matters; resurrection is embodied.</li>
+                        <li>Justice horizon: victims vindicated; oppressors unmasked and judged.</li>
+                        <li>Creation care becomes eschatological practice, not optional activism.</li>
+                      </ul>
+                      <ul class="mini lang-ko">
+                        <li>반(反)영지주의: 물질은 중요하며, 부활은 ‘몸’의 사건.</li>
+                        <li>정의의 지평: 피해자 옹호/회복, 억압자의 폭로/심판.</li>
+                        <li>창조 돌봄은 선택 활동이 아니라 종말론적 실천.</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </details>
+
+              <!-- 2 Pet 3 -->
+              <details>
+                <summary><span class="lang-en">4) 2 Peter 3:1–13 — “Delay,” scoffers, and the ethics of holiness</span><span class="lang-ko">4) 베드로후서 3:1–13 — ‘지연’, 조롱, 거룩의 윤리</span><span class="muted">▾</span></summary>
+                <div class="inside">
+                  <div class="grid3">
+                    <div class="q">
+                      <h3><span class="lang-en">Historical</span><span class="lang-ko">역사</span></h3>
+                      <ul class="mini lang-en">
+                        <li>Mockery: “Where is the promise?” creates cynicism and moral drift.</li>
+                        <li>Text answers: God’s patience is mercy, not absence.</li>
+                        <li>Community is called to perseverance under interpretive pressure.</li>
+                      </ul>
+                      <ul class="mini lang-ko">
+                        <li>“약속이 어디 있느냐” 조롱이 냉소와 도덕적 이완을 초래.</li>
+                        <li>응답: 하나님의 오래 참으심은 ‘부재’가 아니라 ‘자비’.</li>
+                        <li>공동체는 해석 압력 속에서 견딤으로 부름받음.</li>
+                      </ul>
+                    </div>
+                    <div class="q">
+                      <h3><span class="lang-en">Literary</span><span class="lang-ko">문학</span></h3>
+                      <ul class="mini lang-en">
+                        <li>Rhetorical contrast: scoffers’ closed-universe vs. divine disruption.</li>
+                        <li>Cosmic imagery functions as moral intensifier.</li>
+                        <li>Telos: “What sort of people ought you to be?”</li>
+                      </ul>
+                      <ul class="mini lang-ko">
+                        <li>수사적 대조: 닫힌 우주(조롱자) vs 하나님의 개입(본문).</li>
+                        <li>우주 이미지가 도덕적 긴장도를 높임.</li>
+                        <li>목표: “어떠한 사람이 되어야 하겠느냐?”</li>
+                      </ul>
+                    </div>
+                    <div class="q">
+                      <h3><span class="lang-en">Cultural</span><span class="lang-ko">문화</span></h3>
+                      <ul class="mini lang-en">
+                        <li>“Burned up” debates: read within apocalyptic-symbolic conventions, not escapist proof-texting.</li>
+                        <li>Holiness is not withdrawal from suffering neighbors; it can be separated-solidarity.</li>
+                        <li>Ethics must be tested for who it harms (“who gets left behind?”).</li>
+                      </ul>
+                      <ul class="mini lang-ko">
+                        <li>“불탐” 논쟁: 묵시 상징 관습 안에서 읽고, 도피의 근거로 오용하지 말 것.</li>
+                        <li>거룩은 이웃 고통에서 도망이 아니라 ‘분리된 연대’가 될 수 있음.</li>
+                        <li>윤리는 “누가 버려지는가?”라는 질문으로 검증되어야 함.</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </details>
+
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- KEY TEXTS -->
+    <section class="card" id="texts">
+      <div class="hd">
+        <h2><span class="lang-en">Key texts (NRSV focus + ESV comparison)</span><span class="lang-ko">핵심 본문 (NRSV 중심 + ESV 비교)</span></h2>
+        <div class="tagrow"><span class="tag">Heb 9:24–28</span><span class="tag">1 Thess 4:13–18</span><span class="tag">Rom 8:19–23</span><span class="tag">Rev 21:1–5</span></div>
+      </div>
+      <div class="bd">
+        <details open>
+          <summary><span class="lang-en">Hebrews 9:24–28 (focus lines)</span><span class="lang-ko">히브리서 9:24–28 (핵심)</span><span class="muted">▾</span></summary>
+          <div class="inside">
+            <div class="split">
+              <div class="q">
+                <h3>NRSV</h3>
+                <p class="mini">
+                  <span class="mono">9:28</span> “...he will appear a second time, not to deal with sin, but to save those who are eagerly waiting for him.”
+                </p>
+              </div>
+              <div class="q">
+                <h3>ESV</h3>
+                <p class="mini">
+                  <span class="mono">9:28</span> “...he will appear a second time, not to deal with sin but to save those who are eagerly waiting for him.”
+                </p>
+              </div>
+            </div>
+            <p class="mini lang-en"><b>Note:</b> The force is pastoral-assuring: the “second appearing” completes priestly work and brings salvation to the waiting community.</p>
+            <p class="mini lang-ko"><b>노트:</b> 핵심은 목회적 확신이다. “두 번째 나타남”은 제의의 완결이며 ‘기다림’ 공동체에 구원을 가져온다.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary><span class="lang-en">1 Thessalonians 4:16–17 (focus lines)</span><span class="lang-ko">데살로니가전서 4:16–17 (핵심)</span><span class="muted">▾</span></summary>
+          <div class="inside">
+            <div class="split">
+              <div class="q">
+                <h3>NRSV</h3>
+                <p class="mini">
+                  “...we will be caught up... to meet the Lord in the air; and so we will be with the Lord forever.”
+                </p>
+              </div>
+              <div class="q">
+                <h3>ESV</h3>
+                <p class="mini">
+                  “...caught up... to meet the Lord in the air, and so we will always be with the Lord.”
+                </p>
+              </div>
+            </div>
+            <p class="mini lang-en"><b>Key term:</b> <span class="mono">ἀπάντησις</span> (apantēsis) — “meeting to welcome/escort,” not evacuating to abandon earth.</p>
+            <p class="mini lang-ko"><b>핵심 용어:</b> <span class="mono">ἀπάντησις</span>(아판테시스) — “맞이하여 호위함,” 땅을 버리고 탈출하는 도식이 아니다.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary><span class="lang-en">Romans 8:19–23 & Revelation 21:1–5 (focus)</span><span class="lang-ko">로마서 8:19–23 & 계시록 21:1–5 (핵심)</span><span class="muted">▾</span></summary>
+          <div class="inside">
+            <div class="grid2">
+              <div class="q">
+                <h3><span class="lang-en">Romans 8</span><span class="lang-ko">로마서 8</span></h3>
+                <p class="mini lang-en">Creation “groans” awaiting liberation — an eschatology that dignifies embodied suffering and ecological urgency.</p>
+                <p class="mini lang-ko">창조가 “탄식”하며 해방을 기다림 — 몸의 고통과 생태적 긴급성을 존엄하게 하는 종말론.</p>
+              </div>
+              <div class="q">
+                <h3><span class="lang-en">Revelation 21</span><span class="lang-ko">계시록 21</span></h3>
+                <p class="mini lang-en">The horizon is God dwelling with humanity; tears wiped; “all things new.”</p>
+                <p class="mini lang-ko">지평은 하나님이 사람과 함께 거하심; 눈물 닦으심; “만물을 새롭게.”</p>
+              </div>
+            </div>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- FORMATION LAB -->
+    <section class="card" id="lab">
+      <div class="hd">
+        <h2><span class="lang-en">Formation Lab (Nodes 1–5)</span><span class="lang-ko">형성 실험실 (노드 1–5)</span></h2>
+        <div class="tagrow"><span class="tag"><span class="lang-en">Embodied</span><span class="lang-ko">몸-기반</span></span><span class="tag"><span class="lang-en">Liturgical</span><span class="lang-ko">예전</span></span><span class="tag"><span class="lang-en">Justice</span><span class="lang-ko">정의</span></span></div>
+      </div>
+      <div class="bd">
+
+        <!-- Node 1 -->
+        <details open>
+          <summary><span class="lang-en">◎ Node 1 — Coordinate Check (your current eschatological posture)</span><span class="lang-ko">◎ 노드 1 — 좌표 체크(현재 종말론적 자세)</span><span class="muted">▾</span></summary>
+          <div class="inside">
+            <div class="grid2">
+              <div class="q">
+                <h3><span class="lang-en">Quick diagnostic</span><span class="lang-ko">빠른 진단</span></h3>
+                <p class="mini lang-en">Move the slider to match your “gut reaction” to the phrase: <b>“Jesus is coming.”</b></p>
+                <p class="mini lang-ko">슬라이더를 움직여 “예수님이 오신다”라는 말에 대한 <b>몸의 반응</b>을 표시하세요.</p>
+                <input id="posture" type="range" min="0" max="100" value="50" />
+                <div class="row" style="margin-top:10px;">
+                  <span class="pill" id="postureLabel">—</span>
+                  <button class="smallbtn" id="savePosture"><span class="lang-en">Save</span><span class="lang-ko">저장</span></button>
+                </div>
+                <div class="feedback mini" id="postureTips"></div>
+              </div>
+              <div class="callout">
+                <div class="lang-en">
+                  <b>Interpretation:</b><br/>
+                  0–35 = Escapist anxiety (fear script)<br/>
+                  36–65 = Confused/ambivalent (mixed scripts)<br/>
+                  66–100 = Hopeful anticipation (liturgical script)<br/><br/>
+                  <b>Goal:</b> not “be brave,” but let texts reshape imagination toward hope-for-justice.
+                </div>
+                <div class="lang-ko">
+                  <b>해석:</b><br/>
+                  0–35 = 도피적 불안(공포 서사)<br/>
+                  36–65 = 혼합/양가감정(섞인 서사)<br/>
+                  66–100 = 소망의 기대(예전적 서사)<br/><br/>
+                  <b>목표:</b> ‘용기 내기’가 아니라 본문이 상상력을 다시 빚도록 두기(정의를 향한 소망).
+                </div>
+              </div>
+            </div>
+          </div>
+        </details>
+
+        <!-- Node 2 -->
+        <details>
+          <summary><span class="lang-en">◎ Node 2 — High Priest Bridge (Heb 9): Horror → Liturgy</span><span class="lang-ko">◎ 노드 2 — 대제사장 다리(히 9): 공포 → 예전</span><span class="muted">▾</span></summary>
+          <div class="inside">
+            <div class="grid2">
+              <div class="q">
+                <h3><span class="lang-en">Three-movement ritual map</span><span class="lang-ko">3단계 제의 지도</span></h3>
+                <div class="mini lang-en">
+                  <ol>
+                    <li><b>Sacrifice (visible):</b> the altar — public, historical.</li>
+                    <li><b>Intercession (hidden):</b> behind the curtain — ongoing, unseen.</li>
+                    <li><b>Benediction (re-emergence):</b> accepted blood → blessing.</li>
+                  </ol>
+                </div>
+                <div class="mini lang-ko">
+                  <ol>
+                    <li><b>희생(가시적):</b> 제단 — 공개적·역사적 사건.</li>
+                    <li><b>중보(숨겨짐):</b> 휘장 뒤 — 지속·비가시적.</li>
+                    <li><b>축복(재등장):</b> 수납의 표지 → 공동체 축복.</li>
+                  </ol>
+                </div>
+                <div class="danger mini">
+                  <span class="lang-en"><b>Formation pivot:</b> “Second Coming is not invasion; it is completion + blessing.”</span>
+                  <span class="lang-ko"><b>형성 전환:</b> “재림은 침공이 아니라 ‘완결+축복’이다.”</span>
+                </div>
+              </div>
+
+              <div class="diagram" aria-label="Tabernacle diagram (simple)">
+                <div class="mini lang-en"><b>Simple space map:</b> Outside → Holy Place → Holy of Holies (curtain).</div>
+                <div class="mini lang-ko"><b>간단 공간 지도:</b> 바깥 → 성소 → 지성소(휘장).</div>
+                <pre class="mono" style="margin:10px 0 0;">
+[Outside / Altar]  --->  [Holy Place]  --->  [Holy of Holies]
+   (seen)                 (restricted)         (once/yr)
+   Cross (A)              Present (B)          Appearing (C)
+                </pre>
+                <p class="mini lang-en">Use this to reframe student fear: waiting is not abandonment; it is “intercession time.”</p>
+                <p class="mini lang-ko">학생의 공포를 재구성: 기다림은 버려짐이 아니라 ‘중보의 시간’이다.</p>
+              </div>
+            </div>
+          </div>
+        </details>
+
+        <!-- Node 3 -->
+        <details>
+          <summary><span class="lang-en">◎ Node 3 — Royal Welcome Drill (1 Thess 4): Escape vs Welcome</span><span class="lang-ko">◎ 노드 3 — 왕의 영접 드릴(살전 4): 탈출 vs 영접</span><span class="muted">▾</span></summary>
+          <div class="inside">
+            <div class="row" style="margin-bottom:10px;">
+              <button class="smallbtn" id="showEscape"><span class="lang-en">Show “Escape” diagram</span><span class="lang-ko">“탈출” 다이어그램</span></button>
+              <button class="smallbtn" id="showWelcome"><span class="lang-en">Show “Royal Welcome” diagram</span><span class="lang-ko">“왕의 영접” 다이어그램</span></button>
+              <span class="pill"><span class="lang-en">Key: </span><span class="lang-ko">핵심: </span><span class="mono">ἀπάντησις</span></span>
+            </div>
+            <div class="diagram" id="diagramBox"></div>
+            <div class="hr"></div>
+            <div class="callout">
+              <div class="lang-en">
+                <b>Embodied script (classroom):</b> Students “go out” (meet) then escort the King back “in.”
+                <br/>Ask: <b>Who gets left behind</b> in each model?
+              </div>
+              <div class="lang-ko">
+                <b>몸-기반 스크립트(교실):</b> 학생들이 “나가서 맞이”한 뒤 왕을 “안으로” 모셔옴.
+                <br/>질문: 각 모델에서 <b>누가 버려지는가</b>?
+              </div>
+            </div>
+          </div>
+        </details>
+
+        <!-- Node 4 -->
+        <details>
+          <summary><span class="lang-en">◎ Node 4 — Storm Anchor Builder (portable framework)</span><span class="lang-ko">◎ 노드 4 — 폭풍 앵커 작성기(휴대용 프레임)</span><span class="muted">▾</span></summary>
+          <div class="inside">
+            <div class="grid2">
+              <div class="q">
+                <h3><span class="lang-en">Fill the anchor (autosaved)</span><span class="lang-ko">앵커 채우기(자동 저장)</span></h3>
+                <label class="mini"><span class="lang-en">Fluke (Heb 9): “I’m certain he’s coming because…”</span><span class="lang-ko">플루크(히 9): “그가 오심을 확신하는 이유…”</span></label>
+                <textarea id="fluke"></textarea>
+                <div style="height:10px"></div>
+                <label class="mini"><span class="lang-en">Shank (1 Thess 4): “This event is for the world, so I…”</span><span class="lang-ko">샹크(살전 4): “이 사건은 세상을 위한 것이므로 나는…”</span></label>
+                <textarea id="shank"></textarea>
+                <div style="height:10px"></div>
+                <label class="mini"><span class="lang-en">Chain (Matt 25 / Rom 8): “While I wait, I will…”</span><span class="lang-ko">체인(마 25 / 롬 8): “기다리는 동안 나는…”</span></label>
+                <textarea id="chain"></textarea>
+
+                <div class="row" style="margin-top:10px;">
+                  <button class="smallbtn" id="saveAnchor"><span class="lang-en">Save</span><span class="lang-ko">저장</span></button>
+                  <button class="smallbtn" id="fillSample"><span class="lang-en">Insert sample</span><span class="lang-ko">예시 넣기</span></button>
+                </div>
+                <div class="feedback mini" id="anchorSaved"></div>
+              </div>
+
+              <div class="diagram">
+                <div class="mini lang-en"><b>Anchor sketch (copy to notebook):</b></div>
+                <div class="mini lang-ko"><b>앵커 스케치(노트에 복사):</b></div>
+                <pre class="mono" style="margin:10px 0 0;">
+        /\
+       /  \   (Fluke: grips)
+      /____\
+        ||
+        ||   (Shank: stability)
+        ||
+       _||_
+     _/____\_ (Chain: daily link)
+                </pre>
+                <p class="mini lang-en">If your anchor makes you abandon the vulnerable, it’s not biblical hope—it’s spiritualized fear.</p>
+                <p class="mini lang-ko">앵커가 약자를 버리게 만든다면, 그것은 성서적 소망이 아니라 ‘영성화된 공포’입니다.</p>
+              </div>
+            </div>
+          </div>
+        </details>
+
+        <!-- Node 5 -->
+        <details>
+          <summary><span class="lang-en">◎ Node 5 — Liturgy of Active Waiting (call & response)</span><span class="lang-ko">◎ 노드 5 — 능동적 기다림의 예전(교독)</span><span class="muted">▾</span></summary>
+          <div class="inside">
+            <div class="grid2">
+              <div class="q">
+                <h3><span class="lang-en">Practice gestures (3-posture)</span><span class="lang-ko">제스처 연습(3자세)</span></h3>
+                <ul class="mini lang-en">
+                  <li><b>Palms down:</b> work (plant/build/heal/serve).</li>
+                  <li><b>Palms up:</b> welcome (open hands, not fear/greed).</li>
+                  <li><b>Hands together:</b> dependence (only God completes).</li>
+                </ul>
+                <ul class="mini lang-ko">
+                  <li><b>손바닥 아래:</b> 일(심고/세우고/치유하고/섬김).</li>
+                  <li><b>손바닥 위:</b> 영접(두려움·탐욕이 아닌 열린 손).</li>
+                  <li><b>두 손 모음:</b> 의존(완성은 하나님이 하심).</li>
+                </ul>
+              </div>
+              <div class="callout">
+                <div class="mini lang-en">
+                  <b>Leader:</b> The High Priest is behind the curtain. Is he silent?<br/>
+                  <b>People:</b> No. He is speaking our names. The work is finishing.<br/><br/>
+                  <b>Leader:</b> The King is approaching the city. Do we flee?<br/>
+                  <b>People:</b> No. We do not abandon the world he loves.<br/><br/>
+                  <b>Leader:</b> Are we afraid?<br/>
+                  <b>People:</b> No. We have this hope as an anchor for the soul, firm and secure. (Heb 6:19)
+                </div>
+                <div class="mini lang-ko">
+                  <b>인도자:</b> 대제사장이 휘장 뒤에 계신다. 침묵하시는가?<br/>
+                  <b>회중:</b> 아니다. 우리 이름을 부르신다. 일이 마무리되고 있다.<br/><br/>
+                  <b>인도자:</b> 왕이 성으로 다가오신다. 우리는 도망하는가?<br/>
+                  <b>회중:</b> 아니다. 그가 사랑하시는 세상을 버리지 않는다.<br/><br/>
+                  <b>인도자:</b> 우리는 두려워하는가?<br/>
+                  <b>회중:</b> 아니다. 우리에겐 영혼의 닻, 견고하고 확실한 소망이 있다. (히 6:19)
+                </div>
+              </div>
+            </div>
+          </div>
+        </details>
+
+      </div>
+    </section>
+
+    <!-- JUSTICE SHIELD -->
+    <section class="card" id="shield">
+      <div class="hd">
+        <h2><span class="lang-en">Justice Shield & care (trauma-informed learning)</span><span class="lang-ko">정의 방패 & 돌봄(트라우마-인식 학습)</span></h2>
+        <div class="tagrow"><span class="tag"><span class="lang-en">Non-harm</span><span class="lang-ko">비-해</span></span><span class="tag"><span class="lang-en">Care</span><span class="lang-ko">돌봄</span></span><span class="tag"><span class="lang-en">Anti-radicalization</span><span class="lang-ko">급진화 예방</span></span></div>
+      </div>
+      <div class="bd">
+        <div class="grid2">
+          <div class="danger">
+            <div class="lang-en">
+              <b>Shield 1 — Trauma care:</b> Fear-based preaching and “Left Behind” media have harmed many.
+              Provide opt-out, alternative reflection, and explicit permission to pause/step out.
+            </div>
+            <div class="lang-ko">
+              <b>방패 1 — 트라우마 돌봄:</b> 공포 설교·대중 종말론은 많은 이들에게 상처를 남겼습니다.
+              대체 과제/중단 권한/안전 장치를 명확히 제공하세요.
+            </div>
+          </div>
+          <div class="warn">
+            <div class="lang-en">
+              <b>Shield 2 — Protect marginalized students:</b> never force students to “defend themselves.”
+              Name harmful eschatologies as sin; teach eschatology as hope that does not abandon.
+            </div>
+            <div class="lang-ko">
+              <b>방패 2 — 주변화된 학생 보호:</b> 학생에게 “자기 정당화”를 강요하지 마세요.
+              해로운 종말론을 죄로 명명하고, 버리지 않는 소망으로 가르치세요.
+            </div>
+          </div>
+        </div>
+
+        <div class="hr"></div>
+
+        <div class="grid2">
+          <div class="q">
+            <h3><span class="lang-en">Red flags (instructor watch)</span><span class="lang-ko">주의 신호(교수자 관찰)</span></h3>
+            <ul class="mini lang-en">
+              <li>Date-setting obsession; conspiracy escalation; violent fantasies.</li>
+              <li>Using eschatology to justify abandoning the poor, refugees, or creation care.</li>
+              <li>Shame manipulation (“real Christians won’t question this”).</li>
+            </ul>
+            <ul class="mini lang-ko">
+              <li>날짜 집착, 음모론 고조, 폭력적 판타지.</li>
+              <li>가난한 이·난민·창조 돌봄을 버리는 정당화.</li>
+              <li>수치 조작(“진짜 신자는 질문하지 않는다”).</li>
+            </ul>
+          </div>
+          <div class="q">
+            <h3><span class="lang-en">Climate-anxiety care</span><span class="lang-ko">기후 불안 돌봄</span></h3>
+            <ul class="mini lang-en">
+              <li>Validate grief without platitudes.</li>
+              <li>Frame creation care as eschatological practice (Rom 8 / new creation).</li>
+              <li>Encourage “apple-tree” actions: small, persistent, communal.</li>
+            </ul>
+            <ul class="mini lang-ko">
+              <li>상실과 분노를 가볍게 덮지 말고 인정하기.</li>
+              <li>창조 돌봄을 종말론적 실천으로 프레이밍(롬 8 / 새 창조).</li>
+              <li>‘사과나무’ 행동: 작지만 지속적·공동체적으로.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- QUIZ -->
+    <section class="card" id="quiz">
+      <div class="hd">
+        <h2><span class="lang-en">Quiz (self-check)</span><span class="lang-ko">퀴즈(자가 점검)</span></h2>
+        <div class="tagrow"><span class="tag">MC</span><span class="tag"><span class="lang-en">Immediate feedback</span><span class="lang-ko">즉시 피드백</span></span></div>
+      </div>
+      <div class="bd">
+        <div class="mini lang-en">Answer, then click <b>Check</b>. (Your score is saved.)</div>
+        <div class="mini lang-ko">선택 후 <b>채점</b>을 누르세요. (점수 자동 저장)</div>
+
+        <div id="quizBox"></div>
+
+        <div class="row" style="margin-top:12px;">
+          <button class="btn" id="checkQuiz"><span class="lang-en">Check</span><span class="lang-ko">채점</span></button>
+          <button class="btn" id="resetQuiz"><span class="lang-en">Reset quiz</span><span class="lang-ko">퀴즈 초기화</span></button>
+          <span class="pill" id="quizScore">—</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPORT -->
+    <section class="card" id="export">
+      <div class="hd">
+        <h2><span class="lang-en">Export (Anchor + Reflection)</span><span class="lang-ko">내보내기(앵커 + 성찰)</span></h2>
+        <div class="tagrow"><span class="tag"><span class="lang-en">Notion-ready</span><span class="lang-ko">Notion 복붙</span></span><span class="tag">TXT</span></div>
+      </div>
+      <div class="bd">
+        <div class="grid2">
+          <div class="q">
+            <h3><span class="lang-en">Reflection prompts</span><span class="lang-ko">성찰 질문</span></h3>
+            <div class="mini lang-en">
+              1) Who are the “left behind” in your community (homeless, undocumented, disabled, imprisoned)?<br/>
+              2) What “apple tree” action will you begin this week?<br/>
+              3) How will you practice “palms down / palms up / hands together” daily?
+            </div>
+            <div class="mini lang-ko">
+              1) 당신 공동체에서 “버려진 이들”은 누구인가(노숙, 미등록, 장애, 수감 등)?<br/>
+              2) 이번 주 시작할 “사과나무” 행동은 무엇인가?<br/>
+              3) “손 아래/손 위/두 손 모음”을 일상에서 어떻게 실천할 것인가?
+            </div>
+            <div style="height:10px"></div>
+            <textarea id="reflection"></textarea>
+            <div class="row" style="margin-top:10px;">
+              <button class="smallbtn" id="saveReflection"><span class="lang-en">Save</span><span class="lang-ko">저장</span></button>
+              <span class="pill" id="reflectionSaved">—</span>
+            </div>
+          </div>
+
+          <div class="q">
+            <h3><span class="lang-en">Generate export text</span><span class="lang-ko">내보내기 텍스트 생성</span></h3>
+            <p class="mini lang-en">Creates a Notion-ready block (EN/KO). Copy and paste.</p>
+            <p class="mini lang-ko">Notion용 블록(EN/KO)을 생성합니다. 복사해서 붙여넣기.</p>
+            <div class="row">
+              <button class="btn" id="makeExport"><span class="lang-en">Generate</span><span class="lang-ko">생성</span></button>
+              <button class="btn" id="copyExport"><span class="lang-en">Copy</span><span class="lang-ko">복사</span></button>
+            </div>
+            <div style="height:10px"></div>
+            <textarea id="exportBox" class="mono"></textarea>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESOURCES -->
+    <section class="card" id="resources">
+      <div class="hd">
+        <h2><span class="lang-en">Resources (starter list)</span><span class="lang-ko">참고문헌(기초 목록)</span></h2>
+        <div class="tagrow"><span class="tag">Sizemore</span><span class="tag">Migliore</span><span class="tag">Wright</span><span class="tag">Rossing</span></div>
+      </div>
+      <div class="bd">
+        <div class="grid2">
+          <div class="q">
+            <h3><span class="lang-en">Primary voices (from your lecture)</span><span class="lang-ko">강의 기반 주요 참고</span></h3>
+            <ul class="mini">
+              <li class="lang-en">Denver Sizemore, <i>13 Lessons on the Last Things</i>.</li>
+              <li class="lang-en">Daniel L. Migliore, <i>Faith Seeking Understanding</i> (3rd ed.), ch. 15.</li>
+              <li class="lang-ko">Denver Sizemore, <i>13 Lessons on the Last Things</i>.</li>
+              <li class="lang-ko">Daniel L. Migliore, <i>Faith Seeking Understanding</i>(3판), 15장.</li>
+            </ul>
+          </div>
+          <div class="q">
+            <h3><span class="lang-en">Further study (balanced)</span><span class="lang-ko">추가 읽기(균형)</span></h3>
+            <ul class="mini">
+              <li class="lang-en">N. T. Wright, <i>Surprised by Hope</i>.</li>
+              <li class="lang-en">Anthony Hoekema, <i>The Bible and the Future</i>.</li>
+              <li class="lang-en">Barbara R. Rossing, <i>The Rapture Exposed</i>.</li>
+              <li class="lang-en">Alexander Schmemann, <i>For the Life of the World</i>.</li>
+              <li class="lang-ko">N. T. Wright, <i>Surprised by Hope</i>.</li>
+              <li class="lang-ko">Anthony Hoekema, <i>The Bible and the Future</i>.</li>
+              <li class="lang-ko">Barbara R. Rossing, <i>The Rapture Exposed</i>.</li>
+              <li class="lang-ko">Alexander Schmemann, <i>For the Life of the World</i>.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="hr"></div>
+        <p class="mini lang-en"><b>Instructor tip:</b> Assign one “difficult text” (Matt 24; Rev 19; 2 Pet 3) and require a 7×3 grid writeup (Emic → Transitional → Etic) that passes the “Who gets harmed?” test.</p>
+        <p class="mini lang-ko"><b>교수자 팁:</b> “어려운 본문”(마 24; 계 19; 벧후 3) 하나를 과제로 주고 7×3(Emic→Transitional→Etic) 그리드 보고서를 제출하게 하되, “누가 해를 입는가?” 검증을 통과하도록 요구하세요.</p>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script>
+  // ---------- Language toggle ----------
+  const langSel = document.getElementById('langSel');
+  function setLang(lang){
+    document.documentElement.lang = lang;
+    const en = document.querySelectorAll('.lang-en');
+    const ko = document.querySelectorAll('.lang-ko');
+    en.forEach(el => el.style.display = (lang === 'en' ? '' : 'none'));
+    ko.forEach(el => el.style.display = (lang === 'ko' ? '' : 'none'));
+    localStorage.setItem('comingLord.lang', lang);
+  }
+  langSel.addEventListener('change', e => setLang(e.target.value));
+  setLang(localStorage.getItem('comingLord.lang') || 'en');
+  langSel.value = document.documentElement.lang;
+
+  // ---------- Print & reset ----------
+  document.getElementById('btnPrint').addEventListener('click', ()=> window.print());
+  document.getElementById('btnReset').addEventListener('click', ()=>{
+    if(!confirm(document.documentElement.lang === 'ko' ? '정말 초기화할까요? 저장된 입력/퀴즈가 삭제됩니다.' : 'Reset? This will clear saved inputs/quiz.')) return;
+    Object.keys(localStorage).forEach(k=>{
+      if(k.startsWith('comingLord.')) localStorage.removeItem(k);
+    });
+    location.reload();
+  });
+
+  // ---------- Node 1: posture slider ----------
+  const posture = document.getElementById('posture');
+  const postureLabel = document.getElementById('postureLabel');
+  const postureTips = document.getElementById('postureTips');
+  const savePosture = document.getElementById('savePosture');
+
+  function postureInfo(v){
+    if(v <= 35){
+      return {
+        enLabel: "Escapist anxiety (fear script)",
+        koLabel: "도피적 불안(공포 서사)",
+        enTips: "Try Node 2 first (Heb 9): reframe ‘coming’ as priestly blessing. Then revisit the slider.",
+        koTips: "노드 2(히 9)를 먼저: ‘오심’을 축복의 완결로 재구성한 뒤 다시 체크하세요."
+      };
+    } else if(v <= 65){
+      return {
+        enLabel: "Confused / ambivalent (mixed scripts)",
+        koLabel: "혼합/양가감정(섞인 서사)",
+        enTips: "Do Node 3 (1 Thess 4): switch from ‘evacuation’ to ‘royal welcome’ imagination.",
+        koTips: "노드 3(살전 4)을 진행: ‘대탈출’에서 ‘왕의 영접’ 상상력으로 전환."
+      };
+    } else {
+      return {
+        enLabel: "Hopeful anticipation (liturgical script)",
+        koLabel: "소망의 기대(예전적 서사)",
+        enTips: "Move to Node 4–5: build your Storm Anchor and practice the Active Wait liturgy daily.",
+        koTips: "노드 4–5로: 폭풍 앵커를 만들고 능동적 기다림 예전을 매일 실천."
+      };
+    }
+  }
+  function renderPosture(v){
+    const info = postureInfo(v);
+    const lang = document.documentElement.lang;
+    postureLabel.textContent = (lang === 'ko' ? info.koLabel : info.enLabel) + ` · ${v}/100`;
+    postureTips.textContent = (lang === 'ko' ? info.koTips : info.enTips);
+  }
+  posture.addEventListener('input', e => renderPosture(parseInt(e.target.value,10)));
+  savePosture.addEventListener('click', ()=>{
+    localStorage.setItem('comingLord.posture', posture.value);
+    const lang = document.documentElement.lang;
+    postureTips.innerHTML = (lang === 'ko' ? "저장되었습니다. " : "Saved. ") + postureTips.textContent;
+  });
+  const savedPosture = localStorage.getItem('comingLord.posture');
+  if(savedPosture !== null) posture.value = savedPosture;
+  renderPosture(parseInt(posture.value,10));
+
+  // ---------- Node 3: diagrams ----------
+  const diagramBox = document.getElementById('diagramBox');
+  const showEscape = document.getElementById('showEscape');
+  const showWelcome = document.getElementById('showWelcome');
+
+  function renderDiagram(kind){
+    const lang = document.documentElement.lang;
+    if(kind === 'escape'){
+      diagramBox.innerHTML = `
+        <div class="mini">${lang==='ko' ? '<b>DIAGRAM A: 탈출(대탈출) 모델</b>' : '<b>DIAGRAM A: Escape / Evacuation model</b>'}</div>
+        <pre class="mono" style="margin:10px 0 0;">
+[Earth — doomed / left behind]
+          ↑
+  [Christians escape upward]
+          ↑
+[Heaven — safe zone]
+        </pre>
+        <p class="mini">${lang==='ko'
+          ? '핵심 정서: 공포 → 도피. 윤리적 위험: 약자/창조를 버리기 쉬움.'
+          : 'Core affect: fear → withdrawal. Ethical danger: abandoning the vulnerable/creation.'}
+        </p>
+      `;
+    } else {
+      diagramBox.innerHTML = `
+        <div class="mini">${lang==='ko' ? '<b>DIAGRAM B: 왕의 영접(ἀπάντησις) 모델</b>' : '<b>DIAGRAM B: Royal Welcome (ἀπάντησις) model</b>'}</div>
+        <pre class="mono" style="margin:10px 0 0;">
+[Heaven — King’s origin]
+          ↓
+    [King descends]
+          ↓
+[Air/Clouds — meeting point]
+  [Church goes up to greet]
+          ↓
+[Church escorts King down]
+          ↓
+[Earth — renewed / restored]
+        </pre>
+        <p class="mini">${lang==='ko'
+          ? '핵심 정서: 기대 → 영접. 윤리적 열매: 세상 안에 머물며 정의의 표지를 세움.'
+          : 'Core affect: hope → welcome. Ethical fruit: stay engaged; build signposts of justice.'}
+        </p>
+      `;
+    }
+    localStorage.setItem('comingLord.diagram', kind);
+  }
+  showEscape.addEventListener('click', ()=> renderDiagram('escape'));
+  showWelcome.addEventListener('click', ()=> renderDiagram('welcome'));
+  renderDiagram(localStorage.getItem('comingLord.diagram') || 'welcome');
+
+  // ---------- Node 4: anchor builder ----------
+  const fluke = document.getElementById('fluke');
+  const shank = document.getElementById('shank');
+  const chain = document.getElementById('chain');
+  const anchorSaved = document.getElementById('anchorSaved');
+
+  function loadAnchor(){
+    fluke.value = localStorage.getItem('comingLord.anchor.fluke') || '';
+    shank.value = localStorage.getItem('comingLord.anchor.shank') || '';
+    chain.value = localStorage.getItem('comingLord.anchor.chain') || '';
+  }
+  function saveAnchor(){
+    localStorage.setItem('comingLord.anchor.fluke', fluke.value);
+    localStorage.setItem('comingLord.anchor.shank', shank.value);
+    localStorage.setItem('comingLord.anchor.chain', chain.value);
+    anchorSaved.textContent = (document.documentElement.lang==='ko' ? '저장됨 ✔' : 'Saved ✔');
+    setTimeout(()=> anchorSaved.textContent = '', 1200);
+  }
+  document.getElementById('saveAnchor').addEventListener('click', saveAnchor);
+  [fluke, shank, chain].forEach(el => el.addEventListener('input', saveAnchor));
+  document.getElementById('fillSample').addEventListener('click', ()=>{
+    const lang = document.documentElement.lang;
+    if(lang === 'ko'){
+      fluke.value = "대제사장이 지성소에 들어가셨다면 반드시 다시 나오신다. 그 재등장은 ‘수납’과 ‘축복’의 표지다. 그래서 나는 그의 오심을 확신한다.";
+      shank.value = "이 사건은 땅을 버리는 도피가 아니라 왕을 맞아들이는 영접이다. 그러므로 나는 약자와 상처 입은 창조를 버리지 않고 그 곁에 머문다.";
+      chain.value = "기다리는 동안 나는 이번 주 ‘사과나무’ 행동(창조 돌봄/난민 돌봄/가난한 이 섬김) 하나를 시작하고, 매일 ‘손 아래/손 위/두 손 모음’을 실천한다.";
+    } else {
+      fluke.value = "If the High Priest has entered, he will re-emerge. Re-emergence signals acceptance and blessing; therefore I am certain he is coming.";
+      shank.value = "This event is not evacuation but royal welcome. So I refuse to abandon the vulnerable or the groaning creation.";
+      chain.value = "While I wait, I begin one ‘apple-tree’ action this week and practice palms-down / palms-up / hands-together daily.";
+    }
+    saveAnchor();
+  });
+  loadAnchor();
+
+  // ---------- Reflection ----------
+  const reflection = document.getElementById('reflection');
+  const reflectionSaved = document.getElementById('reflectionSaved');
+  function loadReflection(){ reflection.value = localStorage.getItem('comingLord.reflection') || ''; }
+  function saveReflection(){
+    localStorage.setItem('comingLord.reflection', reflection.value);
+    reflectionSaved.textContent = (document.documentElement.lang==='ko' ? '저장됨 ✔' : 'Saved ✔');
+    setTimeout(()=> reflectionSaved.textContent = '', 1200);
+  }
+  document.getElementById('saveReflection').addEventListener('click', saveReflection);
+  reflection.addEventListener('input', saveReflection);
+  loadReflection();
+
+  // ---------- Quiz ----------
+  const quizData = [
+    {
+      id:"q1",
+      en:{ q:"In this lecture’s hermeneutic, apocalyptic imagery is best described as…",
+          opts:["literal newspaper-level prediction","symbolic-poetic language with theological priority","irrelevant mythology to be discarded","private code for secret date-setting"],
+          a:1,
+          why:"Apocalyptic stretches language to speak of divine action; the goal is theological meaning and ethical formation."
+      },
+      ko:{ q:"이 강의 해석학에서 묵시적 이미지는 무엇에 가장 가깝나?",
+          opts:["신문 수준의 문자 예언","신학적 우선순위를 가진 상징-시적 언어","버려야 할 신화","날짜를 맞히는 비밀 코드"],
+          a:1,
+          why:"묵시는 하나님의 개입을 말하기 위해 언어를 확장한다. 우선은 신학적 의미와 윤리적 형성이다."
+      }
+    },
+    {
+      id:"q2",
+      en:{ q:"Hebrews 9 frames the Second Coming primarily as…",
+          opts:["a terrifying invasion","the High Priest’s ritual completion and blessing","a metaphor for personal death","a proof-text for abandoning the earth"],
+          a:1,
+          why:"The ‘second appearing’ completes the priestly pattern—bringing salvation to those who await."
+      },
+      ko:{ q:"히브리서 9에서 재림은 주로 무엇으로 제시되는가?",
+          opts:["무서운 침공","대제사장 제의의 완결과 축복","개인의 죽음에 대한 은유","땅을 버리기 위한 근거"],
+          a:1,
+          why:"‘두 번째 나타남’은 제의 패턴의 완결로서 기다리는 자에게 구원을 가져온다."
+      }
+    },
+    {
+      id:"q3",
+      en:{ q:"The Greco-Roman background of ἀπάντησις (apantēsis) most strongly supports…",
+          opts:["evacuation to heaven","going out to greet and escort the King back","total dismissal of the text","a private mystical ascent"],
+          a:1,
+          why:"Citizens meet a visiting ruler outside the city and escort him in procession back home."
+      },
+      ko:{ q:"ἀπάντησις(아판테시스)의 헬라-로마 배경이 가장 강하게 지지하는 해석은?",
+          opts:["하늘로 대피","밖으로 나가 맞이하고 왕을 도시에 호위함","본문의 전면 부정","개인적 신비 상승"],
+          a:1,
+          why:"도시 시민들은 통치자를 밖에서 맞이한 뒤 행렬로 ‘안으로’ 모셔온다."
+      }
+    },
+    {
+      id:"q4",
+      en:{ q:"A ‘justice test’ for any eschatology in this class is:",
+          opts:["Does it produce secret knowledge?","Does it increase fear-based control?","Who gets left behind or harmed by this teaching?","Does it match my favorite timeline chart?"],
+          a:2,
+          why:"We evaluate ethics by impact: does the teaching abandon the vulnerable or fuel solidarity and justice?"
+      },
+      ko:{ q:"이 수업에서 종말론을 검증하는 ‘정의 테스트’는?",
+          opts:["비밀 지식을 주는가?","공포 통제를 강화하는가?","누가 버려지거나 해를 입는가?","내가 좋아하는 타임라인과 맞는가?"],
+          a:2,
+          why:"윤리는 영향으로 검증된다: 약자를 버리는가, 아니면 연대와 정의를 낳는가?"
+      }
+    },
+    {
+      id:"q5",
+      en:{ q:"According to the ‘Storm Anchor,’ the Chain mainly represents…",
+          opts:["speculation about signs","daily practices linking hope to action","escaping politics entirely","a reason to stop caring for creation"],
+          a:1,
+          why:"The chain connects eschatology to present life: active waiting, mercy, justice, and perseverance."
+      },
+      ko:{ q:"‘폭풍 앵커’에서 체인(Chain)이 주로 의미하는 것은?",
+          opts:["징조 추측","소망을 일상 실천과 연결","정치 완전 회피","창조 돌봄 중단의 이유"],
+          a:1,
+          why:"체인은 종말론을 현재 삶에 연결한다: 능동적 기다림, 자비, 정의, 인내."
+      }
+    },
+  ];
+
+  const quizBox = document.getElementById('quizBox');
+  const quizScore = document.getElementById('quizScore');
+
+  function renderQuiz(){
+    const lang = document.documentElement.lang;
+    quizBox.innerHTML = "";
+    quizData.forEach((item, idx)=>{
+      const t = (lang === 'ko') ? item.ko : item.en;
+      const saved = localStorage.getItem(`comingLord.quiz.${item.id}`) || "";
+      const block = document.createElement('div');
+      block.className = "q";
+      block.innerHTML = `
+        <h3>${idx+1}. ${t.q}</h3>
+        ${t.opts.map((opt,i)=>`
+          <label class="opt">
+            <input type="radio" name="${item.id}" value="${i}" ${saved==String(i) ? "checked":""}/>
+            <span>${opt}</span>
+          </label>
+        `).join("")}
+        <div class="feedback mini" id="fb-${item.id}"></div>
+      `;
+      quizBox.appendChild(block);
+
+      // save on change
+      block.querySelectorAll(`input[name="${item.id}"]`).forEach(r=>{
+        r.addEventListener('change', (e)=>{
+          localStorage.setItem(`comingLord.quiz.${item.id}`, e.target.value);
+          localStorage.setItem(`comingLord.quiz.touched`, "1");
+        });
+      });
+    });
+
+    // score display load
+    const savedScore = localStorage.getItem('comingLord.quiz.score');
+    quizScore.textContent = savedScore ? savedScore : "—";
+  }
+
+  function checkQuiz(){
+    const lang = document.documentElement.lang;
+    let correct = 0;
+    quizData.forEach(item=>{
+      const picked = localStorage.getItem(`comingLord.quiz.${item.id}`);
+      const t = (lang === 'ko') ? item.ko : item.en;
+      const fb = document.getElementById(`fb-${item.id}`);
+      if(picked === null){
+        fb.innerHTML = `<span class="bad">${lang==='ko' ? '미응답' : 'Unanswered'}</span>`;
+        return;
+      }
+      if(parseInt(picked,10) === item.en.a){
+        correct++;
+        fb.innerHTML = `<span class="ok">${lang==='ko' ? '정답 ✔' : 'Correct ✔'}</span> — ${t.why}`;
+      } else {
+        fb.innerHTML = `<span class="bad">${lang==='ko' ? '오답 ✖' : 'Incorrect ✖'}</span> — ${t.why}`;
+      }
+    });
+    const scoreText = (lang==='ko')
+      ? `점수: ${correct}/${quizData.length}`
+      : `Score: ${correct}/${quizData.length}`;
+    quizScore.textContent = scoreText;
+    localStorage.setItem('comingLord.quiz.score', scoreText);
+  }
+
+  document.getElementById('checkQuiz').addEventListener('click', checkQuiz);
+  document.getElementById('resetQuiz').addEventListener('click', ()=>{
+    quizData.forEach(item=> localStorage.removeItem(`comingLord.quiz.${item.id}`));
+    localStorage.removeItem('comingLord.quiz.score');
+    renderQuiz();
+  });
+
+  // rerender quiz when language changes
+  langSel.addEventListener('change', ()=> {
+    renderPosture(parseInt(posture.value,10));
+    renderDiagram(localStorage.getItem('comingLord.diagram') || 'welcome');
+    renderQuiz();
+  });
+  renderQuiz();
+
+  // ---------- Export ----------
+  const exportBox = document.getElementById('exportBox');
+  document.getElementById('makeExport').addEventListener('click', ()=>{
+    const lang = document.documentElement.lang;
+    const postureVal = localStorage.getItem('comingLord.posture') || posture.value;
+    const postureDesc = postureInfo(parseInt(postureVal,10));
+    const fl = fluke.value.trim();
+    const sh = shank.value.trim();
+    const ch = chain.value.trim();
+    const ref = reflection.value.trim();
+    const quiz = localStorage.getItem('comingLord.quiz.score') || "—";
+    const now = new Date().toISOString().slice(0,10);
+
+    const enBlock =
+`# The Coming of the Lord — Storm Anchor (Export)
+Date: ${now}
+Posture: ${postureDesc.enLabel} (${postureVal}/100)
+Quiz: ${quiz}
+
+## Storm Anchor
+- Fluke (Heb 9): ${fl || "[fill in]"}
+- Shank (1 Thess 4 / ἀπάντησις): ${sh || "[fill in]"}
+- Chain (Matt 25 / Rom 8): ${ch || "[fill in]"}
+
+## Reflection
+${ref || "[fill in]"}
+
+## Next “Apple-Tree” Action (this week)
+- [ ] ____________________________________________
+`;
+
+    const koBlock =
+`# 재림 — 폭풍 앵커(내보내기)
+날짜: ${now}
+좌표: ${postureDesc.koLabel} (${postureVal}/100)
+퀴즈: ${quiz}
+
+## 폭풍 앵커
+- 플루크(히 9): ${fl || "[작성]"}
+- 샹크(살전 4 / ἀπάντησις): ${sh || "[작성]"}
+- 체인(마 25 / 롬 8): ${ch || "[작성]"}
+
+## 성찰
+${ref || "[작성]"}
+
+## 이번 주 ‘사과나무’ 행동
+- [ ] ____________________________________________
+`;
+
+    exportBox.value = (lang === 'ko') ? koBlock + "\n\n---\n\n" + enBlock : enBlock + "\n\n---\n\n" + koBlock;
+  });
+
+  document.getElementById('copyExport').addEventListener('click', async ()=>{
+    try{
+      await navigator.clipboard.writeText(exportBox.value || "");
+      alert(document.documentElement.lang==='ko' ? '복사 완료!' : 'Copied!');
+    } catch(e){
+      alert(document.documentElement.lang==='ko' ? '복사 실패: 브라우저 권한을 확인하세요.' : 'Copy failed: check browser permissions.');
+    }
+  });
+
+</script>
+</body>
+</html>
